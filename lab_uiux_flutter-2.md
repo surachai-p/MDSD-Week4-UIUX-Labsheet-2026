@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #006875 |
+| Secondary Color (Hex) | #4A6267 |
+| Primary Container (Hex) | #9EEFFE |
+| Surface (Hex) | #F5FAFC |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary |สีหลักของแอป ใช้กับปุ่มหลัก (Filled Button), App Bar, Floating Action Button และองค์ประกอบที่ต้องการเน้น |
+| On Primary | สีของข้อความหรือไอคอนที่แสดงอยู่บนพื้นหลังสี Primary โดยต้องมีความคมชัดเพื่อให้อ่านง่าย (ใน Theme นี้คือ สีขาว #FFFFFF) |
+| Primary Container | สีพื้นหลังที่อ่อนกว่าสี Primary ใช้กับ Card, Container หรือส่วนที่ต้องการเน้นแต่ไม่เด่นเท่าปุ่มหลัก |
+| On Primary Container | สีข้อความหรือไอคอนที่อยู่บนพื้น Primary Container โดยใช้สีเข้มเพื่อให้มองเห็นชัด (ใน Theme นี้คือ #004F58) |
 
 ---
 
