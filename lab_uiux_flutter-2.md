@@ -237,19 +237,45 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | `#1B6D24` |
+| Secondary Color (Hex) | `#52634F` |
+| Primary Container (Hex) | `#A3F69C` |
+| Surface (Hex) | `#F9FAF3` |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแบรนด์ ใช้กับ action ที่สำคัญที่สุดในหน้า — FilledButton, FAB, Switch/Checkbox ที่ถูกเลือก, ราคาสินค้าในหน้า Detail เป็นโทนเข้มพอที่จะวางตัวอักษรสีขาวทับได้ |
+| On Primary | สีของตัวอักษรและไอคอนที่วาง **บน** พื้น Primary จับคู่กันมาเพื่อให้ contrast ผ่าน WCAG AA (≥ 4.5:1) โดยไม่ต้องคำนวณเอง |
+| Primary Container | โทนอ่อนของสีเดียวกัน ใช้เป็น **พื้นหลัง** ของ element ที่ต้องการเน้นแต่ไม่ใช่ action หลัก — พื้น FAB, avatar, icon container ใน Card สินค้า |
+| On Primary Container | สีตัวอักษร/ไอคอนที่วางบน Primary Container เป็นโทนเข้มมากของสีเดียวกัน |
+
+**ความสัมพันธ์ของสีทั้ง 4:**
+
+ทั้งหมดมาจาก **Tonal Palette เดียวกัน** ที่กำเนิดจาก seed สีเดียว ต่างกันแค่ค่า **tone** (0 = ดำ, 100 = ขาว) ใน HCT color space:
+
+| Role | Light mode | Dark mode |
+|------|-----------|-----------|
+| Primary | tone 40 | tone 80 |
+| On Primary | tone 100 | tone 20 |
+| Primary Container | tone 90 | tone 30 |
+| On Primary Container | tone 10 | tone 90 |
+
+จุดสำคัญคือคู่ container / on-container **ห่างกันอย่างน้อย 50 ขั้น tone เสมอ** ซึ่งเป็นเหตุผลทางคณิตศาสตร์ที่ทำให้ Material 3 การันตี contrast ได้ และเป็นเหตุผลว่าทำไมใน dark mode ค่าจึง "สลับข้าง" กัน — Primary ต้องสว่างขึ้น (tone 80) เพราะพื้นหลังกลายเป็นสีเข้ม
+
+ค่าจริงจาก seed `#2E7D32`:
+
+
+
+---
+
+| สี | หน้าที่ |
+|-----|--------|
+| Primary | สีหลักของแบรนด์ ใช้กับ action ที่สำคัญที่สุดในหน้า — FilledButton, FAB, Switch/Checkbox ที่ถูกเลือก, ราคาสินค้าในหน้า Detail เป็นโทนเข้มพอที่จะวางตัวอักษรสีขาวทับได้ |
+| On Primary | สีของตัวอักษรและไอคอนที่วาง **บน** พื้น Primary จับคู่กันมาเพื่อให้ contrast ผ่าน WCAG AA (≥ 4.5:1) โดยไม่ต้องคำนวณเอง |
+| Primary Container | โทนอ่อนของสีเดียวกัน ใช้เป็น **พื้นหลัง** ของ element ที่ต้องการเน้นแต่ไม่ใช่ action หลัก — พื้น FAB, avatar, icon container ใน Card สินค้า |
+| On Primary Container | สีตัวอักษร/ไอคอนที่วางบน Primary Container เป็นโทนเข้มมากของสีเดียวกัน |
 
 ---
 
@@ -379,9 +405,40 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+![alt text](image.png)
+
+| 1_Home_Screen | 2_Detail_Screen | 3_Profile_Screen |
+|---|---|---|
+| ![alt text](1_Home_Screen.png) | ![alt text](2_Detail_Screen.png) | ![alt text](3_Profile_Screen.png) |
+
+| หัวข้อ | รายละเอียด |
+|--------|-----------|
+| ขนาด Frame | 360 × 800 dp (Android ขนาดกลาง) ทั้ง 3 หน้า |
+| จำนวน Frame | 3 — `1_Home_Screen`, `2_Detail_Screen`, `3_Profile_Screen` |
+| Color Scheme | สร้างจาก seed `#2E7D32` ผ่าน Material Theme Builder |
+| Font | Noto Sans Thai |
+| Component ที่ใช้ | TopAppBar (Small), Card, Extended FAB, NavigationBar, FilledButton, OutlinedButton, Avatar, List item |
+
+**1_Home_Screen**
+- Top App Bar (Small) สูง 64 dp พื้น `surfaceContainer` — title "Green Market by ภวินท์" (Title Large 22) + search icon
+- Card สินค้า 4 ใบ ขนาด 328 × 100, radius 12, spacing 12 dp, พื้น `surfaceContainerLow` + เส้นขอบ `outlineVariant`
+- แต่ละ Card: icon container 44 × 44 สี `primaryContainer` / ชื่อสินค้า Title Medium 16 / รายละเอียด+ราคา Body Small 12 สี `onSurfaceVariant` / chevron ขวา
+- Extended FAB "+ เพิ่มสินค้า" พื้น `primaryContainer` มุมล่างขวา
+- Navigation Bar สูง 80 dp — 3 destination (หน้าหลัก active / ค้นหา / โปรไฟล์) active indicator pill 64 × 32 สี `secondaryContainer`
+
+**2_Detail_Screen**
+- Top App Bar + leading icon `arrow_back` — title "รายละเอียดสินค้า"
+- Banner image 360 × 200 ใต้ App Bar
+- ชื่อสินค้า Headline Medium 28 / ราคา Title Large 22 สี `primary` / หัวข้อ Title Medium 16 / คำบรรยาย Body Large
+- FilledButton "เพิ่มลงตะกร้าสินค้า" 328 × 48 (Primary action)
+- OutlinedButton "ย้อนกลับ" 328 × 48 (Secondary action)
+
+**3_Profile_Screen**
+- Top App Bar — title "โปรไฟล์ผู้ใช้"
+- Avatar วงกลม 80 × 80 สี `primaryContainer` + icon `person`
+- ชื่อผู้ใช้ Headline Small 24 / อีเมล Body Medium 14 สี `onSurfaceVariant`
+- OutlinedButton "แก้ไขข้อมูลโปรไฟล์"
+- List item 3 รายการ + Navigation Bar (โปรไฟล์  
 
 ---
 
@@ -487,6 +544,8 @@ class MyApp extends StatelessWidget {
 **ขั้นตอนที่ 3.3: วิเคราะห์ Design เป็น Widget Tree**
 
 ก่อนเขียน code ให้วาด Widget Tree บนกระดาษหรือ Whiteboard:
+
+![alt text](tree.png)
 
 ```
 สำหรับ Green Market Home Screen:
@@ -873,17 +932,20 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✓] App Bar แสดงชื่อ "Green Market"
+- [✓] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✓] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✓] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✓] Bottom Navigation สลับ Tab ได้
+- [✓] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+ 
+
+https://github.com/user-attachments/assets/924a178b-d9a5-47a9-bff5-14bad936b2c6
+
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +988,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | `CircleAvatar` โดยกำหนด `radius: 32` ตาม prompt และใช้ `backgroundColor: colorScheme.primaryContainer` |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้ conditional 2 จุดคู่กัน — `backgroundImage: avatarUrl != null ? NetworkImage(avatarUrl!) : null` และ `child: avatarUrl == null ? Text(_initials) : null` โดยมี getter `_initials` แยกออกมาตัดชื่อคำแรก+คำสุดท้ายเป็นอักษรย่อ ถ้าชื่อว่างจะคืน `'?'` เป็น fallback ชั้นสุดท้าย |
+| AI ใช้ color จาก Theme หรือ hardcode? | ช้จาก Theme ทั้งหมด — `colorScheme.primaryContainer`, `colorScheme.onPrimaryContainer`, `colorScheme.onSurfaceVariant` ไม่มี `Color(0xFF...)` โผล่มาเลย ทำให้ widget เปลี่ยนตาม Light/Dark mode ได้เอง |
+| มีส่วนไหนที่ควรปรับปรุง? | **1)** `NetworkImage` ไม่มี error handling — ถ้าโหลดรูปไม่สำเร็จจะขึ้นพื้นที่ว่าง ควรใส่ `onBackgroundImageError` หรือเปลี่ยนไปใช้ `CachedNetworkImage` **2)** `onPressed: () {}` ทั้งสองปุ่มเป็น callback เปล่า ควรเปลี่ยนเป็น parameter (`VoidCallback? onFollow`, `onMessage`) ตามหลัก Component-Driven Design **3)** ตัวเลขสถิติแสดงเป็นเลขดิบ — ควร format เป็น `1.2K` / `12,345` **4)** ไม่มี `Semantics` / `tooltip` สำหรับ screen reader **5)** ถ้าชื่อยาวจะ overflow ควรใส่ `maxLines: 1` + `overflow: TextOverflow.ellipsis` **6)** `elevation: 1` hardcode ไว้ — ควรปล่อยให้ `CardTheme` จัดการเพื่อความสม่ำเสมอทั้งแอป |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -954,6 +1016,32 @@ Add brief comments explaining each section.
    
 ```text
 เขียนผลการเปรียบเทียบที่นี่
+
+สิ่งที่ AI ทำได้ดี
+- โครง Widget Tree ตรงกับที่วิเคราะห์เองแทบทั้งหมด (Card > Padding > Column > Row) เพราะ
+  layout แบบนี้เป็น pattern มาตรฐานที่มีตัวอย่างในเอกสาร Flutter เยอะมาก
+- ใช้ Theme.of(context) ถูกต้องตามที่ระบุใน prompt ไม่ hardcode สี
+- แยก helper method (_buildStat) ออกมาเองเพื่อลด code ซ้ำ — เป็นสิ่งที่คนเขียนมือมักลืม
+- เรียก TextStyle จาก M3 scale ได้ถูก role (titleMedium สำหรับหัวข้อ, bodySmall สำหรับ caption)
+
+สิ่งที่ AI พลาดหรือทำไม่ครบ
+- ไม่จัดการ error/loading ของ NetworkImage — เขียนแค่ happy path
+- ใส่ onPressed: () {} เป็นค่าว่าง ทำให้ widget ไม่ reusable จริง เพราะผู้เรียกกำหนด
+  behavior จากข้างนอกไม่ได้ ตอนเขียนเองใน ItemCard เราใส่ VoidCallback? onTap ไว้ตั้งแต่แรก
+- ไม่ป้องกัน text overflow ทั้งที่รับ name/email เป็น String ความยาวไม่จำกัด
+- ไม่มี Semantics / tooltip เลย ต้องมาเพิ่มเองในการทดลองที่ 5.3
+- ค่าคงที่อย่าง elevation, radius hardcode ในตัว widget แทนที่จะดึงจาก Theme
+
+ข้อสังเกตจากการทดลอง Multimodal (ส่งรูป Figma ให้ AI)
+- AI อ่านโครงสร้างแนวตั้ง/แนวนอนจากรูปได้แม่นมาก แต่เดา "ตัวเลข" ไม่ตรง เช่น
+  padding, spacing, radius, ขนาด icon ได้ค่าใกล้เคียงแต่ไม่เท่าของจริง เพราะมองจาก
+  pixel ในรูปไม่ได้เห็นค่าจริงในแผง Design
+- AI แยกไม่ออกว่า element ไหนควรเป็น Component ที่ reuse ได้ — มันเขียน Card สินค้า
+  4 ใบเป็น code ซ้ำ 4 ชุด ในขณะที่เราแยกเป็น ItemCard ตัวเดียวแล้ววนใน ListView.builder
+  จุดนี้คือความต่างสำคัญที่สุด: AI เห็นแค่ "ผลลัพธ์ทางสายตา" แต่มองไม่เห็น "เจตนาเชิง
+  โครงสร้าง" ของ design
+- AI เดา state ไม่ได้ เช่น มองไม่ออกว่า NavigationBar ต้องมี selectedIndex เป็น state
+  จึงเขียนออกมาเป็น StatelessWidget ที่ไฮไลท์ tab แรกค้างไว้
 
 ```
 ---
@@ -1010,25 +1098,148 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ความต่างหลักคือ M2 ให้ "นักออกแบบเลือกสีเอง" แต่ M3 ให้ "อัลกอริทึมสร้างสีให้
+
+1. จำนวนสีที่ต้องกำหนดเอง
+2. ระบบ Container / On-Container
+3. Elevation
+4. Color space
+5. Dynamic Color
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหา 1: Figma วาง element ด้วยพิกัด X/Y แน่นอน แต่ Flutter ใช้ layout แบบ flow
+   ใน Figma เขียนได้เลยว่า FAB อยู่ที่ X=220, Y=680 แต่ Flutter ไม่มีที่ให้ใส่ค่านี้
+   แก้: เปลี่ยนวิธีคิดจาก "พิกัด" เป็น "ความสัมพันธ์" — FAB ไม่ใช่ "ของที่อยู่มุมล่างขวา"
+       แต่เป็น floatingActionButton property ของ Scaffold ซึ่ง Scaffold จัดตำแหน่งให้เอง
+       Nav bar ก็เป็น bottomNavigationBar ไม่ใช่ rect ที่ Y=720
+       ผลลัพธ์ดีกว่าเดิมด้วย เพราะรองรับหน้าจอหลายขนาดได้
+
+ปัญหา 2: ตัวเลขจาก Figma ไม่ตรงกับ default ของ Flutter
+   Card ใน Figma ตั้ง radius 12 แต่ Card ของ Flutter M3 default เป็น 12 อยู่แล้ว
+   ส่วน padding ที่ออกแบบไว้ 16 กับ margin 16 ทำให้ห่างจากขอบจริง 32
+   แก้: ไม่ใส่ตัวเลขซ้ำซ้อนในแต่ละ widget แต่ยกไปกำหนดที่ ThemeData ทีเดียว
+       (cardTheme, appBarTheme, navigationBarTheme) แล้วให้ทุก widget ใช้ตาม
+       ถ้าจะแก้ทีหลังก็แก้ที่เดียว
+
+ปัญหา 3: Text ใน Figma ตัดบรรทัดเองด้วยมือ
+   คำบรรยายสินค้าใน Figma ต้องแยกเป็น 3 text layer เพื่อคุมการตัดบรรทัด
+   แก้: ใน Flutter ใช้ Text ตัวเดียว ปล่อยให้ engine wrap เอง แต่ต้องใส่
+       maxLines + overflow: TextOverflow.ellipsis กันข้อความล้นในเครื่องที่จอแคบ
+
+ปัญหา 4: สีของ Component ที่ Figma กับ Flutter default ไม่ตรงกัน
+   ใน Figma วาด App Bar เป็นสี surfaceContainer แต่ AppBar ของ Flutter default
+   ใช้ surface และมี surfaceTintColor ผสมมาให้ตอน scroll ทำให้สีเพี้ยนจาก mockup
+   แก้: กำหนด appBarTheme(backgroundColor: colorScheme.surfaceContainer,
+       surfaceTintColor: Colors.transparent, scrolledUnderElevation: 0)
+
+ปัญหา 5: ค่าสีที่ Figma ใช้กับที่ ColorScheme.fromSeed สร้าง ต่างกันเล็กน้อย
+   fromSeed คำนวณสีตอน runtime ซึ่งเปลี่ยนได้ถ้า Flutter อัปเดตอัลกอริทึมตามสเปกใหม่
+   ทำให้แอปกับ mockup สีไม่ตรงกันแบบไม่รู้ตัว
+   แก้: hardcode ค่าสีทั้งหมดใน theme.dart แบบเดียวกับที่ Material Theme Builder
+       export ออกมา (ทำแล้วในโปรเจกต์นี้) แอปจึงตรงกับ Figma ทุก pixel และไม่ขึ้นกับ
+       เวอร์ชัน Flutter
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ประเมินโดยรวม: ใช้เป็น "ร่างแรก" ได้ทันที ประมาณ 70-80% ของงาน แต่ยัง production-ready
+ไม่ได้
+
+สิ่งที่ AI ทำได้ดี (ไม่ต้องแก้)
+- โครงสร้าง Widget Tree ถูกต้องและอ่านง่าย
+- ใช้ Theme.of(context).colorScheme / textTheme ครบ ไม่ hardcode สี
+  (ข้อนี้ได้เพราะเราสั่งไว้ใน prompt ชัด ๆ — ถ้าไม่สั่งมันจะ hardcode)
+- แยก helper method ลด code ซ้ำ
+- เลือก TextStyle ตรง role ตาม M3 scale
+- Constructor รับ parameter ครบตามที่ระบุ พร้อม required/nullable ถูกต้อง
+
+สิ่งที่ต้องแก้เอง
+1. Error handling — เขียนแค่ happy path NetworkImage โหลดพลาดไม่มีอะไรรองรับ
+2. Callback — ใส่ onPressed: () {} เป็นค่าว่าง ทำให้ widget ไม่ reusable จริง
+   ต้องเปลี่ยนเป็น parameter รับจากข้างนอก
+3. Text overflow — ไม่ใส่ maxLines / ellipsis ทั้งที่รับ String ยาวไม่จำกัด
+4. Accessibility — ไม่มี Semantics หรือ tooltip เลย
+5. Magic number — hardcode elevation, spacing ในตัว widget แทนที่จะยกไป Theme
+6. Format ข้อมูล — แสดงตัวเลขดิบ ไม่ format เป็น 1.2K หรือใส่ comma
+
+บทเรียนสำคัญที่สุด
+คุณภาพ output ขึ้นกับคุณภาพ prompt โดยตรง prompt ที่ระบุ "ห้าม hardcode สี" ทำให้ได้
+code ที่ใช้ Theme ถูกต้อง ส่วนสิ่งที่ไม่ได้ระบุ (error handling, accessibility, callback)
+AI ก็ไม่ทำให้ — มันตอบตรงตามที่สั่งเท่านั้น ไม่ได้ "คิดแทน" ว่าอะไรควรมี
+
+และที่สำคัญกว่า: AI มองไม่เห็น "เจตนาเชิงโครงสร้าง" ตอนส่งรูป Figma ให้วิเคราะห์ มันเขียน
+Card 4 ใบเป็น code ซ้ำ 4 ชุด เพราะในรูปมันเห็น 4 ใบจริง ๆ การตัดสินใจว่า "นี่คือ
+component ตัวเดียวที่วน loop" ต้องมาจากคนที่เข้าใจ design ไม่ใช่จากคนที่เห็นแค่ภาพ
+ผลลัพธ์คือคนยังต้องเป็นคนตัดสินใจเรื่องสถาปัตยกรรม แล้วใช้ AI เขียนรายละเอียด
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 1. แยก data ออกจาก UI
+   ตอนนี้รายการสินค้าเป็น List<Map<String, dynamic>> hardcode อยู่ใน _HomeScreenState
+   ควรทำเป็น model class Product (มี type safety) + repository ที่ดึงจาก API
+   และใช้ State Management (Provider / Riverpod / Bloc) แทนการเก็บ state ในหน้าจอ
+   Map<String, dynamic> อันตรายเพราะพิมพ์ key ผิดจะพังตอน runtime ไม่ใช่ตอน compile
+
+2. จัดการ 4 state ของหน้าจอ ไม่ใช่แค่ state สำเร็จ
+   Mockup มีแต่หน้า "มีข้อมูลครบ" ต้องออกแบบเพิ่ม
+   - Loading: skeleton / shimmer ไม่ใช่ spinner กลางจอ
+   - Empty: "ยังไม่มีสินค้า" + ปุ่มชวนทำอะไรต่อ
+   - Error: ข้อความ + ปุ่มลองใหม่
+   - Offline: banner บอกสถานะ + แสดง cache
+
+3. รูปภาพจริง
+   ตอนนี้ใช้ icon แทนรูปสินค้า ของจริงต้อง
+   - cached_network_image กัน re-download ทุกครั้งที่ scroll
+   - placeholder + errorWidget
+   - เตรียมรูปหลาย resolution (1x/2x/3x)
+   - AspectRatio คงที่ กัน layout กระตุกตอนรูปโหลดเสร็จ
+
+4. Responsive และ Adaptive
+   ออกแบบไว้ที่ 360 dp เดียว ของจริงต้องรองรับ
+   - LayoutBuilder / MediaQuery: จอ ≥ 600 dp เปลี่ยน ListView เป็น GridView
+     และเปลี่ยน NavigationBar เป็น NavigationRail
+   - SafeArea กัน notch และ gesture bar
+   - รองรับ landscape
+   - ทดสอบกับ MediaQuery.textScalerOf(context) ที่ผู้ใช้ขยายฟอนต์ 200%
+
+5. Accessibility ให้ครบ
+   - Semantics label ทุก element ที่กดได้ ไม่ใช่แค่ IconButton
+   - ตรวจ touch target ≥ 48 × 48 dp ทุกจุด (chevron ใน Card ตอนนี้เล็กกว่านั้น)
+   - ทดสอบกับ TalkBack / VoiceOver จริง
+   - ทดสอบโหมด high contrast
+
+6. Navigation ที่ scale ได้
+   Navigator.push ตรง ๆ ใช้ได้กับ 3 หน้า แต่พอ 20 หน้าจะจัดการไม่ไหว
+   ควนใช้ go_router — ได้ deep link, URL ใน web, guard สำหรับหน้าที่ต้อง login
+
+7. i18n
+   ข้อความไทยฝังใน widget ทั้งหมด ควรย้ายไป ARB file + flutter_localizations
+   และเตรียมรับ RTL ถ้าจะขยายตลาด
+
+8. Design System / Component Library
+   ควรทำ ItemCard, ProductBanner, PriceText เป็น component library ที่มี
+   - widgetbook หรือ storybook สำหรับดู variant ทุกสถานะ
+   - golden test กัน UI regression
+   และใน Figma ควรทำเป็น Component + Variant จริง ๆ ไม่ใช่ frame ที่ copy กัน
+   เพื่อให้แก้ที่เดียวแล้วอัปเดตทุกหน้า
+
+9. Performance
+   - ListView.builder ใช้ถูกแล้ว แต่ควรใส่ itemExtent เพื่อให้ scroll ลื่นขึ้น
+   - ใส่ const constructor ทุกที่ที่ทำได้ ลด rebuild
+   - const Key ให้ list item ที่มีการ reorder
+   - วัดด้วย DevTools Performance overlay ไม่ใช่เดา
+
+10. Testing
+    ตอนนี้ไม่มี test เลย ควรมี
+    - widget test: กด Card แล้วไป Detail Screen จริงไหม
+    - golden test: UI ตรงกับ mockup ทั้ง light/dark
+    - integration test: flow ซื้อสินค้าครบวงจร
 ```
 
 ---
