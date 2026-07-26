@@ -871,16 +871,16 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [x] App Bar แสดงชื่อ "Green Market"
+- [x] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [x] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [x] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [x] Bottom Navigation สลับ Tab ได้
+- [x] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/f45956f9-7d5f-4b90-8eb3-f34b07767be7" />
-<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/f8d2bbf0-605a-49cc-bd11-442f299c6f1d" />
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/31e18901-3d2f-4b83-b815-9475d3c122d0" />
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/2edc26b7-684b-4620-b4c0-b7adfca9cb7e" />
 
 ---
 
@@ -1265,7 +1265,7 @@ class MyApp extends StatelessWidget {
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
 บันทึกผลการทดลอง
-<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/1031a165-9ea1-4ed9-984e-19836bff6b47" />
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/5ef21bba-d897-46d0-b2fd-1413a6c2b5f0" />
 
 // ยังไม่ต้องทำข้อ 5.2  5.3 <br>
 
@@ -1278,7 +1278,7 @@ class MyApp extends StatelessWidget {
 4. ตรวจสอบว่า Interactive element ทุกชิ้นมีขนาดอย่างน้อย **48×48 dp**
 
 บันทึกผลการทดลอง
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/af834a98-035b-4478-a8bc-e9d4325c8012" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a53e1449-1087-4b5c-b531-437fd3cba987" />
 
 
 **ขั้นตอนที่ 5.3: ตรวจสอบ Semantic Labels**
