@@ -1265,16 +1265,19 @@ class MyApp extends StatelessWidget {
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
 
-// ยังไม่ต้องทำข้อ 5.2  5.3
+// ยังไม่ต้องทำข้อ 5.2  5.3 <br>
+
 **ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
 
 ใน Flutter DevTools:
 1. รัน App ใน Debug mode: `flutter run --debug`
-2. เปิด **Flutter Inspector** กดคีย์ลัด Ctrl + Shift + P (สำหรับ Windows) หรือ Cmd + Shift + P (สำหรับ macOS)
-
-พิมพ์คำว่า: Flutter: Open DevTools
+2. เปิด **Flutter Inspector** กดคีย์ลัด Ctrl + Shift + P (สำหรับ Windows) หรือ Cmd + Shift + P (สำหรับ macOS) พิมพ์คำว่า: `Flutter: Open DevTools`
 3. Enable **"Show guidelines"** → จะเห็น layout boundary
 4. ตรวจสอบว่า Interactive element ทุกชิ้นมีขนาดอย่างน้อย **48×48 dp**
+
+บันทึกผลการทดลอง
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/af834a98-035b-4478-a8bc-e9d4325c8012" />
+
 
 **ขั้นตอนที่ 5.3: ตรวจสอบ Semantic Labels**
 
