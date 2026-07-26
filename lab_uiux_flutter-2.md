@@ -922,12 +922,303 @@ Add brief comments explaining each section.
 
 อ่าน code ที่ AI สร้างและตอบคำถาม:
 
+- code
+```
+import 'package:flutter/material.dart';
+
+/// A Material Design 3 user profile card widget.
+///
+/// Accepts user details and displays an avatar, username, email,
+/// side-by-side action buttons, and statistic counters.
+class UserProfileCard extends StatelessWidget {
+  /// The user's full display name.
+  final String name;
+
+  /// The user's email address.
+  final String email;
+
+  /// Optional URL for the user's avatar image.
+  /// If null or empty, falls back to displaying initials.
+  final String? avatarUrl;
+
+  /// Total number of published posts.
+  final int postsCount;
+
+  /// Total number of followers.
+  final int followersCount;
+
+  /// Total number of accounts being followed.
+  final int followingCount;
+
+  /// Optional callback when the "Follow" button is pressed.
+  final VoidCallback? onFollowPressed;
+
+  /// Optional callback when the "Message" button is pressed.
+  final VoidCallback? onMessagePressed;
+
+  const UserProfileCard({
+    super.key,
+    required this.name,
+    required this.email,
+    this.avatarUrl,
+    required this.postsCount,
+    required this.followersCount,
+    required this.followingCount,
+    this.onFollowPressed,
+    this.onMessagePressed,
+  });
+
+  /// Extracts up to two uppercase initials from the display name.
+  String _getInitials(String displayName) {
+    final trimmed = displayName.trim();
+    if (trimmed.isEmpty) return '?';
+    final parts = trimmed.split(RegExp(r'\s+'));
+    if (parts.length == 1) {
+      return parts.first[0].toUpperCase();
+    }
+    return (parts.first[0] + parts.last[0]).toUpperCase();
+  }
+
+  /// Formats raw counts into human-readable shorthand (e.g., 1250 -> 1.2K).
+  String _formatCount(int count) {
+    if (count >= 1000000) {
+      return '${(count / 1000000).toStringAsFixed(1).replaceAll('.0', '')}M';
+    } else if (count >= 1000) {
+      return '${(count / 1000).toStringAsFixed(1).replaceAll('.0', '')}K';
+    }
+    return count.toString();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // 7. Access current Material 3 ColorScheme and TextTheme from Theme context
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+
+    // 6. Use Card widget with Material 3 elevation and rounded shape
+    return Card(
+      elevation: 1.0, // Material 3 standard card elevation
+      clipBehavior: Clip.antiAlias,
+      child: Padding(
+        // 8. Proper padding (16px) around internal card elements
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // 1. Circular user avatar (radius 32) with image or initials fallback
+            CircleAvatar(
+              radius: 32.0,
+              backgroundColor: colorScheme.primaryContainer,
+              foregroundColor: colorScheme.onPrimaryContainer,
+              backgroundImage: (avatarUrl != null && avatarUrl!.isNotEmpty)
+                  ? NetworkImage(avatarUrl!)
+                  : null,
+              child: (avatarUrl == null || avatarUrl!.isEmpty)
+                  ? Text(
+                      _getInitials(name),
+                      style: textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: colorScheme.onPrimaryContainer,
+                      ),
+                    )
+                  : null,
+            ),
+            const SizedBox(height: 8.0), // 8. 8px vertical spacing
+
+            // 2. Display username using titleLarge TextStyle
+            Text(
+              name,
+              style: textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w600,
+                color: colorScheme.onSurface,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 4.0),
+
+            // 3. Display email using bodyMedium TextStyle in onSurfaceVariant color
+            Text(
+              email,
+              style: textTheme.bodyMedium?.copyWith(
+                color: colorScheme.onSurfaceVariant,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16.0),
+
+            // 5. Row of 3 stats: Posts, Followers, Following (using Column: number + label)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _StatColumn(
+                  label: 'Posts',
+                  count: _formatCount(postsCount),
+                  colorScheme: colorScheme,
+                  textTheme: textTheme,
+                ),
+                _StatDivider(colorScheme: colorScheme),
+                _StatColumn(
+                  label: 'Followers',
+                  count: _formatCount(followersCount),
+                  colorScheme: colorScheme,
+                  textTheme: textTheme,
+                ),
+                _StatDivider(colorScheme: colorScheme),
+                _StatColumn(
+                  label: 'Following',
+                  count: _formatCount(followingCount),
+                  colorScheme: colorScheme,
+                  textTheme: textTheme,
+                ),
+              ],
+            ),
+            const SizedBox(height: 16.0),
+
+            // 4. "Follow" FilledButton and "Message" OutlinedButton side by side
+            Row(
+              children: [
+                Expanded(
+                  child: FilledButton.icon(
+                    onPressed: onFollowPressed ?? () {},
+                    icon: const Icon(Icons.person_add_outlined, size: 18),
+                    label: const Text('Follow'),
+                  ),
+                ),
+                const SizedBox(width: 8.0), // 8. 8px horizontal spacing
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: onMessagePressed ?? () {},
+                    icon: const Icon(Icons.mail_outline, size: 18),
+                    label: const Text('Message'),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Helper widget to render individual statistic columns (number + label)
+class _StatColumn extends StatelessWidget {
+  final String label;
+  final String count;
+  final ColorScheme colorScheme;
+  final TextTheme textTheme;
+
+  const _StatColumn({
+    required this.label,
+    required this.count,
+    required this.colorScheme,
+    required this.textTheme,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Number display
+        Text(
+          count,
+          style: textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: colorScheme.onSurface,
+          ),
+        ),
+        const SizedBox(height: 2.0),
+        // Label display
+        Text(
+          label,
+          style: textTheme.bodySmall?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Subtle vertical divider line between stat columns
+class _StatDivider extends StatelessWidget {
+  final ColorScheme colorScheme;
+
+  const _StatDivider({required this.colorScheme});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 24,
+      width: 1,
+      color: colorScheme.outlineVariant,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Example Usage inside a MaterialApp page:
+// ---------------------------------------------------------------------------
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Material 3 Profile Card',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+          brightness: Brightness.dark,
+        ),
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('UserProfileCard Demo'),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24.0),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 400),
+              child: UserProfileCard(
+                name: 'Alex Rivera',
+                email: 'alex.rivera@flutter.dev',
+                avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250',
+                postsCount: 142,
+                followersCount: 12800,
+                followingCount: 384,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+```
+
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ widget CircleAvatar ในการสร้างรูปภาพโปรไฟล์ทรงกลม โดยกำหนดรัศมี (radius) ไว้ที่ 32.0 units |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ตัวโค้ดจะเช็กเงื่อนไขผ่าน (avatarUrl != null && avatarUrl!.isNotEmpty) หากมี URL จะแสดงภาพผ่าน NetworkImage แต่ถ้าเป็น null หรือค่าว่าง (Empty) จะเปลี่ยนไปใช้ตัวอักษรย่อแทน โดยเรียกฟังก์ชัน _getInitials(name) มาวาดข้อความเป็นตัวลูก (child) แทนการดึงภาพจากเน็ต |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ color จาก Theme ครับ ไม่มีการ Hardcode รหัสสีเลย โดยเรียกใช้โทนสีของระบบ Material 3 ผ่าน Theme.of(context).colorScheme เช่น primaryContainer, onPrimaryContainer, onSurface, และ onSurfaceVariant ทำให้รองรับการเปลี่ยนธีมมืด/สว่าง (Dark/Light mode) ได้ทันที |
+| มีส่วนไหนที่ควรปรับปรุง? | มีจุดที่สามารถปรับแต่งเพื่อความสมบูรณ์แบบได้เพิ่ม 3 ส่วนหลัก ๆ (ดูรายละเอียดด้านล่าง) |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
