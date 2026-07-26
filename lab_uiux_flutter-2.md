@@ -1241,10 +1241,15 @@ class MyApp extends StatelessWidget {
    ```
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
-```text
-เขียนผลการเปรียบเทียบที่นี่
-
-```
+- โครงสร้าง Widget Tree:
+    - การทดลองที่3: เน้นโครงสร้างเรียบง่ายและเป็นเส้นตรง (Flat) ใช้ Container ทำกรอบไอคอนสินค้าแบบง่าย ๆ
+    - AI วิเคราะห์ (Multimodal): โครงสร้างลึกและละเอียดกว่า (Deep Hierarchy) มองขาดเรื่องดีไซน์ โดยใช้ ClipRRect ครอบ Image.network ตามภาพ Mockup จริง พร้อมเพิ่ม errorBuilder เพื่อป้องกันแอปพังหากรูปภาพโหลดไม่ขึ้น
+- การจัดการข้อมูล (Logic & Data):
+    - การทดลองที่3: สถาปัตยกรรมดีกว่า แยกส่วนข้อมูลออกจาก UI ชัดเจน มีการสร้าง Product Data Model และใช้ List บริหารข้อมูล
+    - AI วิเคราะห์: มักจะเน้น Hardcode ข้อมูลลงไปใน UI โดยตรง ขาดความยืดหยุ่นในการทำ Dynamic Data
+- ระบบ Material Design 3:
+    - ความเหมือน: ทั้งคู่ดึงค่าสีสัมพันธ์ผ่าน Theme.of(context).colorScheme ได้ถูกต้องตามมาตรฐาน ไม่มีการ Hardcode รหัสสี
+    - ความต่าง: โค้ดที่เขียนเองมีการ Custom ทรงปุ่มเพิ่มด้วย styleFrom ขณะที่ AI จะยึดมาตรฐานเดิมของ Component นั้น ๆ  
 ---
 
 ### การทดลองที่ 5: Dark Mode และ Accessibility Check 
