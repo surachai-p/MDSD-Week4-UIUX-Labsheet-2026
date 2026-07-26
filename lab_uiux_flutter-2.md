@@ -1264,6 +1264,8 @@ class MyApp extends StatelessWidget {
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
+บันทึกผลการทดลอง
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/1031a165-9ea1-4ed9-984e-19836bff6b47" />
 
 // ยังไม่ต้องทำข้อ 5.2  5.3 <br>
 
