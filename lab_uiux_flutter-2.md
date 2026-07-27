@@ -923,7 +923,7 @@ Add brief comments explaining each section.
 อ่าน code ที่ AI สร้างและตอบคำถาม:
 
 - code
-```
+```dart
 import 'package:flutter/material.dart';
 
 /// A Material Design 3 user profile card widget.
