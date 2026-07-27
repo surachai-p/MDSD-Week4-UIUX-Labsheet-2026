@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #405f90 |
+| Secondary Color (Hex) | #555f71 |
+| Primary Container (Hex) | #d6e3ff |
+| Surface (Hex) | #f9f9ff |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักสำหรับปุ่มเน้นสุด หรือจุดสนใจหลัก|
+| On Primary | สีตัวอักษร/ไอคอน ที่วางบน สี Primary |
+| Primary Container | สีพื้นหลังสำหรับเน้นระดับรอง เช่น การ์ด, ชิป, พื้นหลังส่วนสำคัญ |
+| On Primary Container | สีตัวอักษร/ไอคอน ที่วางบน สี Primary Container |
 
 ---
 
@@ -379,9 +379,7 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="1171" height="780" alt="image" src="https://github.com/user-attachments/assets/b863e060-5edc-4cc2-9263-f6d5588bffc6" />
 
 ---
 
@@ -881,9 +879,9 @@ flutter run
 - [ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<img width="1280" height="977" alt="image" src="https://github.com/user-attachments/assets/ec86884a-72f1-4836-808b-78f5a87822f8" />
+<img width="1290" height="737" alt="image" src="https://github.com/user-attachments/assets/7769ba50-e144-459b-9180-a2c93db321d2" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +924,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | เช็กเงื่อนไขถ้าเป็น null จะแสดงตัวอักษรแรกของชื่อ (Initials) ผ่าน child: Text() แทน |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้จาก Theme ทั้งหมดผ่าน Theme.of(context).colorScheme |
+| มีส่วนไหนที่ควรปรับปรุง? | เพิ่ม onPressed callback ให้ปุ่ม และใส่ errorBuilder สำหรับรูปภาพ |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -952,10 +950,10 @@ Add brief comments explaining each section.
    ```
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
-```text
-เขียนผลการเปรียบเทียบที่นี่
+    - ด้าน Widget Tree Structure: โค้ดที่สร้างจาก AI (Multimodal) และโค้ดที่เขียนเอง มีโครงสร้างหลักคล้ายกันโดยใช้ Scaffold, AppBar, ListView.builder และ Card เป็นส่วนประกอบสำคัญ
+    - ความแม่นยำของ Material 3: AI สามารถวิเคราะห์ประเภทของคอมโพเนนต์จากรูปภาพได้อย่างแม่นยำ เช่น การเลือกใช้ NavigationBar แทน BottomNavigationBar แบบเดิม และเลือกใช้ ColorScheme (เช่น colorScheme.primaryContainer, onSurfaceVariant) ตรงตามมาตรฐาน Material Design 3
+    - ข้อแตกต่าง: โค้ดจาก AI จะเน้นการสร้าง UI ให้ตรงกับภาพที่เห็นโดยตรงในไฟล์เดียว ในขณะที่โค้ดที่เขียนเองมีการจัดวางสัดส่วน Padding/Spacing และแยกโครงสร้างไฟล์ (Clean Code Architecture) ให้เหมาะกับการนำไปพัฒนาต่อในระดับโปรเจกต์ได้ดีกว่า
 
-```
 ---
 
 ### การทดลองที่ 5: Dark Mode และ Accessibility Check 
@@ -1010,25 +1008,25 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:Material 3 เปลี่ยนมาใช้ระบบ Dynamic Color และ Tonal Palettes โดยสร้างชุดสีแบบอัตโนมัติจากสีหลัก (Seed Color) ผ่าน ColorScheme และเน้นใช้คู่สีลบ-บวกความสว่างที่เข้าคู่กันโดยเฉพาะ (เช่น primary คู่กับ onPrimary หรือ primaryContainer คู่กับ onPrimaryContainer) เพื่อรองรับการเปลี่ยน Light/Dark Mode และรักษา Contrast ตามหลัก Accessibility ได้ดีกว่า Material 2 ที่เน้นใช้สีแบบ Primary/Secondary แบบคงที่
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: พบปัญหาเรื่องระยะ Spacing (Padding/Margin) ที่ไม่ตรงกับ Figma, โครงสร้าง Layout ที่ซ้อนกันเกินความจำเป็น (Deep Hierarchy), และปัญหาการ์ดสินค้าคลิกไม่ได้ แก้ไขโดยการใช้ Inspector ช่วยตรวจสอบขนาดจริง, ใช้ InkWell/GestureDetector ห่อหุ้ม Widget เพื่อรองรับการกด (Tap Effect), และปรับการดึงค่าสีมาใช้ผ่าน Theme.of(context).colorScheme แทนการใส่ค่าสีแบบ Hardcoded
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Code ที่ AI สร้างมีความสมบูรณ์ในแง่ของ UI Layout และการเลือกใช้ Material 3 Widgets ได้ถูกต้องตามภาพร่างประมาณ 80-90% แต่สิ่งที่ต้องปรับปรุงคือ AI มักเขียนโค้ดรวมไว้ในไฟล์เดียว (Single File) และไม่มีคำสั่งการทำงานจริง (Action Callbacks/State Management) จึงต้องทำการ refactor แยกไฟล์เป็นโครงสร้างโปรเจกต์ (Clean Architecture) และเพิ่ม Callback เช่น onPressed/onTap เพื่อให้เรียกใช้งานได้จริง
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:จะปรับปรุงโดยการเชื่อมต่อระบบ State Management (เช่น Provider, Riverpod, หรือ BLoC) เพื่อจัดการข้อมูลจริงจาก API, เพิ่มการ handle สถานะ Loading, Error และ Empty State, ทำการจัดการความปลอดภัยของข้อมูลรูปภาพ (Fallback Image), เพิ่มการทำ Localization รองรับหลายภาษา และเพิ่ม Animations/Transitions เพื่อให้การใช้งานดูลื่นไหลและน่าใช้ยิ่งขึ้น
 ```
 
 ---
