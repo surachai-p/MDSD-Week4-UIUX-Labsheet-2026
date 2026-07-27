@@ -1307,27 +1307,27 @@ IconButton(
 ### คำถามสรุปการเรียนรู้ (ตอบทุกข้อ)
 
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? <br>
-**คำตอบ:** Material 3 เปลี่ยนมาใช้ระบบ Dynamic Color System ที่สร้าง Color Scheme ทั้งหมดขึ้นมาโดยอ้างอิงจากสีหลัก (Seed Color) เพียงสีเดียว[cite: 1] โดยจะแปลงเป็น Tonal Palettes[cite: 1] และแบ่งกลุ่มหน้าที่การใช้งานออกเป็นคู่สีระหว่างสีพื้นหลัง (Container) และสีของเนื้อหาที่อยู่บนพื้นหลังนั้น (On-Container) อย่างชัดเจน เช่น Primary คู่กับ On Primary[cite: 1] ทำให้สามารถควบคุม Contrast และรองรับ Light/Dark Mode ได้ง่ายขึ้น[cite: 1] ในขณะที่ Material 2 จะเน้นการกำหนดคู่สีหลัก (Primary, Secondary) แบบคงที่ (Static) โดยไม่ได้แยกส่วน Container และ On-Container อย่างเป็นระบบเท่านี้
+**คำตอบ:** Material 3 เปลี่ยนมาใช้ระบบ Dynamic Color System ที่สร้าง Color Scheme ทั้งหมดขึ้นมาโดยอ้างอิงจากสีหลัก (Seed Color) เพียงสีเดียว โดยจะแปลงเป็น Tonal Palettesและแบ่งกลุ่มหน้าที่การใช้งานออกเป็นคู่สีระหว่างสีพื้นหลัง (Container) และสีของเนื้อหาที่อยู่บนพื้นหลังนั้น (On-Container) อย่างชัดเจน เช่น Primary คู่กับ On Primary ทำให้สามารถควบคุม Contrast และรองรับ Light/Dark Mode ได้ง่ายขึ้น ในขณะที่ Material 2 จะเน้นการกำหนดคู่สีหลัก (Primary, Secondary) แบบคงที่ (Static) โดยไม่ได้แยกส่วน Container และ On-Container อย่างเป็นระบบเท่านี้
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร? <br>
 **คำตอบ:** ปัญหาที่พบและการแก้ไข ได้แก่:
-1. ปัญหาข้อความยาวเกินไปจนล้นหน้าจอ (Overflow) -> แก้ไขโดยการห่อตัวอักษรด้วย Expanded Widget และใช้คุณสมบัติ maxLines ร่วมกับ TextOverflow.ellipsis ใน Text Widget เพื่อตัดคำ[cite: 1]
-2. ปัญหาการควบคุมระยะห่างและ Layout -> แก้ไขโดยการวิเคราะห์โครงสร้าง Figma ที่ใช้ Auto Layout มาแปลงเป็น Column, Row และใช้ Padding หรือ SizedBox ในการเว้นระยะห่างใน Flutter[cite: 1]
-3. ปัญหาการกดลิงก์ข้ามหน้าจอและการสัมผัส (Touch Target) -> แก้ไขโดยการห่อ Card ด้วย InkWell และกำหนดขอบเขตให้ชัดเจนเพื่อรองรับการกด (On Tap) ไปยังหน้าถัดไป[cite: 1]
+1. ปัญหาข้อความยาวเกินไปจนล้นหน้าจอ (Overflow) -> แก้ไขโดยการห่อตัวอักษรด้วย Expanded Widget และใช้คุณสมบัติ maxLines ร่วมกับ TextOverflow.ellipsis ใน Text Widget เพื่อตัดคำ
+2. ปัญหาการควบคุมระยะห่างและ Layout -> แก้ไขโดยการวิเคราะห์โครงสร้าง Figma ที่ใช้ Auto Layout มาแปลงเป็น Column, Row และใช้ Padding หรือ SizedBox ในการเว้นระยะห่างใน Flutter
+3. ปัญหาการกดลิงก์ข้ามหน้าจอและการสัมผัส (Touch Target) -> แก้ไขโดยการห่อ Card ด้วย InkWell และกำหนดขอบเขตให้ชัดเจนเพื่อรองรับการกด (On Tap) ไปยังหน้าถัดไป
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง? <br>
-**คำตอบ:** โค้ดมีความสมบูรณ์สูงในแง่ของโครงสร้างตามหลัก Material Design 3, ไม่มีการ Hardcode สี และมีการแบ่ง Reusable Widget ย่อยที่ดี[cite: 1] แต่ยังมีส่วนที่ต้องปรับปรุง ได้แก่:
-1. การโหลดรูปภาพ: ควรเพิ่มการใช้ errorBuilder หรือ placeholders ใน NetworkImage เพื่อรองรับกรณีที่ไม่มีอินเทอร์เน็ตหรือลิงก์รูปภาพเสีย[cite: 1]
-2. สถานะปุ่ม: ควรอนุญาตให้ฟังก์ชัน callback เป็น null ได้ เพื่อให้ปุ่มเปลี่ยนเป็นสถานะ Disabled เมื่อไม่มี Action แทนการใส่ () {} เป็นค่าเริ่มต้น[cite: 1]
-3. Layout ในหน้าจอแคบ: ควรใช้ Expanded หรือ Flexible ครอบในส่วนของ Stat Column เพื่อกระจายพื้นที่เท่ากันและป้องกันการ Overflow เมื่อเปิดในมือถือเครื่องเล็ก[cite: 1]
+**คำตอบ:** โค้ดมีความสมบูรณ์สูงในแง่ของโครงสร้างตามหลัก Material Design 3, ไม่มีการ Hardcode สี และมีการแบ่ง Reusable Widget ย่อยที่ดี แต่ยังมีส่วนที่ต้องปรับปรุง ได้แก่:
+1. การโหลดรูปภาพ: ควรเพิ่มการใช้ errorBuilder หรือ placeholders ใน NetworkImage เพื่อรองรับกรณีที่ไม่มีอินเทอร์เน็ตหรือลิงก์รูปภาพเสีย
+2. สถานะปุ่ม: ควรอนุญาตให้ฟังก์ชัน callback เป็น null ได้ เพื่อให้ปุ่มเปลี่ยนเป็นสถานะ Disabled เมื่อไม่มี Action แทนการใส่ () {} เป็นค่าเริ่มต้น
+3. Layout ในหน้าจอแคบ: ควรใช้ Expanded หรือ Flexible ครอบในส่วนของ Stat Column เพื่อกระจายพื้นที่เท่ากันและป้องกันการ Overflow เมื่อเปิดในมือถือเครื่องเล็ก
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง? <br>
 **คำตอบ:** สิ่งที่ต้องปรับปรุงสำหรับการนำไปใช้ใน Project จริง ได้แก่:
 1. การจัดการสเตท (State Management): เปลี่ยนจาก StatefulWidget พื้นฐาน ไปใช้ตัวจัดการระบบที่สเกลได้ดีขึ้น เช่น Provider, Bloc หรือ Riverpod
-2. การโหลดข้อมูลจริง (Data Binding): ดึงข้อมูลจาก API หรือฐานข้อมูล (Firebase/REST API) แทนการใช้ข้อมูล Mock แบบ Hardcode ในโค้ด[cite: 1]
-3. การปรับปรุงประสิทธิภาพ (Performance Optimization): นำรูปภาพจริงเข้ามาใส่แทน Container Placeholder และเพิ่ม Caching ของรูปภาพ[cite: 1]
-4. Accessibility & Responsiveness: ตรวจสอบ touch target size ให้ได้มาตรฐาน 48x48 dp และทดสอบกับหน้าจอหลายขนาด (Responsive Layout)[cite: 1]
-
+2. การโหลดข้อมูลจริง (Data Binding): ดึงข้อมูลจาก API หรือฐานข้อมูล (Firebase/REST API) แทนการใช้ข้อมูล Mock แบบ Hardcode ในโค้ด
+3. การปรับปรุงประสิทธิภาพ (Performance Optimization): นำรูปภาพจริงเข้ามาใส่แทน Container Placeholder และเพิ่ม Caching ของรูปภาพ
+4. Accessibility & Responsiveness: ตรวจสอบ touch target size ให้ได้มาตรฐาน 48x48 dp และทดสอบกับหน้าจอหลายขนาด (Responsive Layout)
+   
 ---
 
 ## 📖 แหล่งอ้างอิง
