@@ -235,21 +235,21 @@ Prompt ที่ไม่ดี:
 
 **ขั้นตอนที่ 1.4: บันทึกผล**
 
-| รายการ | ค่าที่ได้ |
-|--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| รายการ                  | ค่าที่ได้ |
+| ----------------------- | --------- |
+| Primary Color (Hex)     | #63A002   |
+| Secondary Color (Hex)   | #85976E   |
+| Primary Container (Hex) | #305200   |
+| Surface (Hex)           | #f9faef   |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
-| สี | หน้าที่ |
-|-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| สี                   | หน้าที่                                                                                                                                                                          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Primary              | สีหลักของ App ใช้กับ องค์ประกอบที่เด่นที่สุด เช่น ปุ่มหลัก                                                                                                                       |
+| On Primary           | สีที่ใช้กับ เนื้อหาที่วางอยู่บนพื้นสี Primary เช่น ตัวอักษรหรือไอคอนบนปุ่มที่มีพื้นหลังเป็นสี Primary ต้องคอนทราสต์สูงกับ Primary เพื่อให้อ่านง่าย                               |
+| Primary Container    | สีพื้นหลังรอง ที่ยังอยู่ในกลุ่มสี Primary แต่เด่นน้อยกว่า ใช้กับองค์ประกอบที่สำคัญแต่ไม่ต้องการความโดดเด่นเท่า Primary เช่น การ์ด, chip, หรือปุ่มรองที่เกี่ยวข้องกับ action หลัก |
+| On Primary Container | สีของเนื้อหา ที่วางอยู่บนพื้นหลัง Primary Container คอนทราสต์เหมาะสมกับ Primary Container                                                                                        |
 
 ---
 
@@ -379,9 +379,11 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+Green Market by ชนินทร์ , Primary #3e6700
+Component ที่ใช้ App Bar, Bottom Navigation, Card
+
+
+<img width="1160" height="800" alt="ชนินทร์_Week03_MobileUI" src="https://github.com/user-attachments/assets/6bcca831-5c03-428d-8862-9c604e71ac1a" />
 
 ---
 
@@ -486,25 +488,72 @@ class MyApp extends StatelessWidget {
 
 **ขั้นตอนที่ 3.3: วิเคราะห์ Design เป็น Widget Tree**
 
-ก่อนเขียน code ให้วาด Widget Tree บนกระดาษหรือ Whiteboard:
-
 ```
-สำหรับ Green Market Home Screen:
+Home Screen:
 
 Scaffold
 ├── AppBar
-│   └── Text("Green Market")
+│   ├── leading: IconButton (menu)
+│   ├── title: Text("Green market by ชนินทร์")
+│   └── actions: IconButton (apps/group icon ในวงกลม)
 ├── body: ListView
-│   ├── ItemCard (ผักสลัดออร์แกนิก)
-│   ├── ItemCard (สตรอว์เบอร์รีสด)
-│   ├── ItemCard (กล้วยหอมทอง)
-│   └── ItemCard (มะเขือเทศเชอร์รี)
+│   └── ItemCard × 4 (ผักสลัดออร์แกนิก, สตรอว์เบอร์รีสด, กล้วยหอมทอง, มะเขือเทศเชอร์รี)
+│       ├── CircleAvatar ("A", primaryContainer)
+│       ├── Column
+│       │   ├── Text (ชื่อสินค้า, titleMedium)
+│       │   └── Text (รายละเอียด + ราคา, bodyMedium)
+│       └── Icon stack (placeholder ไอคอน 2 อัน ด้านขวา)
 ├── floatingActionButton: FloatingActionButton.extended ("+ เพิ่มสินค้า")
 └── bottomNavigationBar: NavigationBar
-      ├── NavigationDestination (หน้าหลัก)
-      ├── NavigationDestination (ค้นหา)
-      └── NavigationDestination (โปรไฟล์)
+    ├── NavigationDestination (หน้าหลัก) — Active
+    ├── NavigationDestination (ค้นหา)
+    └── NavigationDestination (โปรไฟล์)
 ```
+
+----
+```
+Detail Screen:
+
+Scaffold
+├── AppBar
+│   ├── leading: IconButton (arrow_back)
+│   ├── title: Text("รายละเอียดสินค้า")
+│   └── actions: IconButton (apps/group icon ในวงกลม)
+├── body: Column
+│   ├── Container (banner รูปผักสลัด, height ~230, primaryContainer)
+│   └── Padding(16)
+│       └── Column
+│           ├── Text (ผักสลัดออร์แกนิก, headlineMedium)
+│           ├── Text (45 บาท / กิโลกรัม, titleMedium + primary)
+│           ├── Text ("รายละเอียดสินค้า", titleLarge)
+│           └── Text (คำบรรยาย, bodyLarge)
+└── bottomBar/footer (คงที่ด้านล่าง)
+    └── Row
+        ├── FilledButton.icon ("ย้อนกลับ", สีเขียวเข้ม)
+        └── FilledButton.icon ("เพิ่มลงตะกร้าสินค้า", สีเขียวอ่อน)
+```
+---
+```
+Profile Screen:
+
+Scaffold
+├── AppBar
+│   ├── leading: IconButton (arrow_back)
+│   ├── title: Text("โปรไฟล์ผู้ใช้")
+│   └── actions: IconButton (apps/group icon ในวงกลม)
+├── body: Column
+│   ├── CircleAvatar (สีเขียวเข้ม)
+│   │   └── Icon (person)
+│   ├── Text (ชนินทร์ คำวงศ์ษา, titleLarge)
+│   ├── Text (67030281@kmitl.ac.th, bodyMedium)
+│   └── OutlinedButton.icon ("แก้ไขข้อมูลโปรไฟล์")
+└── bottomNavigationBar: NavigationBar
+    ├── NavigationDestination (หน้าหลัก)
+    ├── NavigationDestination (ค้นหา)
+    └── NavigationDestination (โปรไฟล์) — Active
+
+```
+---
 
 **ขั้นตอนที่ 3.4: สร้างไฟล์โครงสร้าง**
 
@@ -873,17 +922,16 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [x] App Bar แสดงชื่อ "Green Market"
+- [x] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [x] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [x] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [x] Bottom Navigation สลับ Tab ได้
+- [x] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<img width="1920" height="1200" alt="Green Market Dev by ชนินทร์" src="https://github.com/user-attachments/assets/ba4c0056-1dc8-468b-808a-72bcd278f71c" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -924,12 +972,12 @@ Add brief comments explaining each section.
 
 อ่าน code ที่ AI สร้างและตอบคำถาม:
 
-| คำถาม | คำตอบ |
-|-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| คำถาม                                       | คำตอบ                                                                                                                                                                                                  |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| AI ใช้ Widget อะไรสร้าง Avatar?             | CircleAvatar (radius: 32)                                                                                                                                                                              |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | เช็ค `!= null && isNotEmpty` → มี URL ใช้ `NetworkImage`, ถ้า null/ว่าง แสดง `Text(_getInitials(name))` แทน                                                                                            |
+| AI ใช้ color จาก Theme หรือ hardcode?       | ใช้ `Theme.of(context).colorScheme` ทั้งหมด ไม่มี hardcode                                                                                                                                             |
+| มีส่วนไหนที่ควรปรับปรุง?                    | เพิ่ม error handling รูปโหลดไม่สำเร็จ, เพิ่ม Semantics/Tooltip เพื่อ Accessibility, เพิ่ม `onTap`+`InkWell` ให้กดการ์ดได้ (และแก้ typo `CrossAlignment` → `CrossAxisAlignment` ที่ทำให้คอมไพล์ไม่ผ่าน) |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -952,10 +1000,25 @@ Add brief comments explaining each section.
    ```
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
-```text
-เขียนผลการเปรียบเทียบที่นี่
+---
+**บั๊กที่พบ:** `CrossAlignment` ผิด (ต้องเป็น `CrossAxisAlignment`) พบ 3 จุด — compile ไม่ผ่านถ้าไม่แก้ (บั๊กเดิมซ้ำจากรอบก่อน)
 
-```
+**สถาปัตยกรรมต่างกัน:**
+
+||Implement จริง|โค้ดใหม่|
+|---|---|---|
+|ไฟล์|แยกไฟล์|รวมไฟล์เดียว|
+|สลับ Tab|switch-case ใน HomeScreen|`IndexedStack` ที่ `MainNavigationScreen` (ดีกว่า — state ไม่หาย)|
+|Bottom Nav|อยู่ใน HomeScreen|อยู่ระดับบนสุด (ถูกหลักกว่า)|
+
+**UI ต่างกัน:**
+
+- AppBar: โค้ดใหม่มี `actions` icon ครบ ตรงกับ Figma มากกว่า
+- ปุ่ม Detail: โค้ดใหม่ใช้ Filled ทั้งคู่ ตรงกับ Figma มากกว่า
+- ItemCard: โค้ดใหม่ไม่มีไอคอนเฉพาะสินค้า (ด้อยกว่า)
+- Profile: โค้ดใหม่ไม่มี Follow/Message/Stats (ด้อยกว่า)
+
+
 ---
 
 ### การทดลองที่ 5: Dark Mode และ Accessibility Check 
@@ -1010,25 +1073,60 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 เปลี่ยนจากระบบสีตายตัว มาเป็นระบบ Dynamic Color ที่สร้างจาก "Seed Color"
+เพียงสีเดียว แล้ว generate เป็นชุดสีที่สัมพันธ์กันทั้งหมดโดยอัตโนมัติ (ผ่านเครื่องมือ Material Theme Builder)
+นอกจากนี้ยังมีแนวคิด "คู่สี" ที่ชัดเจนกว่าเดิม คือทุกสีพื้นหลัง (เช่น Primary, Secondary, Tertiary)
+จะมีสีคู่กันเสมอ คือ "On" สี (เช่น onPrimary) สำหรับข้อความ/ไอคอนที่วางทับ เพื่อรับประกัน contrast ตามหลัก accessibility
+นอกจากนี้ยังเพิ่มระดับ Container (PrimaryContainer, SecondaryContainer) ให้มีสีเดียวกันแต่ต่างระดับ ความเข้ม
+ใช้แยกความสำคัญขององค์ประกอบ (เช่น ปุ่มหลักใช้ Primary ส่วนพื้นหลังการ์ดรองใช้ PrimaryContainer)
+และมี Surface หลายระดับ สำหรับสร้างมิติความลึกแทนการใช้ elevation shadow เป็นหลักแบบ Material 2
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาหลักคือรายละเอียดบางอย่างใน Figma ไม่สามารถแปลงเป็น
+โค้ดได้ตรงเป๊ะทุกจุด เช่น icon บางตัวหาไม่เจอใน Material 3 Design Kit 
+ต้องสลับไปใช้ library อื่น แทน และไอคอน เฉพาะของแต่ละสินค้าที่ตั้งใจให้ต่างกัน
+(eco, shopping_basket, lightbulb, local_florist)
+ต้องมาแมปเองตอนเขียนโค้ด เพราะ Figma component ไม่ได้ export ข้อมูลนี้มาให้อัตโนมัติ 
+
+อีกปัญหาคือโครงสร้าง Flutter ต้องแยกเป็น Widget/State ที่ชัดเจนกว่า
+ภาพนิ่งใน Figma มาก เช่น การสลับ Bottom Navigation Tab ต้องเขียน
+StatefulWidget และ setState() เอง (ใน Figma แค่ลาก prototype 
+connection เชื่อมเฟรม แต่ในโค้ดจริงต้องคิด logic ของ state) 
+วิธีแก้คือดูโครงสร้าง widget tree จากดีไซน์ก่อน แล้วแตกเป็น component 
+ย่อย (เช่น ItemCard, UserProfileCard) เพื่อให้ใช้ซ้ำได้และดูแลง่าย
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: โค้ดที่ AI สร้าง (ทั้งจาก Google AI Studio และรอบหลัง) ไม่สมบูรณ์ 100% แม้จะดูเหมือนใช้งานได้ในตอนแรก
+พบปัญหาที่ต้องแก้ ก่อน compile ผ่านคือ typo ชื่อ class ผิด (CrossAlignment แทนที่จะเป็น CrossAxisAlignment)
+ซึ่งเกิดซ้ำถึง 2 ครั้งในคนละไฟล์ แสดงว่าเป็นจุดอ่อน ที่ AI มักผิดพลาดซ้ำๆ นอกจากนี้ยังมีจุดที่ควรปรับปรุงเพิ่มแม้ compile ผ่าน
+เช่น ไม่มี error handling เมื่อโหลดรูปจาก NetworkImage ไม่สำเร็จ, ไม่มี Semantics/ Tooltip สำหรับ Accessibility,
+และโครงสร้างสถาปัตยกรรมบางเวอร์ชัน ไม่สอดคล้องกับที่ต้องการ
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 
+1) เพิ่ม error handling ที่ครบถ้วนกว่านี้ เช่น การโหลดรูปสินค้า/ avatar ไม่สำเร็จ ควร fallback เป็น placeholder
+หรือตัวอักษรย่อเสมอ ไม่ใช่ปล่อยให้ error เงียบๆ 
+   
+2) เชื่อมต่อกับข้อมูลจริงจาก Backend/API แทน mock data ที่ hardcode ไว้ในโค้ด (รายการสินค้า, ข้อมูลโปรไฟล์ผู้ใช้) 
+   
+3) เพิ่ม Accessibility ให้ครบ เช่น Semantics label สำหรับ Screen Reader บนปุ่มและรูปภาพ 
+   
+4) ทดสอบ Dark Mode และ Contrast ให้ครบทุกหน้าจอก่อนใช้งานจริง เพราะสีที่ดูดีใน Light Mode อาจมีปัญหา
+contrast ต่ำใน Dark Mode 
+   
+5) เพิ่ม State Management ที่เหมาะสมกับขนาดแอป (เช่น Provider, Riverpod, Bloc) แทนการใช้ setState()
+ธรรมดา เพราะแอปจริงจะมีข้อมูล ที่ซับซ้อนและใช้ร่วมกันหลายหน้ามากขึ้น 
+   
+6) เพิ่ม Loading state และ Error state ระหว่างรอข้อมูลจาก network ซึ่งตอนนี้ยังไม่มีในเวอร์ชัน demo
 ```
 
 ---
