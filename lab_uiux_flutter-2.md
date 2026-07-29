@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | 0xff804d79 |
+| Secondary Color (Hex) | 0xff2d628c |
+| Primary Container (Hex) | 0xffffd7f5 |
+| Surface (Hex) | 0xfffff7f9 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | คือสีหลักของแบรนด์/แอป ใช้เน้นองค์ประกอบสำคัญ |
+| On Primary | คือสีที่ใช้บนพื้น Primary(เช่น ตัวอักษร ไอคอน)ถูกออกแบบให้มีความคมชัดสูงกับPrimaryเสมอ |
+| Primary Container | คือสีโทนเดียวกับ Primary แต่ถูกลดความเข้ม ปรับโทนให้อ่อนกว่า (หรือกลมกลืนกว่า) เหมาะกับพื้นที่ที่มีขนาดใหญ่กว่าและต้องการความโดดเด่นน้อยกว่า Primary |
+| On Primary Container | สีที่ใช้บนพื้น Primary Container ซึ่งต้องมีคมชัดเพียงพอกับพื้นหลังนั้นเช่นกัน |
 
 ---
 
@@ -382,6 +382,7 @@ Screenshot หน้าจอ Design ทั้ง 3 หน้า และบั
 ```image
 วางรูปหน้าจอ ที่นี่
 ```
+<img width="1331" height="747" alt="Screenshot 2026-07-29 200350" src="https://github.com/user-attachments/assets/00204367-6f72-48b2-9842-a7f1cd157cb3" />
 
 ---
 
@@ -873,17 +874,19 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✓] App Bar แสดงชื่อ "Green Market"
+- [✓] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✓] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✓] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✓] Bottom Navigation สลับ Tab ได้
+- [✓] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
 ```image
 บันทึกรูปที่นี่
-``` 
+```
+<img width="1893" height="904" alt="Screenshot 2026-07-29 204828" src="https://github.com/user-attachments/assets/f23a4afb-975f-4a0f-a9c3-8fdf43714bb3" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +929,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | เช็คด้วย avatarUrl != null โหลดรูปจากเน็ต แต่ถ้าเป็น null จะไม่ใส่backgroundImageเป็น null แล้วไปแสดง ตัวอักษรย่อของชื่อinitials แทน ผ่านฟังก์ชัน _getInitials(name) ใน child: ของ CircleAvatar แทนที่รูปภาพ |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ จาก Theme ทั้งหมด ไม่ใช้ hardcode สี เช่น Theme.of(context).colorScheme และ textTheme แล้วดึงค่าต่างๆ มาใช้ |
+| มีส่วนไหนที่ควรปรับปรุง? | 	 NetworkImage ไม่ handle error ถ้าโหลดรูปไม่สำเร็จ, ปุ่ม Follow/Message ยังไม่มี action จริง (onPressed: () {}) , ปุ่ม Follow ไม่มี state สลับเป็น "Following" , _getInitials อาจ error ถ้าชื่อว่างหรือมี space ผิดปกติ |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,8 +956,7 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
-
+เมื่อเปรียบเทียบกันแล้ว โครงสร้างหลักตรงกันในหลายจุด เช่น floatingActionButton และจำนวนปุ่มใน bottomNavigationBar แต่มีรายละเอียดที่ต่างกันพอสมควร AppBar ของ AI มี title ยาวกว่า Green Market by Wisawa และเพิ่มปุ่มเมนูกับโลโก้ที่ target ไม่ได้ขอ ส่วนการ์ดสินค้า AI เปลี่ยนจากรายการตายตัว 4 ชิ้นเป็น dynamic list แบบ ProductCard แทน ItemCard ซึ่งยืดหยุ่นกว่าแต่ไม่ตรงสเปก และภายในการ์ดก็มีรายละเอียดเพิ่มเช่น CircleAvatar กับ Container ตกแต่งที่ target ไม่ได้ระบุ ที่ต่างชัดสุดคือ bottomNavigationBar ลำดับสลับเป็น Search-Home-person แทนที่จะเป็นหน้าหลัก-ค้นหา-โปรไฟล์ และใช้ภาษาอังกฤษแทนภาษาไทย โดยรวม AI จับ concept หลักได้ถูกแต่ใส่รายละเอียดเกินและไม่ตรงสเปกในหลายจุด ควรสั่ง prompt ใหม่ให้ระบุชัดเจนขึ้นถ้าต้องการผลตรงเป๊ะ
 ```
 ---
 
@@ -1010,25 +1012,25 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 ใช้ระบบสีแบบ Dynamic Color ที่สร้างจาก seed color เดียวแล้ว generate เป็น ColorScheme ครบชุด (primary, secondary, tertiary พร้อม container/on-container คู่กัน) รองรับ dark mode และ personalization ได้อัตโนมัติ ต่างจาก Material 2 ที่กำหนดสีแบบตายตัว (primary/accent) และต้องไล่เซ็ตเองทีละสี ไม่มีระบบ tone/container ที่ยืดหยุ่นเท่า M3
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาหลักคือไฟล์ theme ที่ export จาก Figma/Material Theme Builder ชื่อไม่ตรงกับที่ import ในโค้ด (theme.g.dart vs theme.dart) ทำให้ error "Target of URI doesn't exist" แก้โดยเช็คชื่อไฟล์จริงแล้วแก้ import หรือ rename ไฟล์ให้ตรงกัน นอกจากนี้ยังพบว่าโครงสร้าง widget ที่ AI สร้างไม่ตรงกับ design 100% ต้องปรับ layout, สี, และ spacing เพิ่มเติมเอง
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: โค้ดที่ AI สร้างให้ยังไม่สมบูรณ์เต็มที่ ใช้งานได้ในระดับ prototype แต่ยังขาดการจัดการ error เช่น รูปโหลดไม่สำเร็จ, ปุ่มต่างๆ ยังเป็น placeholder ไม่มี action จริง, ไม่มี state management ที่เหมาะสม และรายละเอียด UI บางจุดไม่ตรงกับ spec ที่ตั้งใจไว้ (เช่น ลำดับ NavigationBar หรือข้อความใน AppBar) ต้องรีวิวและแก้ไขก่อนใช้งานจริง
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ต้องเพิ่มการเชื่อมต่อ API/database จริงแทนข้อมูล mock, ใส่ state management (เช่น Provider/Riverpod) แทนการ hardcode, เพิ่มการจัดการ error และ loading state, ปรับ accessibility (screen reader, contrast), ทดสอบบนหลายขนาดหน้าจอ และตรวจสอบ performance เช่นการโหลดรูปภาพและ list ขนาดใหญ่
 ```
 
 ---
