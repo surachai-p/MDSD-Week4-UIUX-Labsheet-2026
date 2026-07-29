@@ -237,19 +237,23 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) |#64558F |
+| Secondary Color (Hex) |#625B71 |
+| Primary Container (Hex) | #E8DDFF |
+| Surface (Hex) | #FDF7FF |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
+> ความหมาย: สีกลุ่มนี้ถูกวางบทบาทเป็น คู่สี (Color Pairs) โดยคำว่า "On" หมายถึง สีของตัวหนังสือหรือไอคอน ที่ต้องวางซ้อนอยู่บนสีพื้นหลังนั้นๆ เสมอ เพื่อให้เกิดค่า Contrast สูง อ่านง่ายตามหลัก Accessibility
+ความสัมพันธ์:
+Primary + On Primary = ปุ่ม/องค์ประกอบหลัก + ข้อความบนปุ่มหลัก (เน้นเด่นที่สุด)
+Primary Container + On Primary Container = พื้นหลังส่วนย่อย + ข้อความบนพื้นหลังส่วนย่อย (เน้นรองลง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแบรนด์ ใช้กับองค์ประกอบสำคัญที่สุดและโดดเด่นที่สุดในหน้าจอ (เช่น ปุ่มหลัก, Floating Action Button, App Bar) |
+| On Primary | สีของข้อความหรือไอคอนที่วางอยู่บนสี Primary (ถูกออกแบบให้มี Contrast สูงเพื่อให้อ่านง่าย เช่น ตัวอักษรสีขาวบนปุ่มสีหลัก) |
+| Primary Container | สีพื้นหลังสำหรับองค์ประกอบระดับรองลงมา เพื่อแยกส่วนเนื้อหาแต่ยังคงเอกลักษณ์ของสีหลักไว้ (เช่น การ์ด, พื้นหลังปุ่มรอง, แท็บที่เลือก) |
+| On Primary Container | สีของข้อความหรือไอคอนที่วางอยู่บนสี Primary Container (เน้นความชัดเจนในการอ่านบนพื้นหลัง Container) |
 
 ---
 
@@ -379,9 +383,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/628f21ea-b3c4-440e-816a-7ba8bee2fea2" />
+
 
 ---
 
@@ -873,18 +876,19 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✅] App Bar แสดงชื่อ "Green Market"
+- [✅] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✅] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✅] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✅] Bottom Navigation สลับ Tab ได้
+- [✅] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
----
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/4c5e1f01-6ebd-4a48-a811-b7715da0024a" />
+<img width="1916" height="1079" alt="image" src="https://github.com/user-attachments/assets/b9f14bd4-eb72-4901-8584-688ff1129c73" />
+
+
+
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
 
@@ -926,10 +930,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ตั้งค่ารูปเป็น null แล้วแสดงตัวอักษรย่อ (Initials) ผ่านโปรพอร์ตี้ child แทน |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme.of(context).colorScheme ทั้งหมด ไม่ได้ Hardcode |
+| มีส่วนไหนที่ควรปรับปรุง? | เพิ่ม errorBuilder สำหรับรูปภาพ และเพิ่ม Event Callbacks (onPressed) ให้ปุ่มกด |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,8 +957,14 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+1. โครงสร้าง Widget Tree:
+   - โครงสร้างที่ AI เจนเนอเรตจากรูปมีความแม่นยำสูง (ใช้ Scaffold > SingleChildScrollView > Column > Card/Row ตามสายตา) ตรงกับ Widget tree ที่เขียนเองในขั้นตอนที่ 3 ถึง 90%
 
+2. การจัดการสีและ Material Design 3:
+   - AI สามารถตรวจจับบทบาทขององค์ประกอบในภาพ แล้วดึงสีจาก Theme.of(context).colorScheme (เช่น primary, surfaceVariant, onSurface) มาใช้งานได้ถูกต้องโดยไม่ต้อง hardcode สี hex
+
+3. ข้อแตกต่างและสิ่งที่ต้องปรับปรุง:
+   - โค้ดที่ AI สร้างจากรูปเน้นโครงสร้างมาตรฐาน ทำให้รายละเอียดระยะห่าง (Padding/Spacing) หรือมุมโค้ง (BorderRadius) บางจุดอาจไม่เป๊ะเท่ากับโค้ดที่เขียนเองโดยใช้อิงค่าพิกเซลจริงจาก Figma
 ```
 ---
 
@@ -1010,25 +1020,30 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 เปลี่ยนจากการระบุสีหลัก/สีรองแบบลอยๆ ใน M2 มาใช้ระบบ Dynamic Color Roles และ Tonal Palettes (จับคู่สีองค์ประกอบกับสีพื้นหลัง เช่น Primary/OnPrimary, PrimaryContainer/OnPrimaryContainer) ทำให้ปรับสลับ Light/Dark Mode ได้สมบูรณ์ และควบคุมค่า Contrast เพื่อรองรับ Accessibility ได้ดีกว่าเดิม
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: พบปัญหาการล็อกตำแหน่งพิกเซลตายตัว (Absolute Positioning) การใช้สี Hardcode Hex และชื่อประเภทการจัดวางผิด (เช่น CrossAlignment) 
+แก้ไขโดย: แปลง Layout มาใช้ Responsive Widgets (Column, Row, Expanded, ListView.builder), อ้างอิงสีผ่าน Theme.of(context).colorScheme และแก้ไข Syntax ให้ถูกต้องตาม Flutter API
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: มีความสมบูรณ์เชิงโครงสร้างสูงราว 85-90% สามารถสร้าง Widget Tree และใช้สี M3 ได้ถูกต้องตาม Prompt 
+สิ่งที่ต้องปรับปรุง: การจัดการรูปภาพกรณีโหลดไม่ได้ (errorBuilder), การส่งผ่าน Event Callbacks (onPressed) จากภายนอก และการเพิ่ม Tooltip/Semantics เพื่อ Accessibility
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คคำตอบ: 1. เชื่อมต่อระบบ State Management (เช่น Provider, Riverpod, หรือ Bloc)
+        2. เปลี่ยนจาก Mock Data เป็นการดึงข้อมูล dynamic ผ่าน REST API / Database
+        3. เพิ่มสถานะการทำงาน (Loading Skeletons, Error Screens, Empty States)
+        4. ปรับเปลี่ยน Layout ให้รองรับ Responsive หลายขนาดหน้าจอ (Mobile, Tablet, Web)
 ```
 
 ---
