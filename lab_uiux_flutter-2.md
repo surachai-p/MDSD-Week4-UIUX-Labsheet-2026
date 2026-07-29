@@ -237,19 +237,23 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) |#64558F |
+| Secondary Color (Hex) |#625B71 |
+| Primary Container (Hex) | #E8DDFF |
+| Surface (Hex) | #FDF7FF |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
+> ความหมาย: สีกลุ่มนี้ถูกวางบทบาทเป็น คู่สี (Color Pairs) โดยคำว่า "On" หมายถึง สีของตัวหนังสือหรือไอคอน ที่ต้องวางซ้อนอยู่บนสีพื้นหลังนั้นๆ เสมอ เพื่อให้เกิดค่า Contrast สูง อ่านง่ายตามหลัก Accessibility
+ความสัมพันธ์:
+Primary + On Primary = ปุ่ม/องค์ประกอบหลัก + ข้อความบนปุ่มหลัก (เน้นเด่นที่สุด)
+Primary Container + On Primary Container = พื้นหลังส่วนย่อย + ข้อความบนพื้นหลังส่วนย่อย (เน้นรองลง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแบรนด์ ใช้กับองค์ประกอบสำคัญที่สุดและโดดเด่นที่สุดในหน้าจอ (เช่น ปุ่มหลัก, Floating Action Button, App Bar) |
+| On Primary | สีของข้อความหรือไอคอนที่วางอยู่บนสี Primary (ถูกออกแบบให้มี Contrast สูงเพื่อให้อ่านง่าย เช่น ตัวอักษรสีขาวบนปุ่มสีหลัก) |
+| Primary Container | สีพื้นหลังสำหรับองค์ประกอบระดับรองลงมา เพื่อแยกส่วนเนื้อหาแต่ยังคงเอกลักษณ์ของสีหลักไว้ (เช่น การ์ด, พื้นหลังปุ่มรอง, แท็บที่เลือก) |
+| On Primary Container | สีของข้อความหรือไอคอนที่วางอยู่บนสี Primary Container (เน้นความชัดเจนในการอ่านบนพื้นหลัง Container) |
 
 ---
 
@@ -379,9 +383,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/628f21ea-b3c4-440e-816a-7ba8bee2fea2" />
+
 
 ---
 
