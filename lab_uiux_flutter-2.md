@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #2E7D32 |
+| Secondary Color (Hex) | #83967D |
+| Primary Container (Hex) | #BCF0B4 |
+| Surface (Hex) | #F7FBF1 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแบรนด์ ใช้กับจุดเด่นที่สุด เช่น ปุ่ม FilledButton หรือสถานะ Active |
+| On Primary | สีข้อความหรือไอคอนที่วางบน Primary (ใช้สีสว่าง/ขาวเพื่อให้ตัดกันชัดเจน) |
+| Primary Container | สีพื้นหลังโทนอ่อนลงมา ใช้กับส่วนใส่ข้อมูลหรือการไฮไลต์ระดับรอง |
+| On Primary Container | สีข้อความหรือไอคอนที่วางบน Primary Container (ใช้สีโทนเข้มเพื่อให้ตัดกับพื้นหลังอ่อน) |
 
 ---
 
@@ -379,9 +379,11 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+``image
+
+<img width="1287" height="867" alt="image" src="https://github.com/user-attachments/assets/7582dffc-b932-4731-8c79-8abe5e2a4278" />
+
+``
 
 ---
 
@@ -873,17 +875,19 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✓] App Bar แสดงชื่อ "Green Market"
+- [✓] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✓] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✓] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✓] Bottom Navigation สลับ Tab ได้
+- [✓] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+``image
+
+<img width="1303" height="1003" alt="image" src="https://github.com/user-attachments/assets/3e7aadb6-4b40-44c4-8d49-2843dd8a1dce" />
+
+`` 
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -953,7 +957,24 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+โครงสร้าง Widget Tree
+
+เขียนเอง
+จัดโครงสร้างแบบกระชับ เน้น Reusable Component ที่เข้าถึงง่าย ใช้ Scaffold → AppBar → ListView.builder → ItemCard และ NavigationBar
+
+AI Multimodal
+อ่านรูป Figma แล้วแกะ Widget Tree ออกมาได้ละเอียดมาก จับองค์ประกอบลึกถึงขนาดมองเห็นไอคอนฝั่งขวาของการ์ด (Container + Decorative Icons) และการแยก บรรทัดราคา/คำอธิบาย ออกเป็นคนละ Text Widget
+
+การเขียนโค้ด Flutter
+
+เขียนเอง 
+ใช้ ListView.builder เพื่อให้รองรับชุดข้อมูลประเภท List/Map และมีการเชื่อมต่อการเปลี่ยนหน้า (Routing/Navigator) ไปยัง DetailScreen สมบูรณ์
+
+AI Multimodal
+ใช้ IntrinsicHeight และ Row ในการดักความสูงของการ์ดสินค้าให้ยืดตามเนื้อหาอัตโนมัติ มีการดึงตัวอักษรแรก title[0] มาทำ Avatar และใช้ระบบสี Material 3 (surfaceVariant, secondaryContainer) ควบคุมโทนสีได้ใกล้เคียงภาพ Figma มาก
+
+สรุป
+การใช้ AI Multimodal (อ่านภาพ) ช่วยให้อ่านและถอดแบบ UI จาก Figma ออกมาเป็น Flutter Widget Tree ได้เร็วและเก็บรายละเอียด visual บางจุดได้ครบถ้วน แต่นักพัฒนายังต้องปรับเพิ่มโครงสร้าง State Management และ Routing ต่อ เพื่อให้แอปทำงานได้จริง
 
 ```
 ---
@@ -1010,25 +1031,43 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 เปลี่ยนจากการระบุสีแบบคงที่ (Fixed Color) ใน Material 2 มาใช้ระบบ Dynamic Color และ Tonal Palette ผ่าน ColorScheme (เช่น primaryContainer, onPrimaryContainer, surfaceVariant) สร้างชุดสีที่มีความสัมพันธ์อัตโนมัติ ช่วยให้รองรับการสลับ Light/Dark Mode ได้ทันที และรับประกันระดับ Contrast Ratio ให้ผ่านเกณฑ์ Accessibility โดยไม่ต้องตั้งค่าสีเองทุกจุด
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาที่พบ
+เรื่องระยะห่าง (Padding/Margin), ขนาดฟอนต์ และโครงสร้างการจัดวาง Layout ไม่ยืดหยุ่น รวมถึงการใช้ Hardcoded Color ที่ทำให้เปลี่ยนโทนสีตามระบบไม่ได้
+
+วิธีแก้ไข
+เปลี่ยนมาใช้ Theme.of(context).colorScheme เพื่อดึงสีจากระบบ, ใช้ Expanded และ IntrinsicHeight ช่วยจัด Layout ให้ยืดหยุ่นตามเนื้อหา และแยกเขียน Reusable Widget (ItemCard) ให้รับค่าผ่าน Constructor เพื่อกลับมาใช้ซ้ำได้ง่าย
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:Code ที่ AI สร้างให้มีความสมบูรณ์สูงในด้านโครงสร้าง UI และการเลือกใช้ Material 3 Component ที่ถูกต้อง (ประมาณ 80–90%)
+
+สิ่งที่ต้องปรับปรุง
+ต้องเพิ่ม Event Handler/Callback (onPressed) ให้ปุ่มกดทำงานได้จริง, เพิ่มการตรวจสอบค่า null/string ว่างเพื่อป้องกัน Runtime Error และเชื่อมต่อระบบการเปลี่ยนหน้า (Routing/Navigation) รวมถึงจัดการ State Management เพิ่มเติม
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 
+1. Data Integration
+เชื่อมต่อกับ Backend API หรือ Database เพื่อดึงข้อมูลจริงมาแสดงแทนข้อมูลจำลอง (Mock Data)
+
+2. State Management
+นำเครื่องมือจัดการสถานะ เช่น Provider, Riverpod หรือ BLoC มาช่วยจัดการข้อมูลสินค้าและข้อมูลโปรไฟล์
+
+3. UX & Responsive
+เพิ่มระบบค้นหาและกรองสินค้า (Search & Filter), ระบบตระกร้าสินค้าจริง และปรับแต่ง Responsive Layout ให้รองรับหน้าจอขนาดใหญ่ เช่น แท็บเล็ต หรือเดสก์ท็อป
+
+4. Accessibility
+เพิ่ม tooltip และ Semantics ในทุกจุดที่เป็นปุ่มกดหรือไอคอน เพื่อรองรับผู้ใช้งาน Screen Reader
 ```
 
 ---
