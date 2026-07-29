@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #276A49 |
+| Secondary Color (Hex) | #4E6355 |
+| Primary Container (Hex) | #ADF2C7 |
+| Surface (Hex) | #F6FBF4 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | 	สีหลักของแบรนด์/แอป ใช้กับ element ที่ต้องการความโดดเด่นสูงสุด เช่น ปุ่มหลัก (Filled Button), FAB, Active state ของ tab |
+| On Primary | 	สีของเนื้อหา (ตัวอักษร/ไอคอน) ที่วางอยู่ บนพื้นสี Primary ถูกเลือกให้มี contrast สูงพออ่านง่าย (เช่น Primary เข้ม → On Primary มักเป็นสีขาว) |
+| Primary Container | สีของ "กล่อง/พื้นผิว" ที่เกี่ยวข้องกับ Primary แต่ต้องการความเด่นน้อยกว่า Primary ตรงๆ เช่น พื้นหลังการ์ด, Chip ที่ถูกเลือก, ปุ่ม Tonal Button — ใช้เมื่ออยากให้ element ดู "อยู่ในธีมเดียวกับ Primary" แต่ไม่ต้องการความจัดจ้านเท่าปุ่มหลัก |
+| On Primary Container | สีของเนื้อหาที่วางอยู่ บนพื้น Primary Container ให้ contrast ที่อ่านง่ายบนพื้นสีอ่อนกว่า (ต่างจาก On Primary ที่ใช้บนพื้นสีเข้ม/จัดกว่า) |
 
 ---
 
@@ -380,7 +380,8 @@ Prompt ที่ไม่ดี:
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
 ```image
-วางรูปหน้าจอ ที่นี่
+<img width="1155" height="743" alt="image" src="https://github.com/user-attachments/assets/27e2e7ca-133c-40fd-881a-f663ade70eb7" />
+
 ```
 
 ---
@@ -873,16 +874,17 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [ ✅ ] App Bar แสดงชื่อ "Green Market"
+- [ ✅ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [ ✅ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ ✅ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [ ✅ ] Bottom Navigation สลับ Tab ได้
+- [ ✅ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
 ```image
-บันทึกรูปที่นี่
+<img width="494" height="939" alt="image" src="https://github.com/user-attachments/assets/8643d84e-a79c-4553-8a84-06e9a2feaeb6" />
+
 ``` 
 ---
 
@@ -926,10 +928,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar — กำหนด radius: 32, backgroundColor: colorScheme.primaryContainer และถ้ามีรูปจะใช้ backgroundImage: NetworkImage(avatarUrl!) |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | เช็คด้วย ternary avatarUrl != null ? NetworkImage(...) : null สำหรับ backgroundImage แล้วถ้า avatarUrl == null จะแสดง ตัวอักษรตัวแรกของชื่อ (name[0].toUpperCase()) เป็น child แทน — เป็นรูปแบบ "initials fallback" มาตรฐาน |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ Theme ทั้งหมด ไม่มี hardcode สีเลย — ดึงจาก Theme.of(context).colorScheme และ .textTheme ทุกจุด เช่น colorScheme.primaryContainer, colorScheme.onSurfaceVariant, colorScheme.surfaceTint ถือว่าทำตามหลัก Material 3 ถูกต้อง |
+| มีส่วนไหนที่ควรปรับปรุง? | 1) NetworkImage ไม่มี error handling — ถ้า URL โหลดไม่ได้ (เน็ตหลุด/ลิงก์เสีย) แอปจะขึ้น error icon แดงๆ ควรเพิ่ม onBackgroundImageError หรือใช้ errorBuilder เพื่อ fallback กลับไปที่ initials 2) ปุ่ม Follow/Message ไม่มี state — กด onPressed: () {} แล้วไม่ทำอะไรเลย ควรเปลี่ยนเป็น StatefulWidget หรือรับ callback ผ่าน constructor เพื่อสลับสถานะ Follow/Unfollow จริง 3) ไม่มีการจัดการ long name overflow — ถ้าชื่อยาวมากอาจล้นจอ ควรเพิ่ม maxLines: 1, overflow: TextOverflow.ellipsis ให้ Text(name, ...) |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,7 +955,7 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+Code จาก AI ให้ จุดตั้งต้นที่เร็วและตรงกับภาพ Figma ในเชิง visual ได้ดี เหมาะเป็นแรงบันดาลใจ (reference) ด้าน layout/styling แต่ ไม่พร้อมใช้งานจริงในโปรเจกต์แบบ copy-paste ตรงๆ เพราะขาด architecture ที่ดี (แยกไฟล์, reusable widget, navigation) และมี API ที่ deprecated ปนอยู่ — สะท้อนให้เห็นว่า AI-generated code ยังต้องผ่านการตรวจสอบและปรับให้เข้ากับโครงสร้างโปรเจกต์เดิมเสมอ ไม่ควรเชื่อและ copy ทั้งหมดโดยไม่อ่าน
 
 ```
 ---
@@ -1010,25 +1012,58 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คคำตอบ: Material 2 ใช้ Color Palette แบบกำหนดเองทีละสี (Primary, Accent) และนักออกแบบต้องเลือกเฉด
+สีรองต่างๆ เอง ทำให้ Contrast ระหว่างสีพื้นและตัวอักษรบางครั้งไม่ผ่านมาตรฐาน Accessibility หากไม่ระวัง
+
+ส่วน Material 3 ใช้ระบบ Dynamic Color ที่สร้าง Tonal Palette ทั้งหมดจาก seed color เพียงสีเดียว
+(ผ่าน ColorScheme.fromSeed หรือ Material Theme Builder) โดยแบ่งเป็น role คู่กันเสมอ เช่น
+Primary/On Primary, Primary Container/On Primary Container ทำให้ contrast ผ่านมาตรฐานอัตโนมัติ
+ทุกคู่โดยไม่ต้องคำนวณเอง นอกจากนี้ยังเพิ่ม role ใหม่ เช่น Tertiary, Surface Container หลายระดับ
+(Lowest, Low, Container, High, Highest) เพื่อสร้าง elevation ด้วยการผสมสีแทนการใช้เงาดำแบบ Material 2
+และรองรับการปรับสีตามธีมของระบบปฏิบัติการ (Material You) ซึ่ง Material 2 ไม่มีความสามารถนี้
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คคำตอบ: ปัญหาหลักที่พบคือ (1) ค่า Property บางตัวที่ export มาจาก Material Theme Builder เช่น
+colorScheme.background เป็น API ที่ deprecated ไปแล้วใน Flutter เวอร์ชันใหม่ ทำให้ compile error
+ทันทีเมื่อรันโปรเจกต์ แก้ไขโดยเปลี่ยนไปใช้ colorScheme.surface แทน (2) การจัดการโครงสร้างไฟล์บน
+Windows ที่ใช้ CMD ไม่รองรับคำสั่งสไตล์ Linux เช่น touch และ mkdir -p ทำให้ต้องเปลี่ยนไปใช้คำสั่ง
+เฉพาะของ CMD (type nul >, mkdir แยกโฟลเดอร์) หรือเปลี่ยนไปใช้ PowerShell แทน (3) Bottom
+Navigation Bar ที่ Figma ออกแบบไว้มี 3 แท็บ แต่โค้ด Flutter เริ่มต้นมีแค่ body เดียว ทำให้กดแท็บ
+"โปรไฟล์" แล้วหน้าจอไม่เปลี่ยน ต้องแก้โดยใช้ IndexedStack ควบคู่กับ _selectedIndex ที่มีอยู่แล้ว
+เพื่อสลับเนื้อหาแต่ละแท็บได้จริง
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Code จาก AI (ทั้งจาก Prompt ข้อความล้วนและจากรูปภาพ Figma) ใช้ได้ดีในระดับ "จุดเริ่มต้น"
+เพราะดึงสีจาก Theme.of(context).colorScheme ถูกต้องตามหลัก Material 3 ไม่ hardcode สี และ
+จัดวาง Layout ได้ใกล้เคียงกับ Design ต้นฉบับ แต่ยังไม่สมบูรณ์พอจะใช้ใน Production ตรงๆ เพราะ
+(1) มี API ที่ deprecated ปนอยู่ เช่น colorScheme.surfaceVariant ซึ่งต้องเปลี่ยนเป็น
+surfaceContainerHighest (2) ไม่มี error handling สำหรับ NetworkImage หากโหลดรูปไม่สำเร็จ
+(3) ปุ่มต่างๆ (Follow, Message) ไม่มี state จริง กดแล้วไม่เกิดอะไรขึ้น (4) เขียนโค้ดรวมไว้ในไฟล์
+เดียวหรือ widget เดียว ไม่แยกเป็น reusable widget ตามหลัก Component-Driven Design และ
+(5) ไม่มีการเชื่อม Navigation ระหว่างหน้า ต้องนำมาปรับแก้ทุกครั้งก่อนใช้งานจริงเสมอ
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คคำตอบ: 1) แยกโครงสร้างไฟล์ให้ชัดเจนตาม Component-Driven Design (screens/, widgets/, theme.dart)
+เพื่อให้ maintain และ reuse ได้ง่าย ไม่เขียนรวมในไฟล์เดียว
+2) เปลี่ยน mock data (List<Map>) ให้เป็น Model class ที่มี type ชัดเจน และเชื่อมต่อกับ API/Database
+จริงแทนข้อมูลปลอมที่ hardcode ไว้
+3) เพิ่ม State Management ที่เหมาะสม (เช่น Provider, Riverpod, หรือ Bloc) แทนการใช้ setState
+ธรรมดา เพื่อรองรับข้อมูลที่ซับซ้อนขึ้น เช่น ตะกร้าสินค้า สถานะ Follow/Unfollow
+4) เพิ่ม Error handling และ Loading state ให้ครบ เช่น ตอนโหลดรูปสินค้าจาก Network, ตอนดึงข้อมูล
+จาก API ที่อาจล้มเหลว
+5) ทำ Accessibility ให้ครบตามการทดลองที่ 5 เช่น เพิ่ม tooltip/Semantics ให้ IconButton ทุกตัว และ
+ตรวจสอบ Touch target ให้ไม่ต่ำกว่า 48×48 dp
+6) ทดสอบทั้ง Light/Dark Mode และอุปกรณ์หลายขนาดหน้าจอ (Responsive) ก่อนนำไปใช้งานจริง ไม่ใช่แค่
+ทดสอบบน Chrome หรืออุปกรณ์เดียว
 ```
 
 ---
