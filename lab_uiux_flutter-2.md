@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | ________#8F4B38_________ |
+| Secondary Color (Hex) | ______#77574E___________ |
+| Primary Container (Hex) | _______#FFDBD1__________ |
+| Surface (Hex) | _______#FFF8F6__________ |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอป ใช้กับ Element ที่สำคัญที่สุด เช่น FilledButton, FAB, Active Icon — ในที่นี้คือสีน้ำตาลอมส้ม #8F4B38|
+| On Primary | สีของตัวอักษร/ไอคอนที่ "วางอยู่บน" พื้นสี Primary ต้อง contrast สูงพอให้อ่านง่าย — ในที่นี้เป็นสีขาว #FFFFFF|
+| Primary Container | พื้นหลังของ Container ที่ต้องการเน้นด้วยสี Primary แต่ soft กว่า เช่น Card พิเศษ, Selected state ที่ไม่ต้องการเข้มเท่าปุ่มหลัก — สีชมพูอ่อนอมส้ม #FFDBD1 |
+| On Primary Container | สีตัวอักษร/ไอคอนบน Primary Container ต้อง contrast กับพื้นหลังนั้น (เข้มกว่า Primary Container) — สีน้ำตาลเข้ม #723523|
 
 ---
 
@@ -379,8 +379,10 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
+``image
+<img width="2940" height="1848" alt="image" src="https://github.com/user-attachments/assets/6eb58b6c-4c0d-41c8-8751-20d5ca158c1c" />
+
+```
 ```
 
 ---
