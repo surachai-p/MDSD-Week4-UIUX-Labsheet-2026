@@ -236,19 +236,21 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #585992 |
+| Secondary Color (Hex) | #5D5C72 |
+| Primary Container (Hex) | #E1DFFF |
+| Surface (Hex) | #FCF8FF |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สี "หลัก" ของแอป (มาจาก seed color) ใช้ทาสีพื้นของ element ที่สำคัญที่สุด เช่น พื้น FilledButton, FAB, active indicator |
+| On Primary | สีที่ใช้ "วางบน" พื้น Primary (เช่น สีตัวอักษร/ไอคอนบนปุ่ม) ถูกออกแบบให้ contrast กับ Primary สูงพอเสมอ เพื่อให้อ่านออกทั้ง Light/Dark Mode |
+| Primary Container | สีพื้นหลังโทนอ่อน/เข้มกว่า Primary ใช้กับ container ที่เน้นน้อยกว่าปุ่มหลัก เช่น พื้นหลังไอคอนใน Card, Chip ที่เลือกอยู่ — ให้ความรู้สึกเป็นกลุ่มเดียวกับ Primary แต่ไม่แย่ง focus |
+| On Primary Container | สีตัวอักษร/ไอคอนที่วางบน Primary Container คู่กันเป็น pair เพื่อให้ contrast ผ่านมาตรฐาน Accessibility เสมอ |
+
+**ความสัมพันธ์:** ทั้ง 4 สีนี้มาจาก Tonal Palette เดียวกัน (Primary) แต่คนละ "tone" — ระบบจะจับคู่ Container กับ On-Container เสมอ (ไม่ผสมข้าม role) เพื่อการันตี contrast ที่อ่านง่าย และเมื่อสลับ Light/Dark Mode ค่าตัวเลข tone ของแต่ละคู่จะสลับกันอัตโนมัติ (เช่น On Primary Container จะเข้มขึ้นใน Light และอ่อนลงใน Dark) โดยที่ความสัมพันธ์ contrast ระหว่างคู่สียังคงเดิม
 
 ---
 
@@ -366,10 +368,10 @@ Screenshot Design ของคุณทั้ง 3 หน้า และตอ�
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| App ที่ออกแบบคือ? | _________________ |
-| Primary Color ที่ใช้? | _________________ |
-| Navigation Pattern ที่เลือก? | _________________ |
-| ทำไมเลือก Pattern นี้? | _________________ |
+| App ที่ออกแบบคือ? | "My App" — แอปแสดงรายการทั่วไป (list-based app) มี 3 หน้า: หน้าหลัก (รายการ), ค้นหา, และโปรไฟล์ |
+| Primary Color ที่ใช้? | #585992 (ม่วง-น้ำเงิน) |
+| Navigation Pattern ที่เลือก? | Bottom Navigation Bar (Material 3 `NavigationBar`) 3 แท็บ: หน้าหลัก / ค้นหา / โปรไฟล์ |
+| ทำไมเลือก Pattern นี้? | เพราะแอปมีปลายทางหลักแค่ 3 จุดที่ผู้ใช้ต้องสลับไปมาบ่อย ๆ (list, search, profile) ซึ่งตรงตามสเปกของ Material 3 ที่แนะนำ NavigationBar สำหรับ 3–5 item และเข้าถึงได้ด้วยนิ้วโป้งข้างเดียวบนมือถือ ต่างจาก Drawer ที่เหมาะกับเมนูจำนวนมากกว่านี้และต้องเปิดเพิ่มอีกขั้นตอน|
 
 ---
 
@@ -909,10 +911,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | `CircleAvatar(radius: 32)` ตามสเปกที่ระบุใน prompt |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้ `backgroundImage: avatarUrl != null ? NetworkImage(avatarUrl!) : null` แล้ว fallback ไปแสดง `Text` ตัวอักษรแรกของชื่อ (initials) เป็น `child` ของ CircleAvatar เมื่อ `avatarUrl == null` — ตรงตามข้อ 1 ใน prompt ที่ขอ "initials as fallback" |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ `Theme.of(context).colorScheme` ทั้งหมด (เช่น `primaryContainer`, `onPrimaryContainer`, `onSurfaceVariant`) และ `Theme.of(context).textTheme` สำหรับ Typography ไม่มีการ hardcode สี/ขนาดตัวอักษรเลย ตรงตาม requirement ข้อ 7 และ 10 |
+| มีส่วนไหนที่ควรปรับปรุง? | (1) `NetworkImage` ไม่มี error handling ถ้าโหลดรูปไม่สำเร็จ ควรเพิ่ม `onBackgroundImageError` หรือใช้ `CachedNetworkImage`; (2) ปุ่ม Follow/Message ไม่มี state จริง (toggle follow/unfollow) เป็นแค่ callback ที่ผู้เรียกต้อง manage state เอง; (3) ตัวเลขสถิติ (postsCount ฯลฯ) ควร format ด้วย comma เมื่อเกินหลักพัน; (4) ควรเพิ่ม `Semantics`/`tooltip` ให้ปุ่มเพื่อ accessibility ตามการทดลองที่ 5.3 |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -997,27 +999,52 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? (3–5 ประโยค)
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 2 ใช้ Color Palette แบบคงที่ (Primary/Accent สีเดียวตายตัว) ที่นักออกแบบต้องกำหนดสี
+แต่ละ role เองทีละสี ในขณะที่ Material 3 ใช้ระบบ Dynamic Color ที่สร้าง Tonal Palette ทั้งหมด
+(Primary/Secondary/Tertiary/Neutral พร้อม Container และ On-Container ของแต่ละ role) โดยอัตโนมัติ
+จาก seed color เพียงสีเดียว ทำให้ Light/Dark Mode มี contrast ที่ถูกต้องเสมอโดยไม่ต้องไล่กำหนดสีเอง
+ทีละจุด นอกจากนี้ Material 3 ยังเพิ่มแนวคิด Container/On-Container ที่จับคู่กันชัดเจนกว่า M2
+(ซึ่งมักใช้แค่ Primary/OnPrimary แบบเดียว) และรองรับ Dynamic Color จาก wallpaper ของเครื่อง (Android 12+)
+ซึ่ง M2 ไม่มีแนวคิดนี้เลย
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาหลักคือค่าตำแหน่ง/ขนาดที่ตั้งแบบ absolute (x, y) ใน Figma ไม่สามารถ copy ไปใช้ตรง ๆ
+ใน Flutter ได้ เพราะ Flutter layout แบบ relative (Row/Column/Expanded) จึงต้องตีความ layout
+ใหม่เป็น Widget Tree (Column/Row/Stack) แทนการอ้างอิงพิกัด x/y ตรง ๆ, ปัญหาที่สองคือสีที่ตั้งเป็น
+Hex ตรง ๆ ใน Figma (ไม่ได้ผูก Color Style) ทำให้ Dark Mode พัง ต้องแก้โดยแมปกลับไปใช้
+colorScheme.xxx ให้ตรงกับ Design Token ที่ตั้งใน Material Theme Builder แทน, และปัญหาที่สาม
+คือ Typography ที่ Figma ใช้ font size สุ่มไม่ตรง Scale ต้องแก้โดย map กลับไปใช้ textTheme
+(titleMedium/bodyMedium ฯลฯ) แทนการ hardcode fontSize เอง
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นดีแค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: โดยรวม AI (ในที่นี้คือโค้ด UserProfileCard ที่สร้างตาม prompt ในขั้นตอนที่ 4.2) ทำได้ดีมาก
+ในแง่โครงสร้าง — ใช้ Theme.of(context).colorScheme/textTheme ทั้งหมดตามที่สั่งไม่มี hardcode สี,
+รับ parameter ครบตาม spec, และ handle กรณี avatarUrl เป็น null ด้วย initials fallback ถูกต้อง
+แต่ยังมีจุดที่ต้องปรับปรุงคือ: ไม่มี error handling เมื่อโหลดรูปจาก NetworkImage ไม่สำเร็จ, ปุ่ม
+Follow/Message เป็นแค่ callback ว่าง ๆ ไม่มี state จัดการ toggle follow จริง, ตัวเลขสถิติไม่มีการ
+format (เช่น 1,234), และไม่มี Semantics/tooltip ให้ปุ่ม ซึ่งสรุปได้ว่า AI เก่งเรื่อง "ทำตาม spec
+ที่ระบุชัดเจน" แต่ยังไม่คิดถึง edge case และ accessibility เองถ้าไม่ได้สั่งตรง ๆ ใน prompt
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: (1) เปลี่ยนข้อมูล mock (_items ใน HomeScreen/SearchScreen, ข้อมูล user ใน ProfileScreen)
+ให้ดึงจาก API/Database จริงผ่าน state management (Provider/Riverpod/Bloc) แทนการ hardcode
+ในโค้ด, (2) เพิ่ม Loading/Error state ให้ทุกหน้าที่ดึงข้อมูล async, (3) เพิ่มระบบ Authentication
+จริงสำหรับหน้าโปรไฟล์ (ตอนนี้เป็น static user), (4) เพิ่ม pagination ให้ ListView เมื่อข้อมูลมีจำนวนมาก,
+(5) เพิ่ม unit/widget test ให้ครอบคลุมมากกว่านี้ (ตอนนี้มีแค่ default counter test ที่ยังไม่ได้แก้),
+และ (6) ตรวจสอบ Accessibility (tooltip, touch target 48x48dp, contrast) ให้ครบทุกหน้าตามการ
+ทดลองที่ 5 ก่อนขึ้น production จริง
 ```
 
+Figma Link: https://www.figma.com/design/SLQDuCkrBlRn0XvlCPf7AK/67030098_Week03_MobileUI?node-id=0-1&t=P8xhlpv44MKLtkJd-1
 ---
 
 ## 🎯 Checklist การประเมิน

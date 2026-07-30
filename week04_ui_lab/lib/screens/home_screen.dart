@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/item_card.dart';
 import 'detail_screen.dart';
+import 'search_screen.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,7 +14,53 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  final List<Map<String, dynamic>> _items = [
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: const [
+          _HomeTab(),
+          SearchScreen(),
+          ProfileScreen(),
+        ],
+      ),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: _onItemTapped,
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home),
+            label: 'หน้าหลัก',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.search_outlined),
+            selectedIcon: Icon(Icons.search),
+            label: 'ค้นหา',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            selectedIcon: Icon(Icons.person),
+            label: 'โปรไฟล์',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// เนื้อหาของ Tab "หน้าหลัก" — แยกออกมาเพื่อให้ HomeScreen ทำหน้าที่แค่สลับ Tab
+class _HomeTab extends StatelessWidget {
+  const _HomeTab();
+
+  static final List<Map<String, dynamic>> _items = [
     {
       'title': 'รายการที่ 1',
       'subtitle': 'คำอธิบายสั้น ๆ ของรายการนี้',
@@ -35,12 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
     },
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +92,12 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+              // สลับไปหน้า ค้นหา ผ่าน Bottom Navigation
+              final homeState =
+                  context.findAncestorStateOfType<_HomeScreenState>();
+              homeState?._onItemTapped(1);
+            },
             tooltip: 'ค้นหา',
           ),
         ],
@@ -89,27 +136,6 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         icon: const Icon(Icons.add),
         label: const Text('เพิ่มใหม่'),
-      ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: _onItemTapped,
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: 'หน้าหลัก',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.search_outlined),
-            selectedIcon: Icon(Icons.search),
-            label: 'ค้นหา',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
-            label: 'โปรไฟล์',
-          ),
-        ],
       ),
     );
   }
