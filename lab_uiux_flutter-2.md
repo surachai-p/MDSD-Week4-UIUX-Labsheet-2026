@@ -1072,6 +1072,8 @@ Figma Link: https://www.figma.com/design/SLQDuCkrBlRn0XvlCPf7AK/67030098_Week03_
 - [x] ตอบครบทุกข้อ
 - [x] แสดงให้เห็นว่าเข้าใจ ไม่ใช่แค่ copy-paste
 
+<img width="414" height="780" alt="Recording 2026-07-30 152712" src="https://github.com/user-attachments/assets/1941fed9-7611-44eb-9db8-3954c0756c63" />
+
 ---
 
 ## 📖 แหล่งอ้างอิง
