@@ -366,6 +366,8 @@ Frame `Profile Screen` ที่สร้างไว้ในขั้นตอ
 
 Screenshot Design ของคุณทั้ง 3 หน้า และตอบคำถาม:
 
+<img width="1188" height="845" alt="image" src="https://github.com/user-attachments/assets/80326ba4-e681-47d6-bff2-2c21f66dc9f4" />
+
 | คำถาม | คำตอบ |
 |-------|-------|
 | App ที่ออกแบบคือ? | "My App" — แอปแสดงรายการทั่วไป (list-based app) มี 3 หน้า: หน้าหลัก (รายการ), ค้นหา, และโปรไฟล์ |
