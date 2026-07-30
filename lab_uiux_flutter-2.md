@@ -1050,25 +1050,25 @@ Figma Link: https://www.figma.com/design/SLQDuCkrBlRn0XvlCPf7AK/67030098_Week03_
 ## 🎯 Checklist การประเมิน
 
 ### Figma Design (5 คะแนน)
-- [ ] มี Frame ขนาด 360 × 800 หรือ Mobile standard
-- [ ] ออกแบบอย่างน้อย 2 หน้า (Home + 1 หน้าอื่น)
-- [ ] ใช้ Material Design 3 Component (AppBar, Card, Button, Navigation)
-- [ ] สีสม่ำเสมอ ใช้ Color Scheme จาก Material Theme Builder
-- [ ] Typography ถูกต้องตาม Scale (ไม่ใช้ขนาดสุ่ม)
+- [x] มี Frame ขนาด 360 × 800 หรือ Mobile standard
+- [x] ออกแบบอย่างน้อย 2 หน้า (Home + 1 หน้าอื่น)
+- [x] ใช้ Material Design 3 Component (AppBar, Card, Button, Navigation)
+- [x] สีสม่ำเสมอ ใช้ Color Scheme จาก Material Theme Builder
+- [x] Typography ถูกต้องตาม Scale (ไม่ใช้ขนาดสุ่ม)
 
 ### Flutter Code (10 คะแนน)
-- [ ] ตั้งค่า Material 3 ด้วย `useMaterial3: true` และใช้ `ColorScheme` ที่ Export จาก Material Theme Builder (`color_schemes.g.dart`)
-- [ ] มี `ItemCard` widget แยกไฟล์ และ reusable
-- [ ] มี Bottom Navigation Bar ทำงานได้ถูกต้อง
-- [ ] Navigate ไป Detail Screen และ Back ได้
-- [ ] ไม่มีการ hardcode สี (ใช้ `colorScheme` จาก Theme ทั้งหมด)
-- [ ] Code อ่านได้ มี comment อธิบาย
-- [ ] รองรับ Dark Mode โดยไม่มีปัญหา Contrast (ตรวจตามขั้นตอนในการทดลองที่ 5.1)
-- [ ] `IconButton` ทุกตัวมี `tooltip` หรือ Semantic label ครบ (ตรวจตามขั้นตอนในการทดลองที่ 5.3)
+- [x] ตั้งค่า Material 3 ด้วย `useMaterial3: true` และใช้ `ColorScheme` ที่ Export จาก Material Theme Builder (`color_schemes.g.dart`)
+- [x] มี `ItemCard` widget แยกไฟล์ และ reusable
+- [x] มี Bottom Navigation Bar ทำงานได้ถูกต้อง
+- [x] Navigate ไป Detail Screen และ Back ได้
+- [x] ไม่มีการ hardcode สี (ใช้ `colorScheme` จาก Theme ทั้งหมด)
+- [x] Code อ่านได้ มี comment อธิบาย
+- [x] รองรับ Dark Mode โดยไม่มีปัญหา Contrast (ตรวจตามขั้นตอนในการทดลองที่ 5.1)
+- [x] `IconButton` ทุกตัวมี `tooltip` หรือ Semantic label ครบ (ตรวจตามขั้นตอนในการทดลองที่ 5.3)
 
 ### สรุปการเรียนรู้ (5 คะแนน)
-- [ ] ตอบครบทุกข้อ
-- [ ] แสดงให้เห็นว่าเข้าใจ ไม่ใช่แค่ copy-paste
+- [x] ตอบครบทุกข้อ
+- [x] แสดงให้เห็นว่าเข้าใจ ไม่ใช่แค่ copy-paste
 
 ---
 
