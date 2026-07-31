@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #3C6939#3C6939 |
+| Secondary Color (Hex) | #3D6838 |
+| Primary Container (Hex) | #BCF0B4 |
+| Surface (Hex) | #F7FBF1 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอป ใช้กับปุ่มหรือองค์ประกอบสำคัญ|
+| On Primary | สีข้อความหรือไอคอนที่แสดงบนพื้นหลัง Primary เพื่อให้อ่านง่าย|
+| Primary Container | สีพื้นหลังโทนอ่อนของ Primary ใช้กับ Card หรือพื้นที่ที่ต้องการเน้น |
+| On Primary Container | สีข้อความหรือไอคอนที่แสดงบน Primary Container เพื่อให้มองเห็นชัดเจน|
 
 ---
 
@@ -379,9 +379,10 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
+``image
 วางรูปหน้าจอ ที่นี่
-```
+![alt text](image.png)
+`
 
 ---
 
@@ -873,17 +874,18 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [ ✔] App Bar แสดงชื่อ "Green Market"
+- [ ✔] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [ ✔] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ ✔] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [ ✔] Bottom Navigation สลับ Tab ได้
+- [ ✔] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
+``image
 บันทึกรูปที่นี่
-``` 
+![alt text](image-1.png)
+``
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +928,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ตรวจสอบว่า avatarUrl == null แล้วเรียกเมธอด _getInitials(name) เพื่อแสดงอักษรย่อของชื่อแทนรูปภาพ |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme.of(context).colorScheme และ textTheme ไม่มีการกำหนดสีแบบ Hardcode |
+| มีส่วนไหนที่ควรปรับปรุง? | ควรเพิ่ม onPressed ให้ปุ่ม Follow และ Message ทำงานจริง, เพิ่ม tooltip หรือ Semantics เพื่อรองรับ Accessibility และอาจรองรับรูป Avatar จาก Asset ในกรณีไม่มี URL |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -954,6 +956,26 @@ Add brief comments explaining each section.
    
 ```text
 เขียนผลการเปรียบเทียบที่นี่
+การเปรียบเทียบ Code และ Widget Tree
+
+1. Widget Tree
+- Code ที่ AI สร้างแบ่งโครงสร้างออกเป็นหลาย Widget ได้แก่ GreenMarketMainScaffold, HomeScreen, DetailScreen, ProfileScreen และ ProductCard ทำให้โค้ดเป็นระเบียบและสามารถนำกลับมาใช้ซ้ำได้
+- Code ที่เขียนเองในการทดลองที่ 3 ใช้ HomeScreen, DetailScreen และ ItemCard โดยมีโครงสร้างที่เรียบง่ายกว่าและเข้าใจได้ง่าย
+
+2. การจัด Layout
+- AI ใช้ Widget เช่น IndexedStack, ValueListenableBuilder, Row, Column, Padding และ NavigationBar เพื่อจัดการการแสดงผลหลายหน้าภายใน Scaffold เดียว
+- Code ที่เขียนเองใช้ ListView.builder สำหรับแสดงรายการสินค้า และ Navigator.push() สำหรับเปลี่ยนหน้า ทำให้โครงสร้างไม่ซับซ้อน
+
+3. การใช้ Material Design 3
+- AI ใช้ Theme.of(context).colorScheme ในการกำหนดสี และเลือกใช้ Widget ของ Material 3 เช่น FilledButton, NavigationBar และ AppBar
+- Code ที่เขียนเองก็ใช้ Material Design 3 ผ่านไฟล์ theme.dart ที่ Export จาก Material Theme Builder เช่นเดียวกัน
+
+4. ความสามารถของโค้ด
+- Code ของ AI มีการแยก Component ออกเป็นส่วนย่อย ทำให้ดูแล แก้ไข และขยายระบบได้ง่ายกว่า
+- Code ที่เขียนเองมีขนาดเล็กกว่า อ่านง่าย และเหมาะสำหรับการเรียนรู้พื้นฐานของ Flutter
+
+สรุป
+Code ที่ AI สร้างมีโครงสร้างที่เป็นระบบ ใช้ Widget ได้หลากหลาย และสามารถขยายโปรเจกต์ได้ง่าย ส่วน Code ที่เขียนเองสามารถทำงานได้ถูกต้อง ตรงตามวัตถุประสงค์ของใบงาน และเหมาะสำหรับการศึกษาการพัฒนาแอปด้วย Flutter และ Material Design 3
 
 ```
 ---
@@ -1010,25 +1032,25 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 ใช้ Color Scheme ที่สร้างจาก Seed Color ทำให้สามารถสร้างชุดสีอัตโนมัติและรองรับ Dynamic Color ได้ ขณะที่ Material 2 ใช้การกำหนดสีหลักและสีรอง (Primary/Secondary) เป็นหลัก และมีความยืดหยุ่นน้อยกว่า Material 3
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: พบปัญหาในการจัดตำแหน่งของ Widget ให้ตรงกับ Figma การเลือก Widget ที่เหมาะสม และการกำหนดระยะห่างขององค์ประกอบ รวมถึงการจัดการ Theme และ Color Scheme โดยแก้ไขด้วยการใช้ Widget เช่น Column, Row, Padding, ListView และ NavigationBar พร้อมทั้งใช้ Theme.of(context).colorScheme เพื่อให้สีตรงกับ Material Design 3
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Code ที่ AI สร้างมีโครงสร้างที่ดี แบ่ง Widget เป็นส่วนย่อย ใช้ Material Design 3 และ Theme ได้ถูกต้อง แต่ยังต้องปรับปรุงรายละเอียดบางส่วน เช่น การเชื่อมต่อข้อมูลจริง การกำหนดการทำงานของปุ่ม การจัดการ Navigation และการปรับแต่งให้เหมาะสมกับโปรเจกต์จริง
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ควรเชื่อมต่อข้อมูลจากฐานข้อมูลหรือ API เพิ่มระบบ Login และการจัดการผู้ใช้ รองรับการแสดงผลบนหลายขนาดหน้าจอ เพิ่มการตรวจสอบข้อมูลที่ผู้ใช้กรอก ปรับปรุงประสิทธิภาพของแอป และเพิ่มการรองรับ Accessibility เช่น Tooltip และ Semantic Labels เพื่อให้ใช้งานได้สะดวกยิ่งขึ้น
 ```
 
 ---
