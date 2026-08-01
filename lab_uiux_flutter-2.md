@@ -379,7 +379,7 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-<img width="1127" height="820" alt="image" src="https://github.com/user-attachments/assets/0ac32620-708a-452c-ab8e-313f1ce18621" />
+<img width="988" height="723" alt="image" src="https://github.com/user-attachments/assets/54b4d62a-a8f4-457c-a1cf-ab978a570a37" />
 
 ---
 
@@ -951,8 +951,8 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
-
+- ส่วนที่เขียนเอง มีการแบ่งสัดส่วนรายละเอียดของแต่ละหน้าออกเป็นส่วนๆในแต่ละไฟล์ที่มีข้อมูลแตกต่างกัน
+- ส่วนที่ให้ AIเขียน มีการนำรายละเอียดข้อมูลทุกอย่างมารวมกันไว้ในไฟล์เดียว
 ```
 ---
 
