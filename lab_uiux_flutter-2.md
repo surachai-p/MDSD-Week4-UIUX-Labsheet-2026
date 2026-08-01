@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #acd28e |
+| Secondary Color (Hex) | #becbaf |
+| Primary Container (Hex) | #304f1a |
+| Surface (Hex) | #11140e |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักที่ใช้สื่อแบรนด์หรือธีมหลักของแอป เช่น ปุ่มหลัก, ไฮไลท์ |
+| On Primary | สีของข้อความหรือไอคอนที่อยู่บนพื้นหลัง Primary เพื่อให้มีคอนทราสต์ชัดเจน |
+| Primary Container | สีพื้นหลังรองที่ใช้คู่กับ Primary เช่น พื้นหลังของการ์ดหรือส่วนที่ต้องการเน้น |
+| On Primary Container | สีของข้อความหรือไอคอนที่อยู่บน Primary Container เพื่อให้มองเห็นได้ชัดเจน |
 
 ---
 
@@ -379,9 +379,23 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
+<img width="1917" height="1015" alt="image" src="https://github.com/user-attachments/assets/5d7049fb-cf22-4797-8df4-c8c099396cb6" />
+
 ```
+1_Home_Screen
+```
+<img width="320" height="695" alt="image" src="https://github.com/user-attachments/assets/6c2acff3-efd8-4817-9cce-ca50a56468d8" />
+
+```
+2_Detail_Screen
+```
+<img width="340" height="710" alt="image" src="https://github.com/user-attachments/assets/abb8c4d5-d113-4b10-9a9a-85cfd8d73f6b" />
+
+```
+3_Profile_Screen
+```
+<img width="317" height="687" alt="image" src="https://github.com/user-attachments/assets/fbf669e9-8d44-4042-8527-8f4256d33dcf" />
+
 
 ---
 
@@ -873,17 +887,18 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [ ✓] App Bar แสดงชื่อ "Green Market"
+- [ ✓] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [ ✓] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ ✓] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [ ✓] Bottom Navigation สลับ Tab ได้
+- [ ✓] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+```
+```
+https://github.com/user-attachments/assets/02307efe-b935-4f4f-b23e-4dba48f3626e
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +941,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar โดยกำหนด radius: 32 |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้ _getInitials(name) เป็น fallback และแสดงใน child เมื่อ avatarUrl เป็น null หรือว่าง |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme.of(context).colorScheme โดยตรง ไม่มี hardcode |
+| มีส่วนไหนที่ควรปรับปรุง? |อาจปรับปรุงได้ เช่น เพิ่มการจัดการ error กรณีโหลดรูปจาก avatarUrl ไม่สำเร็จ, รองรับ responsive layout สำหรับหน้าจอเล็ก, และเพิ่ม accessibility เช่น semanticsLabel ให้กับ Avatar |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,8 +968,10 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
-
+เมื่อเปรียบเทียบโครงสร้างของโค้ดที่ AI สร้างขึ้นกับโค้ดที่เราเขียนเองในการทดลองที่ 3 จะเห็นว่ามีหลายส่วนที่ตรงกัน แต่ก็มีรายละเอียดที่แตกต่างออกไปอย่างชัดเจน โครงสร้างหลักมีความคล้ายกัน เช่นการใช้ `floatingActionButton` เฉพาะในหน้า Home และการมีปุ่มใน `bottomNavigationBar` จำนวนเท่ากัน แต่เมื่อเจาะลึกลงไปในรายละเอียดจะพบความต่างที่สำคัญหลายประการ  
+ในส่วนของ **AppBar** โค้ดจาก AI ใช้ title ที่ยาวกว่า โดยเขียนว่า “Green Market by 67030169” และยังเพิ่มปุ่มเมนูพร้อมโลโก้เล็ก ๆ เข้ามา ทั้งที่สเปกที่เรากำหนดไว้ต้องการเพียง “Green Market by Wisawa” แบบเรียบง่าย ไม่ต้องมีองค์ประกอบเสริมเหล่านี้ ส่วนของ **การ์ดสินค้า** AI เปลี่ยนจากรายการตายตัว 4 ชิ้นที่เรากำหนดไว้ให้เป็น dynamic list ผ่าน `ProductCard` และ `ProductItem` ซึ่งแม้จะยืดหยุ่นและสามารถขยายได้ง่าย แต่ก็ไม่ตรงกับสเปกที่ระบุว่าต้องใช้ `ItemCard` แบบคงที่ ภายในการ์ดยังมีองค์ประกอบเพิ่มเติม เช่น `CircleAvatar` และ `Container` ตกแต่งที่ไม่ได้อยู่ในข้อกำหนด  
+ความแตกต่างที่เห็นได้ชัดที่สุดคือ **BottomNavigationBar** ของ AI จัดลำดับเป็น Search–Home–Profile และใช้ภาษาอังกฤษ (“Home, Search, Profile”) แทนที่จะเป็นภาษาไทย (“หน้าหลัก, ค้นหา, โปรไฟล์”) ตามที่เรากำหนดไว้ นอกจากนี้ AI ยังใส่รายละเอียดเกิน เช่น SnackBar ในหน้า Detail และเมนูย่อยในหน้า Profile ซึ่งแม้จะทำให้แอพดูสมจริงและมีฟังก์ชันมากขึ้น แต่ก็เกินจากสเปกที่ตั้งไว้  
+โดยรวมแล้ว AI สามารถจับ **concept หลัก** ได้ถูกต้อง เช่นการมีสามหน้าหลักและการนำทางด้วย BottomNavigation แต่รายละเอียดหลายส่วนไม่ตรงกับสเปกที่เรากำหนด ทั้งในเรื่องชื่อ, ลำดับเมนู, ภาษา, และองค์ประกอบภายในหน้าต่าง ๆ ดังนั้นหากต้องการผลลัพธ์ที่ตรงเป๊ะกับสเปก ควรสั่ง prompt ใหม่โดยระบุชัดเจนว่า **ต้องการโครงสร้างและองค์ประกอบตามที่กำหนดเท่านั้น** ไม่ให้ AI เพิ่มรายละเอียดหรือเปลี่ยนแปลงเอง
 ```
 ---
 
@@ -1010,25 +1027,40 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ค Material 3 ใช้ระบบ Dynamic Color ที่สามารถปรับสีตาม Wallpaper หรือ Theme ของผู้ใช้ ทำให้ UI มีความเป็น Personalized มากขึ้น
+ในขณะที่ Material 2 ใช้ Color Palette แบบตายตัว (Primary, Secondary, Error ฯลฯ) ซึ่งนักออกแบบต้องกำหนดเองทั้งหมด ดังนั้น Material 3 จึงยืดหยุ่นและสอดคล้องกับระบบ Android 12+ มากกว่า
+
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:  
+- การจัด Layout ไม่ตรง เช่น Auto Layout ใน Figma ไม่เท่ากับ Flex/Column/Row ใน Flutter  
+- Font และ TextStyle ไม่ตรงกับระบบจริง  
+- การใช้ Shadow, Blur, หรือ Gradient ที่ Flutter รองรับยากกว่า  
+การแก้ไขคือ ต้อง Mapping Component ให้ตรง เช่น ใช้ Flex widget แทน Auto Layout, ปรับ TextTheme ให้ตรงกับ Design System และใช้ CustomPainter หรือ Package เสริมสำหรับเอฟเฟกต์พิเศษ
+
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: คCode ที่ AI สร้างมักเป็น Skeleton หรือ Prototype ที่ช่วยเริ่มต้นได้ แต่ยังไม่สมบูรณ์ เช่น  
+- ไม่ครอบคลุม State Management (Provider, Riverpod, Bloc)  
+- ไม่มี Responsive Design สำหรับหลายขนาดหน้าจอ  
+- ขาดการ Optimize Performance และ Error Handling  
+ดังนั้นต้องปรับปรุงโดยเพิ่ม State Management, ทำ Responsive Layout และเขียน Test เพื่อให้ใช้งานจริงได้
+
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: - ปรับ Interaction ให้สอดคล้องกับ UX จริง เช่น Loading state, Error state  
+- เชื่อมต่อกับ Backend และ Data จริง  
+- Optimize Asset และ Performance เช่น ลดขนาดภาพ, ใช้ Lazy loading  
+เพื่อให้ UI ใช้งานได้จริงและมีคุณภาพระดับ Production
 ```
 
 ---
