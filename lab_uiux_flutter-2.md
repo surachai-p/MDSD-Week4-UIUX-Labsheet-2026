@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | 0xff495d92 |
+| Secondary Color (Hex) | 0xff585e71 |
+| Primary Container (Hex) | 0xffdae2ff |
+| Surface (Hex) | 0xfffaf8ff |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแบรนด์ ใช้กับองค์ประกอบที่เด่นที่สุดในหน้าจอ เช่น ปุ่มหลัก (Filled Button), FAB หรือ Header |
+| On Primary | สีของตัวอักษรหรือไอคอนที่แสดง บนพื้นหลังสี Primary |
+| Primary Container | สีพื้นหลังโทนอ่อนของ Primary ใช้สำหรับกลุ่มการ์ดหรือคอนเทนเนอร์ที่ต้องการเน้นรองลงมาจาก Primary |
+| On Primary Container | สีของตัวอักษรหรือไอคอนที่แสดง บนพื้นหลังสี Primary Container |
 
 ---
 
