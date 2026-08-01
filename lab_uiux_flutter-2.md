@@ -872,17 +872,21 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✓] App Bar แสดงชื่อ "Green Market"
+- [✓] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✓] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✓] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✓] Bottom Navigation สลับ Tab ได้
+- [✓] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+
+<img width="1917" height="1020" alt="image" src="https://github.com/user-attachments/assets/bbf703e3-86fc-43fa-bdf5-33a5ac4fa346" />
+
+
+<img width="1917" height="921" alt="image" src="https://github.com/user-attachments/assets/95f3ade3-cdc9-40a0-80cb-340386b7a48f" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -925,10 +929,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar ที่กำหนดค่า radius: 32 |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? |เช็กเงื่อนไข ถ้าเป็น null จะเปลี่ยนไปใช้ตัวอักษรย่อแทน โดยเรียกฟังก์ชัน _getInitials(name) มาแสดงเป็น child แทนการดึงภาพจากเน็ต |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme ทั้งหมดผ่าน Theme.of(context).colorScheme เช่น onSurfaceVariant โดยไม่มีการ Hardcode สี ทำให้รองรับ Light/Dark mode ได้ |
+| มีส่วนไหนที่ควรปรับปรุง? | ควรเพิ่ม onPressed ให้ปุ่มและใส่ TextOverflow.ellipsis กันข้อความล้น |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -952,7 +956,13 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+1. ด้านโครงสร้าง UI (Widget Tree)
+เขียนเอง (ทดลองที่ 3): โครงสร้าง Widget จะเรียบง่าย ไม่ซับซ้อน เลือกใช้เครื่องมือพื้นฐาน Container ในการสร้างกรอบและจัดวางไอคอน
+AI สร้างให้: โครงสร้างซ้อนกันลึกและละเอียดกว่า AI เก็บรายละเอียดจาก Mockup ได้ดี เช่น เลือกใช้ ClipRRect จัดการความโค้งมนของรูปภาพ และมีการใส่ errorBuilder เพื่อดักจับกรณีโหลดรูปภาพไม่สำเร็จ
+
+2. ด้านการจัดการข้อมูล (Data & Logic)
+เขียนเอง (ทดลองที่ 3): วางโครงสร้างได้ยืดหยุ่นกว่า มีการแยก Data ออกจาก UI และใช้ List จัดการข้อมูล
+AI สร้างให้: ใช้วิธี Hardcode ฝังตัวหนังสือและข้อมูลต่างๆ ลงไปใน UI โดยตรง ทำให้ไม่มีความยืดหยุ่นถ้านำไปเชื่อมต่อกับฐานข้อมูลจริง
 
 ```
 ---
@@ -968,6 +978,8 @@ Add brief comments explaining each section.
 2. รัน App → ตรวจสอบว่าทุก Text อ่านออกหรือไหม
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
+
+<img width="612" height="887" alt="image" src="https://github.com/user-attachments/assets/272d7296-90cc-472b-9b71-f45803daac90" />
 
 
 // ยังไม่ต้องทำข้อ 5.2  5.3
@@ -1000,6 +1012,7 @@ IconButton(
 )
 ```
 
+
 ตรวจสอบทุก `IconButton` ว่ามี `tooltip` ครบ
 
 ---
@@ -1009,25 +1022,33 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 เปลี่ยนมาใช้ระบบ Dynamic Color และ Tonal Palettes ที่สร้างเฉดสีทั้งหมดจากสีตั้งต้น (Seed Color) สีเดียว
+และมีการจับคู่สีพื้นหลังกับสีตัวหนังสือให้ชัดเจน (เช่น Primary คู่กับ onPrimary) ทำให้ทำธีม Light/Dark Mode ได้ง่าย
+และอ่านชัดเจนกว่า Material 2 ที่เน้นฟิกซ์สีหลักแบบตายตัว
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาหลักคือระยะห่าง (Spacing) ที่มักจะไม่เป๊ะ และปัญหาข้อความยาวจนล้นจอ (Overflow)
+วิธีแก้คือ ต้องจัดโครงสร้าง Row และ Column ใหม่ด้วยตัวเอง และใช้ Expanded คู่กับ TextOverflow.ellipsis เพื่อตัดคำที่ยาวเกินไป
+รวมถึงดึงสีจาก Theme แทนการใส่รหัสสีตรงๆ
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: โครงสร้าง UI ค่อนข้างสมบูรณ์ แต่ต้องเปลี่ยนข้อมูลที่ Hardcode ให้รับค่าจากตัวแปร ดัก Error โหลดรูปไม่ขึ้น และเพิ่มคำสั่งให้ปุ่มกดได้จริง
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: คำตอบ: 
+1. Data & State Management ดึงข้อมูลจริงจาก API/Database ผ่าน State Management (เช่น Provider หรือ BLoC) แทนการใช้ Mock Data
+2. UI/UX & Responsive เพิ่มระบบค้นหา/กรองสินค้า ทำหน้า Loading/Error State และปรับ Layout ให้รองรับทั้งมือถือและแท็บเล็ต
+3. Accessibility ตรวจสอบ Touch Target และใส่ Tooltip/Semantics
+
 ```
 
 ---
