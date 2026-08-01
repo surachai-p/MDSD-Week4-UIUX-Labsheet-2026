@@ -2,8 +2,7 @@
 
 > **วิชา:** การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่  
 > **สัปดาห์ที่:** 3  
-> **เวลา:** 3.5 ชั่วโมง  
-
+> **เวลา:** 3.5 ชั่วโมง
 
 ---
 
@@ -38,47 +37,49 @@ Neutral    → surface, background, outline
 ```
 
 แต่ละ role มีทั้ง **Container** (พื้นหลัง) และ **On-Container** (ตัวอักษร/icon ที่วางบน container นั้น) เช่น:
+
 - `Primary` = สีปุ่ม
 - `On Primary` = สีตัวอักษรบนปุ่ม
 
 #### 1.2 Typography Scale ของ Material 3
 
-| Scale | Font Size | Weight | ใช้กับ |
-|-------|-----------|--------|--------|
-| Display Large | 57sp | Regular | Hero text |
-| Display Medium | 45sp | Regular | Section header ใหญ่ |
-| Headline Large | 32sp | Regular | หัวข้อหน้าหลัก |
-| Headline Medium | 28sp | Regular | หัวข้อ Card |
-| Title Large | 22sp | Regular | App Bar title |
-| Title Medium | 16sp | Medium | List item header |
-| Body Large | 16sp | Regular | เนื้อหาหลัก |
-| Body Medium | 14sp | Regular | เนื้อหาทั่วไป |
-| Body Small | 12sp | Regular | Caption, timestamp, ข้อความรองขนาดเล็ก (ใช้ในการทดลองที่ 4) |
-| Label Large | 14sp | Medium | ปุ่ม |
-| Label Medium | 12sp | Medium | Tab, Chip |
-| Label Small | 11sp | Medium | Badge, Tab label ขนาดเล็กสุด |
+| Scale           | Font Size | Weight  | ใช้กับ                                                      |
+| --------------- | --------- | ------- | ----------------------------------------------------------- |
+| Display Large   | 57sp      | Regular | Hero text                                                   |
+| Display Medium  | 45sp      | Regular | Section header ใหญ่                                         |
+| Headline Large  | 32sp      | Regular | หัวข้อหน้าหลัก                                              |
+| Headline Medium | 28sp      | Regular | หัวข้อ Card                                                 |
+| Title Large     | 22sp      | Regular | App Bar title                                               |
+| Title Medium    | 16sp      | Medium  | List item header                                            |
+| Body Large      | 16sp      | Regular | เนื้อหาหลัก                                                 |
+| Body Medium     | 14sp      | Regular | เนื้อหาทั่วไป                                               |
+| Body Small      | 12sp      | Regular | Caption, timestamp, ข้อความรองขนาดเล็ก (ใช้ในการทดลองที่ 4) |
+| Label Large     | 14sp      | Medium  | ปุ่ม                                                        |
+| Label Medium    | 12sp      | Medium  | Tab, Chip                                                   |
+| Label Small     | 11sp      | Medium  | Badge, Tab label ขนาดเล็กสุด                                |
 
 #### 1.3 Elevation และ Shadow ใน Material 3
 
 Material 3 ใช้ **Color Overlay** แทน Drop Shadow เพื่อบ่งบอก elevation:
+
 - ยิ่ง elevation สูง → ผสมสี Primary มากขึ้น (ไม่ใช่เงาดำ)
 - มี 6 ระดับ: Level 0 ถึง Level 5 (0 = ไม่มี elevation, 5 = สูงสุด)
 
 #### 1.4 Component หลักใน Material 3 ที่ต้องรู้
 
-| Component | ใช้กับ | หมายเหตุ |
-|-----------|--------|---------|
-| **NavigationBar** | Bottom navigation 3–5 item | แนะนำสำหรับ Android |
-| **TopAppBar** | Header ของหน้า | มี 4 แบบ: Center/Small/Medium/Large |
-| **Card** | Container เนื้อหา | มี 3 style: Elevated/Filled/Outlined |
-| **FilledButton** | Primary action | สีเต็ม, สำคัญที่สุด |
-| **OutlinedButton** | Secondary action | มีเส้นขอบ |
-| **TextButton** | Action ที่เน้นน้อยที่สุด | ไม่มีพื้นหลัง (⚠️ คำว่า "เน้นน้อยที่สุด" ในที่นี้หมายถึงลำดับความสำคัญของปุ่ม ไม่เกี่ยวกับสี Tertiary ในหัวข้อ 1.1 ซึ่งเป็นคนละแนวคิดกัน) |
-| **FAB** | Action หลักของหน้า | วางมุมล่างขวา |
-| **TextField** | Input | มี Filled/Outlined variant |
-| **Chip** | Filter/Tag/Action | Assist/Filter/Input/Suggestion |
-| **Dialog** | Confirmation/Alert | ไม่เกิน 2 action |
-| **SnackBar** | Feedback สั้น | ด้านล่าง, หายเองใน 4 วินาที |
+| Component          | ใช้กับ                     | หมายเหตุ                                                                                                                                  |
+| ------------------ | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **NavigationBar**  | Bottom navigation 3–5 item | แนะนำสำหรับ Android                                                                                                                       |
+| **TopAppBar**      | Header ของหน้า             | มี 4 แบบ: Center/Small/Medium/Large                                                                                                       |
+| **Card**           | Container เนื้อหา          | มี 3 style: Elevated/Filled/Outlined                                                                                                      |
+| **FilledButton**   | Primary action             | สีเต็ม, สำคัญที่สุด                                                                                                                       |
+| **OutlinedButton** | Secondary action           | มีเส้นขอบ                                                                                                                                 |
+| **TextButton**     | Action ที่เน้นน้อยที่สุด   | ไม่มีพื้นหลัง (⚠️ คำว่า "เน้นน้อยที่สุด" ในที่นี้หมายถึงลำดับความสำคัญของปุ่ม ไม่เกี่ยวกับสี Tertiary ในหัวข้อ 1.1 ซึ่งเป็นคนละแนวคิดกัน) |
+| **FAB**            | Action หลักของหน้า         | วางมุมล่างขวา                                                                                                                             |
+| **TextField**      | Input                      | มี Filled/Outlined variant                                                                                                                |
+| **Chip**           | Filter/Tag/Action          | Assist/Filter/Input/Suggestion                                                                                                            |
+| **Dialog**         | Confirmation/Alert         | ไม่เกิน 2 action                                                                                                                          |
+| **SnackBar**       | Feedback สั้น              | ด้านล่าง, หายเองใน 4 วินาที                                                                                                               |
 
 ---
 
@@ -88,26 +89,26 @@ Material 3 ใช้ **Color Overlay** แทน Drop Shadow เพื่อบ�
 
 #### 2.1 Concept หลักที่ต้องรู้ใน Figma
 
-| Concept | คำอธิบาย |
-|---------|---------|
-| **Frame** | "หน้าจอ" หรือ container หลัก (เทียบกับ Screen ในแอป) |
-| **Component** | Element ที่ reuse ได้ (เหมือน Widget ใน Flutter) |
-| **Instance** | สำเนาของ Component ที่ใช้ใน Design |
-| **Auto Layout** | ระบบ Layout อัตโนมัติ เหมือน Flexbox/Column/Row |
-| **Constraint** | กำหนดว่า Element ยึดขอบไหนเมื่อ Frame ขนาดเปลี่ยน |
-| **Variant** | Component หลายสถานะ (เช่น Button: Default/Hover/Disabled) |
-| **Style** | Color Style, Text Style ที่ใช้ซ้ำได้ (เหมือน Design Token) |
+| Concept         | คำอธิบาย                                                   |
+| --------------- | ---------------------------------------------------------- |
+| **Frame**       | "หน้าจอ" หรือ container หลัก (เทียบกับ Screen ในแอป)       |
+| **Component**   | Element ที่ reuse ได้ (เหมือน Widget ใน Flutter)           |
+| **Instance**    | สำเนาของ Component ที่ใช้ใน Design                         |
+| **Auto Layout** | ระบบ Layout อัตโนมัติ เหมือน Flexbox/Column/Row            |
+| **Constraint**  | กำหนดว่า Element ยึดขอบไหนเมื่อ Frame ขนาดเปลี่ยน          |
+| **Variant**     | Component หลายสถานะ (เช่น Button: Default/Hover/Disabled)  |
+| **Style**       | Color Style, Text Style ที่ใช้ซ้ำได้ (เหมือน Design Token) |
 
 #### 2.2 Mobile Frame Size มาตรฐาน
 
 > **หมายเหตุ:** Figma ปรับปรุงรายชื่อ Preset ในเมนู Frame อยู่เรื่อย ๆ ดังนั้นให้ยึดค่าตัวเลข (หน่วย dp) ด้านล่างเป็นหลัก ไม่ต้องยึดชื่อ Preset ที่เห็นในโปรแกรม
 
-| Device | ขนาด (dp) |
-|--------|------|
+| Device           | ขนาด (dp)    |
+| ---------------- | ------------ |
 | Android ขนาดกลาง | 360 × 800 dp |
 | Android ขนาดใหญ่ | 412 × 892 dp |
-| iPhone 14 Pro | 393 × 852 dp |
-| iPhone SE | 375 × 667 dp |
+| iPhone 14 Pro    | 393 × 852 dp |
+| iPhone SE        | 375 × 667 dp |
 
 > **แนะนำ:** ออกแบบที่ความกว้างประมาณ 360 dp ความสูงประมาณ 800 dp เพื่อรองรับ Android ขนาดกลาง
 
@@ -135,6 +136,7 @@ Adjust & Refine
 #### 3.2 การวิเคราะห์ Layout เป็น Widget Tree
 
 วิธีคิดง่าย ๆ:
+
 1. มองหา **กลุ่มแนวตั้ง** → `Column`
 2. มองหา **กลุ่มแนวนอน** → `Row`
 3. มองหา **ซ้อนทับกัน** → `Stack`
@@ -143,6 +145,7 @@ Adjust & Refine
 6. มองหา **พื้นหลังหรือขอบ** → `Container` / `Card`
 
 **ตัวอย่าง:**
+
 ```
 [Design: Card ที่มีรูปซ้าย, ชื่อและรายละเอียดขวา]
     ↓
@@ -210,15 +213,18 @@ Prompt ที่ไม่ดี:
 ### การทดลองที่ 1: สร้าง Color Scheme ด้วย Material Theme Builder
 
 #### วัตถุประสงค์
-ใช้ระบบ Dynamic Color ของ Material 3 เพื่อสร้าง Color Scheme สำหรับ Project 
+
+ใช้ระบบ Dynamic Color ของ Material 3 เพื่อสร้าง Color Scheme สำหรับ Project
 
 #### ขั้นตอน
 
 **ขั้นตอนที่ 1.1: เปิด Material Theme Builder**
+
 1. เปิด Browser ไปที่ https://m3.material.io/theme-builder
 2. จะเห็น UI Preview ของ Material 3 App พร้อม Color Picker
 
 **ขั้นตอนที่ 1.2: สร้าง Color Scheme ของตัวเอง**
+
 1. คลิกที่ **"Primary"** color circle
 2. เลือกสีที่เป็น brand color ของ App ที่จะทำ Project
    - ตัวอย่าง: สีเขียว `#2E7D32` สำหรับ App เกี่ยวกับสิ่งแวดล้อม
@@ -227,40 +233,42 @@ Prompt ที่ไม่ดี:
 4. ทดลองสลับดูระหว่าง **Light** และ **Dark** mode (รูปไอคอนพระจันทร์ ด้านบนขวามือ) สังเกตว่า contrast ยังชัดเจน
 
 **ขั้นตอนที่ 1.3: Export เป็น Flutter Code**
+
 1. คลิก **"Export"** ที่มุมขวาบน (ไอคอน สี่เหลี่ยม มีเครื่องหมาย + ตรงกลาง)
 2. เลือก **"Flutter"**
 3. จะได้ไฟล์ `lib/theme.dart` ที่มี `ColorScheme` สำหรับ Light และ Dark
    **การจัดการ Theme สามารถทำได้บน Figma เช่นกัน โดย กดปุ่ม Ctrl + P แล้วค้นหา Plugins ชื่อ Material Theme Builder แล้วทำการกำหนดค่าสีของ Theme ตามต้องการ**
 
-
 **ขั้นตอนที่ 1.4: บันทึกผล**
 
-| รายการ | ค่าที่ได้ |
-|--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| รายการ                  | ค่าที่ได้ |
+| ----------------------- | --------- |
+| Primary Color (Hex)     | `#415F91` |
+| Secondary Color (Hex)   | `#565F71` |
+| Primary Container (Hex) | `#D6E3FF` |
+| Surface (Hex)           | `#F9F9FF` |
 
-> **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
+> **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร? วิเคราะห์และเติมตารางด้านล่าง
 
-| สี | หน้าที่ |
-|-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| สี                   | หน้าที่                                                                                                                     |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Primary              | สีหลักของแอป ใช้สำหรับองค์ประกอบเด่นที่สุด เช่น ปุ่มหลัก (Floating Action Button / Filled Button), แถบแอป หรือส่วนเน้นสำคัญ |
+| On Primary           | สีของข้อความหรือไอคอนที่แสดงผลอยู่บนพื้นหลังสี Primary (ออกแบบให้มีค่า Contrast สูงตัดกับ Primary เพื่อให้อ่านชัดเจน)       |
+| Primary Container    | สีพื้นหลังสำหรับพื้นที่หรือการ์ดที่ต้องการเน้นความสำคัญรองลงมา (Emphasized Container) โดยจะมีโทนสีอ่อนกว่า Primary          |
+| On Primary Container | สีของข้อความหรือไอคอนที่แสดงผลอยู่บนพื้นหลังสี Primary Container (ออกแบบให้ตัดกับสี Primary Container เพื่อให้อ่านง่าย)     |
 
 ---
 
 ### การทดลองที่ 2: ออกแบบ UI Mockup ด้วย Figma
 
 #### วัตถุประสงค์
+
 สร้าง Mockup ของ Mobile App อย่างน้อย 3 หน้าด้วย Material Design 3
 
 #### ขั้นตอนเตรียมการ Figma
 
 **ขั้นตอนที่ 2.1: ตั้งค่า Figma Project**
+
 1. ไปที่ https://figma.com และ Login (สร้าง Account ฟรีถ้ายังไม่มี)
 2. คลิก **File -> New -> Design**
 3. ตั้งชื่อไฟล์: `[ชื่อนักศึกษา]_Week03_MobileUI`
@@ -268,44 +276,44 @@ Prompt ที่ไม่ดี:
 
 **ขั้นตอนที่ 2.2: Import Material Design 3 Kit**
 
-
 1. เลือกเมนู Assets ที่อยู่ด้านซ้าย
 2. เลือก Material 3 Design Kit
 
 **ขั้นตอนที่ 2.3: สร้าง Frame สำหรับ Mobile**
+
 1. กด `F` (Frame tool)
-2. ด้านขวามือ สร้าง Mobile Frame  ความกว้างประมาณ 360 dp ความสูงประมาณ 800 dp  (ไม่ต้องยึดชื่อ Preset เพราะ Figma เปลี่ยนชื่อ/ค่า Preset อยู่เรื่อย ๆ ให้พิมพ์ตัวเลข W/H เองในแผง Properties ด้านขวา)
+2. ด้านขวามือ สร้าง Mobile Frame ความกว้างประมาณ 360 dp ความสูงประมาณ 800 dp (ไม่ต้องยึดชื่อ Preset เพราะ Figma เปลี่ยนชื่อ/ค่า Preset อยู่เรื่อย ๆ ให้พิมพ์ตัวเลข W/H เองในแผง Properties ด้านขวา)
 3. สร้าง Frame 3 ชุด (ใช้การ Copy & Paste ได้)ตั้งชื่อ:
    - `Home Screen`
    - `Detail Screen`
    - `Profile Screen`
 4. จัดเรียง Frame ให้ชิดกัน
 
-
-
 #### ขั้นตอนออกแบบหน้าหลัก (Home Screen)
 
 **ขั้นตอนที่ 2.4: ออกแบบ App Bar**
+
 1. คลิกที่ Frame `Home Screen`
 2. เลื่อก Assets → Material 3 Design Kit -> **App bar**
-3. ลาก Component ลงบน Frame 
+3. ลาก Component ลงบน Frame
 4. วางที่ด้านบนสุด (y = 0)
 5. ปรับ width ให้เต็ม Frame (360 dp)
-6. Double-click เพื่อแก้ไขชื่อ: **"Green Market by (ชื่อนักศึกษา)"
+6. Double-click เพื่อแก้ไขชื่อ: \*\*"Green Market by (ชื่อนักศึกษา)"
 
 **ขั้นตอนที่ 2.5: ออกแบบ Content Area (รายการสินค้าผักผลไม้)**
+
 1. **สร้าง Card สำหรับ Item สินค้า:**
    - ไปที่แผง Assets -> ค้นหา **"Card"** แล้วลาก Component `Horizontal Card` ลงบน Frame
    - ปรับขนาด Card เป็น Width = 328px, Height = 100px
    - ที่แผง Design ด้านขวา สังเกตส่วน Fill: ให้เลือกใช้ Theme ที่ทำการสร้างในไฟล์ (Create in this file)
-      **การจัดการ Theme สามารถทำได้บน Figma เช่นกัน โดย กดปุ่ม Ctrl + P แล้วค้นหา Plugins ชื่อ Material Theme Builder แล้วทำการกำหนดค่าสีของ Theme ตามต้องการ**
+     **การจัดการ Theme สามารถทำได้บน Figma เช่นกัน โดย กดปุ่ม Ctrl + P แล้วค้นหา Plugins ชื่อ Material Theme Builder แล้วทำการกำหนดค่าสีของ Theme ตามต้องการ**
    - จัดตำแหน่ง Card ให้อยู่กลางหน้าจอ (ต่อจาก App Bar)
 2. **ปรับแต่งคุณสมบัติต่าง ๆ ของ Card สินค้า:**
-   - แก้ไข Header text เป็น **"ผักสลัดออร์แกนิก"** 
+   - แก้ไข Header text เป็น **"ผักสลัดออร์แกนิก"**
    - แก้ไข Subhead Text เป็น **"สดใหม่จากฟาร์ม • ฿45 / กิโลกรัม"**
 3. **จัดกลุ่มด้วย Auto Layout และทำซ้ำ (Duplicate):**
    - คลิกขวาที่ Card แล้วเลือก **"Add Auto Layout"** (คีย์ลัด `Shift + A`) เพื่อให้การจัดระยะห่างภายใน Card เป็นไปตามมาตรฐาน
-   - คัดลอก Card ออกมาเป็น 4 รายการ โดยกด เลือก ที่ เมนู File -> เลือก Frame ของ card ดังกล่าว -> เลือก card ->  กด`Cmd/Ctrl + D` แล้วเปลี่ยนข้อมูลสินค้าให้หลากหลาย:
+   - คัดลอก Card ออกมาเป็น 4 รายการ โดยกด เลือก ที่ เมนู File -> เลือก Frame ของ card ดังกล่าว -> เลือก card -> กด`Cmd/Ctrl + D` แล้วเปลี่ยนข้อมูลสินค้าให้หลากหลาย:
      - รายการที่ 1: ผักสลัดออร์แกนิก (สดใหม่จากฟาร์ม • ฿45 / กิโลกรัม)
      - รายการที่ 2: สตรอว์เบอร์รีสด (หวานกรอบ เกรดพรีเมียม • ฿120 / กล่อง)
      - รายการที่ 3: กล้วยหอมทอง (อุดมด้วยวิตามิน • ฿35 / หวี)
@@ -318,16 +326,15 @@ Prompt ที่ไม่ดี:
 5. **เพิ่ม Bottom Navigation Bar:**
    - ค้นหา **"Navigation Bar: Vertical items"** ในแถบ Assets
    - ลากมาวางด้านล่างสุดของ Frame (X = 0, Y = 741px)
-   - กำหนดให้มี 3 Destinaton Icon/Label:
-     - Item 1: `หน้าหลัก` (Icon: home, สถานะ Active)
-     - Item 2: `ค้นหา` (Icon: search)
-     - Item 3: `โปรไฟล์` (Icon: person)
-**กรณีหา icon ไม่เจอ ให้เปลี่ยนไปเลือก Simple Design System**
+   - กำหนดให้มี 3 Destinaton Icon/Label: - Item 1: `หน้าหลัก` (Icon: home, สถานะ Active) - Item 2: `ค้นหา` (Icon: search) - Item 3: `โปรไฟล์` (Icon: person)
+     **กรณีหา icon ไม่เจอ ให้เปลี่ยนไปเลือก Simple Design System**
+
 ---
 
 #### ขั้นตอนออกแบบหน้ารายละเอียดสินค้า (Detail Screen)
 
 **ขั้นตอนที่ 2.6: ออกแบบ Detail Screen**
+
 1. คลิกเลือก Frame `Detail_Screen`
 2. ลาก Component **App Bar** มาวางด้านบนสุด (X = 0, Y = 0)
    - เปลี่ยน Title เป็น **"รายละเอียดสินค้า"**
@@ -349,6 +356,7 @@ Prompt ที่ไม่ดี:
 #### ขั้นตอนออกแบบหน้าโปรไฟล์ผู้ใช้ (Profile Screen)
 
 **ขั้นตอนที่ 2.6b: ออกแบบ Profile Screen**
+
 1. คลิกเลือก Frame `3_Profile_Screen`
 2. ลาก **oApp Bar** มาวางด้านบนสุด เปลี่ยน Title เป็น **"โปรไฟล์ผู้ใช้"**
 3. **ส่วนข้อมูลผู้ใช้งาน:**
@@ -366,6 +374,7 @@ Prompt ที่ไม่ดี:
 #### ขั้นตอนทำ Prototype และเชื่อมโยงหน้าจอ
 
 **ขั้นตอนที่ 2.7: เพิ่ม Prototype Connection**
+
 1. สลับโหมดการทำงานที่แผงขวาจาก **Design** เป็น **Prototype**
 2. เลือก Card สินค้ารายการแรก ("ผักสลัดออร์แกนิก") ในหน้า `1_Home_Screen`
 3. ลากเส้นเชื่อมโยง (Node) จาก Card ใบนั้นไปยัง Frame `2_Detail_Screen`
@@ -379,20 +388,20 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+![Design ทั้ง 3 หน้า](pic/screen_design.png)
 
 ---
 
 ### การทดลองที่ 3: แปลง Design เป็น Flutter Code
 
 #### วัตถุประสงค์
+
 เขียน Flutter Widget จาก Design แอปพลิเคชัน **"Green Market"** ที่ออกแบบไว้ใน Figma
 
 #### ขั้นตอนเตรียมการ
 
 **ขั้นตอนที่ 3.1: เตรียม Flutter Project**
+
 1. เปิด Terminal / Command Prompt
 2. สร้าง Flutter Project ใหม่:
    ```bash
@@ -483,7 +492,6 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-
 **ขั้นตอนที่ 3.3: วิเคราะห์ Design เป็น Widget Tree**
 
 ก่อนเขียน code ให้วาด Widget Tree บนกระดาษหรือ Whiteboard:
@@ -509,6 +517,7 @@ Scaffold
 **ขั้นตอนที่ 3.4: สร้างไฟล์โครงสร้าง**
 
 สร้างไฟล์ใหม่ใน `lib/`:
+
 ```
 lib/
 ├── main.dart
@@ -521,6 +530,7 @@ lib/
 ```
 
 สร้างโฟลเดอร์และไฟล์ด้วยคำสั่ง:
+
 ```bash
 mkdir -p lib/screens lib/widgets
 touch lib/screens/home_screen.dart
@@ -873,27 +883,30 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+
+- [x] App Bar แสดงชื่อ "Green Market"
+- [x] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [x] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [x] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [x] Bottom Navigation สลับ Tab ได้
+- [x] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+![ผลการทดลอง](pic/การบันทึกหน้าจอ%202569-08-01%20เวลา%2015.19.27%20%282%29.gif)
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
 
 #### วัตถุประสงค์
+
 ฝึกใช้ Google AI Studio สร้าง Flutter Widget
 
 #### ขั้นตอน
 
 **ขั้นตอนที่ 4.1: เปิด Google AI Studio**
+
 1. ไปที่ https://aistudio.google.com
 2. Login ด้วย Google Account
 3. คลิก **"+ New prompt"** → เลือก **"Chat prompt"**
@@ -914,22 +927,20 @@ Create a Flutter StatelessWidget called "UserProfileCard" that:
 6. Uses Card widget with proper Material 3 elevation
 7. Reads colors from Theme.of(context).colorScheme (NO hardcoded colors)
 8. Has proper padding (16px) and spacing (8px between elements)
-9. Accepts these constructor parameters: name, email, avatarUrl (nullable), 
+9. Accepts these constructor parameters: name, email, avatarUrl (nullable),
    postsCount, followersCount, followingCount
 
 Add brief comments explaining each section.
 ```
 
-**ขั้นตอนที่ 4.3: วิเคราะห์ Code ที่ได้**
+### ขั้นตอนที่ 4.3: วิเคราะห์ Code ที่ได้
 
-อ่าน code ที่ AI สร้างและตอบคำถาม:
-
-| คำถาม | คำตอบ |
-|-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| คำถาม                                           | คำตอบ                                                                                                                                                                                                                                                           |
+| :---------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **AI ใช้ Widget อะไรสร้าง Avatar?**             | ใช้ **`CircleAvatar`**                                                                                                                                                                                                                                          |
+| **AI handle กรณี avatarUrl เป็น null อย่างไร?** | มีการเช็คเงื่อนไข `avatarUrl == null \|\| avatarUrl!.isEmpty` ถ้าเป็นจริง (null หรือว่าง) จะใช้ `Text` แสดงตัวอักษรย่อของชื่อ (`_getInitials`) แทนรูปภาพ และใช้ `backgroundColor` ของ Theme                                                                     |
+| **AI ใช้ color จาก Theme หรือ hardcode?**       | **ใช้ color จาก Theme ทั้งหมด** (Dynamic Colors) เช่น `colorScheme.surface`, `colorScheme.primaryContainer`, `colorScheme.onSurfaceVariant` โดยไม่มีการ Hardcode ค่าสี (เช่น `Colors.blue` หรือ Hex code)                                                       |
+| **มีส่วนไหนที่ควรปรับปรุง?**                    | 1. ปุ่ม `FilledButton` และ `OutlinedButton` ยังไม่มีการรับค่า Callback function (เช่น `VoidCallback onFollow`) ทำให้ยังใช้งานจริงไม่ได้<br>2. ควรเพิ่มการจัดการ Overflow ของ Text เผื่อในกรณีที่ชื่อหรืออีเมลยาวเกินไป (เช่น `overflow: TextOverflow.ellipsis`) |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -950,17 +961,16 @@ Add brief comments explaining each section.
    Then implement it as a Flutter StatelessWidget.
    Use Material 3 components and read colors from Theme.of(context).colorScheme.
    ```
-5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
-   
-```text
-เขียนผลการเปรียบเทียบที่นี่
+5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
 
-```
+: โค้ดที่ AI สร้างขึ้นจากการวิเคราะห์ภาพ (Figma Screenshot) สามารถวางโครงสร้างหลักอย่าง Column, Row และการจัดกลุ่ม (Grouping) ได้ค่อนข้างแม่นยำ และเลือกใช้ Widget พื้นฐานได้อย่างถูกต้อง อย่างไรก็ตาม การกำหนด Padding, Margin หรือขนาด Font อาจจะไม่ได้ Pixel-perfect ตรงกับที่ออกแบบไว้ใน Figma 100% นอกจากนี้ Widget Tree ที่ AI เขียนเองมักจะมีความซับซ้อนน้อยกว่าหรือรวบรัดกว่าการที่เราแตก Widget Tree เองแบบละเอียดในบางจุด แต่ข้อดีคือ AI สามารถนำ Theme (Material 3 ColorScheme) มาประยุกต์ใช้ได้ทันที ทำให้รองรับ Dark Mode ได้โดยอัตโนมัติ
+
 ---
 
-### การทดลองที่ 5: Dark Mode และ Accessibility Check 
+### การทดลองที่ 5: Dark Mode และ Accessibility Check
 
 #### วัตถุประสงค์
+
 ทดสอบว่า UI ทำงานได้ดีทั้ง Light/Dark Mode และผ่าน Accessibility เบื้องต้น
 
 **ขั้นตอนที่ 5.1: ทดสอบ Dark Mode**
@@ -970,17 +980,15 @@ Add brief comments explaining each section.
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
-
-// ยังไม่ต้องทำข้อ 5.2  5.3
+// ยังไม่ต้องทำข้อ 5.2 5.3
 **ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
 
 ใน Flutter DevTools:
+
 1. รัน App ใน Debug mode: `flutter run --debug`
 2. เปิด **Flutter Inspector** กดคีย์ลัด Ctrl + Shift + P (สำหรับ Windows) หรือ Cmd + Shift + P (สำหรับ macOS)
 
-พิมพ์คำว่า: Flutter: Open DevTools
-3. Enable **"Show guidelines"** → จะเห็น layout boundary
-4. ตรวจสอบว่า Interactive element ทุกชิ้นมีขนาดอย่างน้อย **48×48 dp**
+พิมพ์คำว่า: Flutter: Open DevTools 3. Enable **"Show guidelines"** → จะเห็น layout boundary 4. ตรวจสอบว่า Interactive element ทุกชิ้นมีขนาดอย่างน้อย **48×48 dp**
 
 **ขั้นตอนที่ 5.3: ตรวจสอบ Semantic Labels**
 
@@ -1007,29 +1015,27 @@ IconButton(
 
 ### คำถามสรุปการเรียนรู้ (ตอบทุกข้อ)
 
-**ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
+**ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System?
 
-```
-คำตอบ: _______________________________________________
-```
+คำตอบ: Material 3 ใช้ระบบสีแบบ Dynamic Color และ Tonal Palette ซึ่งสีในแอปสามารถเปลี่ยนไปตาม Wallpaper ของเครื่องผู้ใช้ (ใน Android) หรือตาม Seed Color ที่กำหนดได้ สีจะถูกแบ่งออกเป็นคู่ความสัมพันธ์ที่ชัดเจนมากขึ้น เช่น primary คู่กับ onPrimary, surface คู่กับ onSurface เพื่อรับประกันคอนทราสต์ที่เหมาะสม แตกต่างจาก Material 2 ที่ใช้ระบบ Static Color (กำหนด Primary, Accent คงที่)
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
-```
-คำตอบ: _______________________________________________
-```
+คำตอบ: ปัญหาที่พบบ่อยคือ Layout Overflow (จอเหลืองดำ) เนื่องจากใน Figma การทำ Auto Layout อาจไม่ได้กำหนด Constraint ที่ตายตัว เมื่อนำมาเขียนเป็น Row หรือ Column ใน Flutter แล้วเนื้อหาล้นหน้าจอ แก้ไขโดยการใช้ Expanded, Flexible ห่อหุ้ม Widget ที่ขยายตัวได้ หรือใช้ SingleChildScrollView เพื่อให้หน้าจอเลื่อนได้
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
-```
-คำตอบ: _______________________________________________
-```
+คำตอบ: โค้ดด้าน UI มีความสมบูรณ์สูงมาก โครงสร้างสะอาดและรองรับ Material 3 เต็มรูปแบบ แต่ขาดความสมบูรณ์ด้าน Business Logic ต้องปรับปรุงโดยการเพิ่ม Parameter สำหรับรับ Callback Function (เช่น onFollowPressed, onMessagePressed) เพื่อให้ปุ่มตอบสนองได้ และควรเพิ่ม maxLines: 1 และ overflow: TextOverflow.ellipsis ป้องกันเลย์เอาต์พังเมื่อข้อมูลยาวเกินไป
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
-```
-คำตอบ: _______________________________________________
-```
+คำตอบ:
+
+1. ดึงข้อมูล (Data) จากตัวแปร State หรือ API แทนการใส่ข้อมูลจำลอง (Mock data)
+
+2. ปรับแต่งให้เป็น Responsive Design เพื่อให้ Card แสดงผลได้สวยงามทั้งบนหน้าจอมือถือ แท็บเล็ต และเว็บ
+
+3. ทำการ Extract ข้อความที่ Hardcode ไว้ (เช่น คำว่า 'Posts', 'Followers', 'Following') ไปใช้ไฟล์ Localization เพื่อรองรับหลายภาษา
 
 ---
 
