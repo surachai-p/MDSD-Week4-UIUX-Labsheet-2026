@@ -887,12 +887,12 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [ ✓] App Bar แสดงชื่อ "Green Market"
+- [ ✓] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [ ✓] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ ✓] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [ ✓] Bottom Navigation สลับ Tab ได้
+- [ ✓] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
 ```
@@ -941,10 +941,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar โดยกำหนด radius: 32 |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้ _getInitials(name) เป็น fallback และแสดงใน child เมื่อ avatarUrl เป็น null หรือว่าง |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme.of(context).colorScheme โดยตรง ไม่มี hardcode |
+| มีส่วนไหนที่ควรปรับปรุง? |อาจปรับปรุงได้ เช่น เพิ่มการจัดการ error กรณีโหลดรูปจาก avatarUrl ไม่สำเร็จ, รองรับ responsive layout สำหรับหน้าจอเล็ก, และเพิ่ม accessibility เช่น semanticsLabel ให้กับ Avatar |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
