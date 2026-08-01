@@ -379,9 +379,23 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
+<img width="1917" height="1015" alt="image" src="https://github.com/user-attachments/assets/5d7049fb-cf22-4797-8df4-c8c099396cb6" />
+
 ```
+1_Home_Screen
+```
+<img width="320" height="695" alt="image" src="https://github.com/user-attachments/assets/6c2acff3-efd8-4817-9cce-ca50a56468d8" />
+
+```
+2_Detail_Screen
+```
+<img width="340" height="710" alt="image" src="https://github.com/user-attachments/assets/abb8c4d5-d113-4b10-9a9a-85cfd8d73f6b" />
+
+```
+3_Profile_Screen
+```
+<img width="317" height="687" alt="image" src="https://github.com/user-attachments/assets/fbf669e9-8d44-4042-8527-8f4256d33dcf" />
+
 
 ---
 
