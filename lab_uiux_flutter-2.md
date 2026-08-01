@@ -924,10 +924,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ไม่แสดงรูปภาพ (backgroundImage: null) และแสดงตัวอักษรแรกของชื่อ (Initials) แทนในช่อง child |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ color จาก Theme (เรียกผ่าน colorScheme เช่น colorScheme.primaryContainer, colorScheme.onSurface) |
+| มีส่วนไหนที่ควรปรับปรุง? | 1. การจัดการรูปภาพหลุด/โหลดไม่ได้ ควรใช้ Image.network ร่วมกับ errorBuilder แทน NetworkImage เพื่อจัดการกรณี URL ผิดหรือรูปโหลดไม่ได้ 2. Format ตัวเลข _formatCount ถูกใช้แค่กับ followers และ following แต่ไม่ได้ใช้กับ postsCount ควรปรับให้แสดงผลสม่ำเสมอกัน |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
