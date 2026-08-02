@@ -379,10 +379,19 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="1117" height="743" alt="image" src="https://github.com/user-attachments/assets/3e093112-e3c6-433b-b34f-f939c948b33a" />
 
+```
+**1. Home Screen (หน้าหลัก)กดการ์ดสินค้า (เช่น ผักสลัดออร์แกนิก) จะเปิดไป Detail Screen
+     กดแท็บ "โปรไฟล์" (ที่ Bottom Nav) จะเปิดไป Profile Screen
+```
+```
+**2. Detail Screen (หน้ารายละเอียด)กดปุ่มย้อนกลับ (ลูกศรมุมซ้ายบน / ปุ่มย้อนกลับด้านล่าง / แท็บ "หน้าหลัก")  จะกลับไป Home Screen
+     กดแท็บ "โปรไฟล์" (ที่ Bottom Nav)  จะเปิดไป Profile Screen
+```
+```
+**3. Profile Screen (หน้าโปรไฟล์)กดแท็บ "หน้าหลัก" (ที่ Bottom Nav)  จะกลับไป Home Screen
+```
 ---
 
 ### การทดลองที่ 3: แปลง Design เป็น Flutter Code
