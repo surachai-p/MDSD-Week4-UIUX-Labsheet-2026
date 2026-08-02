@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #405F90 |
+| Secondary Color (Hex) | #555F71 |
+| Primary Container (Hex) | #D6E3FF |
+| Surface (Hex) | #F9F9FF |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอป ใช้กับปุ่มหลัก (Button), AppBar และองค์ประกอบสำคัญของ UI|
+| On Primary |สีของข้อความหรือไอคอนที่วางอยู่บนพื้นหลังสี Primary เพื่อให้มองเห็นชัดเจน |
+| Primary Container | สีพื้นของส่วนประกอบที่ต้องการเน้นแต่ไม่เด่นเท่า Primary เช่น Card หรือ Container |
+| On Primary Container | สีข้อความหรือไอคอนที่แสดงบนพื้นหลัง Primary Container เพื่อให้มีความคมชัดและอ่านง่าย |
 
 ---
 
@@ -382,6 +382,8 @@ Screenshot หน้าจอ Design ทั้ง 3 หน้า และบั
 ```image
 วางรูปหน้าจอ ที่นี่
 ```
+<img width="814" height="557" alt="ภาพถ่ายหน้าจอ 2569-08-02 เวลา 18 48 09" src="https://github.com/user-attachments/assets/5f551bc8-6380-4099-a38b-640b631d0c6a" />
+
 
 ---
 
@@ -873,17 +875,19 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✓] App Bar แสดงชื่อ "Green Market"
+- [✓] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✓] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✓] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✓] Bottom Navigation สลับ Tab ได้
+- [✓] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
 ```image
 บันทึกรูปที่นี่
-``` 
+```
+<img width="1700" height="995" alt="ภาพถ่ายหน้าจอ 2569-08-02 เวลา 19 08 22" src="https://github.com/user-attachments/assets/840ec566-4a68-46c0-9f88-b32e6a74ff5b" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +930,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar เพื่อแสดงรูปโปรไฟล์แบบวงกลม |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ถ้า avatarUrl เป็น null จะไม่แสดงรูปภาพ (backgroundImage เป็น null) แต่จะแสดง อักษรย่อของชื่อ (Initials) แทน โดยใช้ตัวแปร _initials เป็น child ของ CircleAvatar |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme (Theme.of(context).colorScheme) เช่น colorScheme.surface, colorScheme.primaryContainer, colorScheme.onSurfaceVariant ไม่มีการกำหนดสีแบบ hardcode |
+| มีส่วนไหนที่ควรปรับปรุง? | เพิ่มการตรวจสอบกรณีรูปภาพโหลดไม่สำเร็จ (onBackgroundImageError), เพิ่ม Semantics เพื่อรองรับการเข้าถึง (Accessibility), หรือทำให้ปุ่ม Follow และ Message รับ callback จากภายนอกแทนการใช้ onPressed: () {} เพื่อให้สามารถนำ Widget ไปใช้ซ้ำได้ง่ายขึ้น |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -954,7 +958,20 @@ Add brief comments explaining each section.
    
 ```text
 เขียนผลการเปรียบเทียบที่นี่
+โครงสร้าง Widget Tree :
 
+การทดลองที่ 3: ใช้ Widget พื้นฐาน โครงสร้างไม่ซับซ้อน เข้าใจง่าย
+Code ที่ AI สร้าง: แยก Widget และหน้าจอเป็นสัดส่วน ใช้ซ้ำได้ และดูแลโค้ดง่ายกว่า
+
+การจัดการโค้ด (Logic & Data) :
+
+การทดลองที่ 3: โค้ดอยู่ในหน้าเดียว เหมาะสำหรับฝึกพื้นฐาน
+Code ที่ AI สร้าง: แยกหน้าจอและใช้ Navigator ทำให้เป็นระบบและขยายต่อได้ง่าย
+
+การใช้ Material Design 3 :
+
+เหมือนกัน: ใช้ Widget ของ Flutter และรองรับ Theme
+ต่างกัน: Code ของ AI ใช้ Material Design 3 ได้ครบกว่า เช่น NavigationBar, FilledButton และ colorScheme
 ```
 ---
 
@@ -970,6 +987,8 @@ Add brief comments explaining each section.
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
+บันทึกผลการทดลอง
+<img width="1710" height="993" alt="ภาพถ่ายหน้าจอ 2569-08-02 เวลา 19 59 20" src="https://github.com/user-attachments/assets/47f6dbf6-19a2-4ad7-bdfd-f6f2bea0b258" />
 
 // ยังไม่ต้องทำข้อ 5.2  5.3
 **ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
@@ -1010,25 +1029,25 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 ใช้ระบบ ColorScheme ที่มีชุดสีครบถ้วนและยืดหยุ่นกว่า Material 2 โดยสามารถสร้างชุดสีจาก Seed Color และรองรับการเปลี่ยนธีม (Dynamic Color) ทำให้การใช้งานสีมีความสอดคล้องและรองรับทั้ง Light และ Dark Mode ได้ดียิ่งขึ้น
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาที่พบคือการจัดตำแหน่งและระยะห่างของ Widget ให้ตรงกับ Figma รวมถึงการเลือก Widget ที่เหมาะสม เช่น Row, Column และ Expanded เพื่อให้หน้าจอแสดงผลได้ถูกต้อง จึงแก้ไขโดยปรับ Layout ใช้ Padding, SizedBox, Expanded และ Card เพื่อให้ UI ใกล้เคียงกับต้นแบบมากที่สุด
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Code ที่ AI สร้างมีโครงสร้างที่ค่อนข้างสมบูรณ์ สามารถใช้งานและแสดงผลได้ แต่ยังต้องปรับปรุงในส่วนของข้อมูลที่ยังเป็น Hardcode การเชื่อมต่อกับฐานข้อมูลหรือ API การจัดการสถานะ (State Management) และการเพิ่มฟังก์ชันการทำงานจริง เช่น การเพิ่มสินค้า การค้นหา และการจัดการข้อมูลผู้ใช้
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ควรเชื่อมต่อข้อมูลกับ API หรือฐานข้อมูลจริง แยก Widget และไฟล์ตามหน้าที่เพื่อให้ง่ายต่อการดูแล เพิ่มการรองรับหน้าจอหลายขนาด (Responsive Design) ปรับปรุงการจัดการ State เพิ่มการตรวจสอบข้อมูล (Validation) และเพิ่มการทดสอบระบบเพื่อให้แอปมีความเสถียรและพร้อมใช้งานจริง
 ```
 
 ---
