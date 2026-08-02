@@ -246,10 +246,10 @@ Prompt ที่ไม่ดี:
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีปุ่มหลัก (จุดที่เด่นที่สุด เช่น ปุ่มตกลง) |
+| On Primary | สีตัวหนังสือ ที่อยู่บนปุ่ม Primary |
+| Primary Container | สีกล่อง/การ์ด (จุดที่เด่นรองลงมา) |
+| On Primary Container | สีตัวหนังสือ ที่อยู่บนกล่อง Primary Container |
 
 ---
 
