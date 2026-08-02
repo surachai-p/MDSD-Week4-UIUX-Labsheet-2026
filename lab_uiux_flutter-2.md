@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #834C74 |
+| Secondary Color (Hex) | #6F5766 |
+| Primary Container (Hex) | #FFD7EF |
+| Surface (Hex) | #FFF8F9 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary |สีหลักของแบรนด์ ใช้กับองค์ประกอบที่ต้องการเน้นย้ำมากที่สุดในหน้าจอ เช่น ปุ่มหลัก (Primary Button), Floating Action Button (FAB) หรือ State ที่กำลังใช้งานอยู่ |
+| On Primary | สีของข้อความ ไอคอน หรือองค์ประกอบกราฟิก ที่วางอยู่ บน สี Primary เพื่อให้เกิด contrast ที่อ่านและมองเห็นได้ชัดเจน |
+| Primary Container | สีพื้นหลังโทนอ่อน/ซอฟต์ ใช้สำหรับเน้นพื้นที่หรือองค์ประกอบระดับรอง เช่น โครงสร้าง Card, ไอคอนแท็บที่ถูกเลือก (Selected Tab) หรือ Highlight Background |
+| On Primary Container | สีของข้อความ หรือไอคอน ที่วางอยู่ บน สี Primary Container |
 
 ---
 
@@ -378,10 +378,8 @@ Prompt ที่ไม่ดี:
 **ขั้นตอนที่ 2.8: บันทึกผลการทดลอง**
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
+<img width="1709" height="991" alt="ภาพถ่ายหน้าจอ 2569-08-03 เวลา 01 48 19" src="https://github.com/user-attachments/assets/a85caf6d-acad-4c9a-a617-aa082d71393a" />
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
 
 ---
 
@@ -873,17 +871,17 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✓] App Bar แสดงชื่อ "Green Market"
+- [✓] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✓] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✓] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✓] Bottom Navigation สลับ Tab ได้
+- [✓] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<img width="1710" height="1087" alt="ภาพถ่ายหน้าจอ 2569-08-03 เวลา 02 13 10" src="https://github.com/user-attachments/assets/cdc83c85-05f8-4107-89da-37f125071cbd" />
+<img width="1710" height="1107" alt="ภาพถ่ายหน้าจอ 2569-08-03 เวลา 02 13 32" src="https://github.com/user-attachments/assets/d694c0a5-6d3e-4eb5-a28b-1f01851274cc" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +924,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ซ่อนรูปภาพ แล้วเปลี่ยนไปแสดงตัวอักษรแรกของชื่อ (ถ้าไม่มีชื่อจะขึ้นเครื่องหมาย ?) |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้จาก Theme ทั้งหมด (ใช้ colorScheme ตามมาตรฐาน Material 3) |
+| มีส่วนไหนที่ควรปรับปรุง? | รูปโหลดไม่ได้: ควรเพิ่มตัวจับ Error เมื่อรูปภาพ Network โหลดไม่ขึ้น |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,7 +951,10 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+AppBar: เหมือนกันทั้ง Leading, Title และ Actions
+FAB & NavigationBar: ปุ่ม Add Product และ เมนู 3 หน้า (Home, Search, Profile) เหมือนกันเป๊ะ
+Body Structure: ใช้ ListView.builder วาง ProductCard สัดส่วน 16px เหมือนกัน
+ProductCard Layout: จัดเรียงเป็น Row 3 ส่วน (Leading Circle + Expanded Column Title/Price + Trailing Icon) ตรงกันทุกจุด
 
 ```
 ---
@@ -1010,25 +1011,27 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 เปลี่ยนมาใช้ระบบ Tonal Palettes (Dynamic Color) ที่สร้างเฉดสีสัมพันธ์กันเป็นคู่ๆ เช่น primary คู่กับ onPrimary และเพิ่มสีกลุ่ม Container เช่น primaryContainer / onPrimaryContainer เพื่อเพิ่มมิติและความยืดหยุ่นในการทำ Dark Mode ให้เข้ากันได้ดีขึ้น ต่างจาก Material 2 ที่เน้นแค่สีหลัก (Primary) และสีรอง (Secondary) แบบคงที่
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
-```
+คำตอบ: สมบูรณ์ในระดับ UI Skeleton (โครงสร้างหน้าตา) ประมาณ 80-90% แต่นำไปใช้จริงทันทีไม่ได้
 
-**ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
-
-```
-คำตอบ: _______________________________________________
+สิ่งที่ต้องปรับปรุง:
+การ Handle Exception: เช่น กรณีรูป Network โหลดไม่ได้ (เพิ่ม Error State)
+Logic การประมวลผล: ปรับการแสดงผล เช่น ตัวเลข 1000 ไม่ควรแสดงเป็น 1.0k
+การส่งผ่าน Event: ปุ่มกดถูก hardcode onPressed: () {} ต้องเปลี่ยนมารับ Callback จาก Parameter ข้างนอก
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ทบทวน State Management: แยกส่วน UI ออกจาก Business Logic (เช่น นำ BLoC, Provider หรือ Riverpod มาจัดการข้อมูล)
+ทำ Component ให้ Reusable: เคลียร์ Hardcoded value ทั้งหมดเป็น Parameter (เช่น เพิ่ม onFollowPressed, onMessagePressed)
+รองรับ Localization (l10n): เปลี่ยนข้อความต่างๆ (เช่น "Posts", "Followers", "Follow") ให้รองรับหลายภาษา
+เพิ่ม Loading & Error State: จัดการ UI ระหว่างรอข้อมูลจาก API หรือเมื่อโหลดข้อมูลไม่สำเร็จ
 ```
 
 ---
