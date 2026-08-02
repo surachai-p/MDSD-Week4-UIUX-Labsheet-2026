@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #2E7D32 |
+| Secondary Color (Hex) | #83967D |
+| Primary Container (Hex) | #bcf0b4 |
+| Surface (Hex) | #f7fbf1 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | 	สีหลักของแบรนด์/แอป ใช้เป็นพื้นหลังของ action ที่สำคัญที่สุด เช่น พื้นปุ่ม FilledButton, FAB, checkbox ที่ถูกเลือก — เป็นสีที่ "เข้ม/เด่น" ที่สุดในกลุ่มนี้ |
+| On Primary | 	สีที่ใช้วางบนพื้น Primary เช่น ตัวหนังสือ/ไอคอนบนปุ่ม — ถูกออกแบบให้ contrast กับ Primary สูงมาก เพื่อให้อ่านชัด |
+| Primary Container | เป็น Primary เวอร์ชัน "อ่อนกว่า/นุ่มกว่า" ใช้เป็นพื้นหลังของพื้นที่ที่อยากให้ดูเกี่ยวข้องกับ Primary แต่ไม่อยากเน้นหนักเท่าปุ่มหลัก เช่น พื้นหลังไอคอนวงกลมใน Card, background ของ badge |
+| On Primary Container | สีที่วางบน Primary Container — เป็นสีที่เข้มกว่า On Primary ตรงข้ามกับคู่แรก เพราะพื้นหลัง Container อ่อนกว่า จึงต้องใช้สีเข้มขึ้นมาคุมให้ contrast พอ |
 
 ---
 
@@ -379,9 +379,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="530" height="408" alt="image" src="https://github.com/user-attachments/assets/44995990-187c-41b5-a8a4-d62485502f57" />
+
 
 ---
 
@@ -873,17 +872,16 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✅] App Bar แสดงชื่อ "Green Market"
+- [✅] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✅] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✅] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✅] Bottom Navigation สลับ Tab ได้
+- [✅] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<img width="1032" height="781" alt="image" src="https://github.com/user-attachments/assets/7f121322-dc73-4bf7-adaf-317eac39b3e2" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +924,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar (radius 32) ตามที่สั่ง |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | เช็คด้วย avatarUrl != null — ถ้ามี URL ใช้ NetworkImage เป็น backgroundImage; ถ้าเป็น null จะสร้างฟังก์ชัน _getInitials(name) ดึงตัวอักษรแรกของชื่อ-นามสกุลมาแสดงแทน (เช่น "John Doe" → "JD") |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้จาก Theme ทั้งหมด — ดึงผ่าน colorScheme.primaryContainer, colorScheme.onSurfaceVariant, colorScheme.onSurface ฯลฯ ไม่มีสี hardcode แบบ Colors.blue เลยสักจุด |
+| มีส่วนไหนที่ควรปรับปรุง? | มี 2 จุด: (1) ไม่ได้ wrap NetworkImage ด้วย error handling — ถ้า URL โหลดรูปไม่สำเร็จแอปจะ crash หรือขึ้น error icon ควรใส่ onBackgroundImageError ป้องกันไว้ (2) ปุ่ม Follow/Message ใส่ onPressed: () {} แบบว่างเปล่า ยังไม่มี logic จริง ต้องเพิ่มทีหลังตอนเอาไปใช้งานจริง |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,8 +951,29 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+เปรียบเทียบโค้ด AI-generated กับโค้ดที่เขียนเองในการทดลองที่ 3:
 
+1. โครงสร้าง Widget Tree คล้ายกันมาก ทั้งคู่ใช้ Scaffold > AppBar > 
+   ListView ของ Card > FAB > NavigationBar เหมือนกัน แสดงว่า AI 
+   วิเคราะห์ layout จากรูปได้ถูกต้องตามที่ตั้งใจออกแบบไว้จริง
+
+2. AI สร้าง widget ชื่อ ProductCard ขึ้นมาเอง (แทนที่จะเป็น ItemCard 
+   ตามที่เราตั้งชื่อเอง) ฟังก์ชันการทำงานเหมือนกันแต่ AI เดา asset 
+   graphic ด้านขวาผิด (ใช้ไอคอน blur_on กลมๆ เฉยๆ แทนไอคอนสินค้าจริง
+   เช่น eco, shopping_basket ที่เราเขียนเอง เพราะ AI เห็นแค่รูปสี่เหลี่ยม
+   ลวดลายจากภาพ ไม่รู้ความหมาย)
+
+3. สีที่ AI เลือกใช้ (colorSchemeSeed สีม่วง 0xFF6750A4) ไม่ตรงกับ 
+   ธีมสีเขียวที่เราตั้งไว้จริงจาก Material Theme Builder เพราะ AI 
+   เดาสีจากโทนที่เห็นในภาพ Figma เท่านั้น ไม่ได้รู้ค่า hex จริงที่เราตั้งไว้
+
+4. AI ใช้ NavigationDestination icon เดียวกันหมดทั้ง 3 ปุ่ม 
+   (Icons.stars_rounded) ซึ่งผิดจากที่เราออกแบบไว้ (home/search/person 
+   แยกกันชัดเจน) แสดงว่า AI ไม่สามารถแยกไอคอนแต่ละปุ่มจากภาพได้แม่นยำ
+
+5. โดยรวม AI ช่วยประหยัดเวลาในการวาง Widget Tree เริ่มต้นได้ดี 
+   แต่รายละเอียดปลีกย่อย (สี, ไอคอน, ชื่อตัวแปร) ยังต้องมาแก้ไขเองให้
+   ตรงกับ design จริง ไม่สามารถใช้โค้ดจาก AI ได้ทันทีแบบ 100%
 ```
 ---
 
@@ -1010,25 +1029,48 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:Material 2 ใช้สีคงที่ (Primary/Accent) ที่นักออกแบบกำหนดตายตัว 
+ต้องเลือกสีทุก state เอง เช่น สีปุ่ม สี disabled ทีละจุด
+ส่วน Material 3 ใช้ Dynamic Color System โดยกำหนดสี "seed" 
+เพียงสีเดียว แล้วระบบจะ generate tonal palette ทั้งชุดให้อัตโนมัติ 
+(Primary, Secondary, Tertiary พร้อม Container/On-Container ของแต่ละสี) 
+ทำให้ contrast ระหว่าง Light/Dark mode ถูกต้องตามมาตรฐาน accessibility 
+โดยไม่ต้องคำนวณเอง
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาที่พบคือ Auto Layout ใน Figma บางครั้งซ้อนกันหลายชั้นโดยไม่ตั้งใจ
+(กด Shift+A ซ้ำ) ทำให้โครงสร้างรกและแปลงเป็น Widget Tree ยากขึ้น 
+แก้ไขโดย Remove Auto Layout ส่วนเกินออกให้เหลือชั้นเดียว
+นอกจากนี้บาง Component ในชุด Material 3 Kit หาชื่อยาก 
+(เช่น Outlined Button) ต้องลองค้นด้วยคำหลายแบบจนเจอ
+ส่วนเวลาต่อ Flutter จริง พบปัญหาไฟล์ main.dart ว่างเปล่า/สลับกับ 
+theme.dart ทำให้ build error ต้องเช็คเนื้อหาไฟล์ให้ถูกต้องก่อนรัน
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: โค้ดที่ AI สร้างมีโครงสร้างถูกต้องตาม Material 3 และอ่านสีจาก 
+Theme ไม่ hardcode ตามที่สั่งไว้ แต่ยังมีจุดที่ต้องปรับ เช่น 
+ตอนวิเคราะห์จากรูป Figma AI เดาสีและไอคอนผิดจากดีไซน์จริง 
+(ใช้สีม่วงแทนสีเขียว, ใช้ icon เดียวกันทั้ง Navigation Bar) 
+รวมถึงไม่มี error handling ตอนโหลดรูปจาก NetworkImage 
+และปุ่ม action ยังไม่มี logic จริง ต้องนำมาแก้ไขเพิ่มก่อนใช้งานจริง
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: _ควรเพิ่มการดึงข้อมูลสินค้าจาก API/Database จริงแทนข้อมูล mock 
+ที่ hardcode ไว้ในโค้ด, เพิ่มการจัดการ state ที่เป็นระบบมากขึ้น 
+(เช่น Provider หรือ Riverpod) แทนการใช้ setState อย่างเดียว, 
+เพิ่ม error handling และ loading state ตอนโหลดรูปภาพ/ข้อมูล, 
+ทำ Search และ Profile tab ให้ทำงานได้จริงแทนที่จะเป็นแค่ปุ่มเปล่า, 
+และเพิ่มการทดสอบ Accessibility (touch target, semantic label) 
+ให้ครบตามที่ขั้นตอน 5.2-5.3 แนะนำไว้
 ```
 
 ---
