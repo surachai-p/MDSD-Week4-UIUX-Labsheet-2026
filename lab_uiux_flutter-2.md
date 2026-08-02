@@ -237,10 +237,10 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #2E7D32 |
+| Secondary Color (Hex) | #83967D |
+| Primary Container (Hex) | #B1F0BE |
+| Surface (Hex) | #F6FBF3 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
@@ -379,9 +379,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+image
+<img width="1019" height="726" alt="image" src="https://github.com/user-attachments/assets/2918b8da-2838-4ee7-8cec-59a7486e321e" />
 
 ---
 
@@ -873,17 +872,17 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [ ✓] App Bar แสดงชื่อ "Green Market"
+- [ ✓] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [ ✓] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ ✓] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [ ✓] Bottom Navigation สลับ Tab ได้
+- [ ✓] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+image
+<img width="473" height="1022" alt="image" src="https://github.com/user-attachments/assets/86ed8969-2dde-4aec-8739-8c614b577215" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +925,16 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar กำหนด radius: 32, backgroundColor เป็น primaryContainer และใช้ foregroundImage สำหรับโหลดรูปภาพ |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้ Ternary Operator ตรวจสอบ avatarUrl != null ? NetworkImage(avatarUrl!) : null หากเป็น null จะแสดงข้อความตัวอักษรย่อ (Initials) จาก Getter _initials ใน child: Text(...) แทน |
+| AI ใช้ color จาก Theme หรือ hardcode? | AI ดึงค่าสีทั้งหมดจาก Theme.of(context).colorScheme (เช่น onSurface, onSurfaceVariant, primaryContainer) โดยไม่มีการ Hardcode สีแบบ Hex Code |
+| มีส่วนไหนที่ควรปรับปรุง? | 1. ควรใส่ maxLines: 1 และ overflow: TextOverflow.ellipsis ให้กับชื่อผู้ใช้และอีเมล ป้องกัน Text Overflow หากข้อความยาวเกินไป
+
+
+2. เพิ่ม clipBehavior: Clip.antiAlias ให้กับ Card
+
+
+3. เพิ่ม onPressed Callback ใน Constructor เพื่อให้ปุ่ม Follow/Message รองรับการกดจากภายนอกได้จริง |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -1010,25 +1015,32 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: M3 ใช้ระบบ Dynamic Color โดยสร้างชุดสีทั้งหมดให้อัตโนมัติจากสีหลักเพียงสีเดียว 
+และมีสีแบบ Container/On-Container ช่วยให้อ่านข้อความง่ายและสบายตาขึ้นทั้งโหมดสว่างและมืด
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 1. ปัญหาข้อความล้นจอ (Yellow-Black Bar): แก้โดยใช้ Expanded ครอบข้อความ และใส่ TextOverflow.ellipsis
+2. ระยะห่างไม่ตรงกับ Figma: แก้โดยนำค่าระยะห่างจาก Figma มาใส่ใน Padding หรือ SizedBox โดยใช้สเกลทีละ 8px (8, 16, 24)
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: สมบูรณ์ประมาณ 90% โครงสร้างหน้าตาถูกต้องสวยงาม แต่ต้องปรับปรุงเรื่อง:
+1. การแยกไฟล์โค้ดออกเป็นส่วนๆ (Reusable Widget)
+2. การใส่ตัวป้องกันข้อความยาวเกินจอ (Text Overflow)
+3. การส่งค่าปุ่มกด (onPressed) ให้ทำงานได้จริง
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 1. ดึงข้อมูลจากฐานข้อมูลหรือ API จริงแทนข้อมูลจำลอง
+2. ใช้ตัวจัดการสถานะ (State Management เช่น Provider/BLoC)
+3. เพิ่มหน้าจอโหลดข้อมูล (Shimmer Loading) และปรับขนาดให้รองรับทั้งจอเล็ก จอใหญ่ และแท็บเล็ต
 ```
 
 ---
