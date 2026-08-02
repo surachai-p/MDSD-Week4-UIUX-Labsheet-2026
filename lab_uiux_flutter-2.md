@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #2E7D32 |
+| Secondary Color (Hex) | #83967D |
+| Primary Container (Hex) | #bcf0b4 |
+| Surface (Hex) | #f7fbf1 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary |	สีหลักของแบรนด์/แอป ใช้กับ UI element ที่สำคัญที่สุดและต้องการให้ผู้ใช้สังเกตเห็นก่อน เช่น พื้นหลังของ FilledButton, FAB, ตัว Checkbox/Switch ที่ถูกเลือก, indicator ของ Tab ที่ active |
+| On Primary |สีที่ใช้กับตัวอักษรหรือไอคอนที่วางอยู่ บนพื้น Primary โดยตรง (เช่น ข้อความบนปุ่ม FilledButton) ต้องมีค่าคอนทราสต์สูงพอให้อ่านง่าย ระบบจะคำนวณให้อัตโนมัติเพื่อผ่านมาตรฐาน accessibility |
+| Primary Container | เวอร์ชัน "อ่อนกว่า/นุ่มกว่า" ของ Primary ใช้เป็นพื้นหลังของ container ที่ต้องการเน้นด้วยธีมสีหลัก แต่ไม่ต้องการความเข้มเท่าปุ่ม action หลัก เช่น พื้นหลังการ์ดที่ถูกเลือก, chip ที่ active, background ของ icon ที่สำคัญรอง ๆ ลงมา |
+| On Primary Container | สีตัวอักษร/ไอคอนที่ใช้วางทับบนพื้น Primary Container เพื่อให้อ่านออกชัดเจนบนพื้นสีอ่อนนั้น ๆ |
 
 ---
 
@@ -382,6 +382,7 @@ Screenshot หน้าจอ Design ทั้ง 3 หน้า และบั
 ```image
 วางรูปหน้าจอ ที่นี่
 ```
+<img width="1070" height="699" alt="image" src="https://github.com/user-attachments/assets/789b6a84-2663-47ce-a68d-e09d27c294d5" />
 
 ---
 
