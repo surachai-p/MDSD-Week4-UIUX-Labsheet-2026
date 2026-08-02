@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #405f90 |
+| Secondary Color (Hex) | #555f71 |
+| Primary Container (Hex) | #d6e3ff |
+| Surface (Hex) | #f9f9ff |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของระบบ ใช้สำหรับองค์ประกอบที่สำคัญที่สุด ดึงดูดสายตามากที่สุด เช่น ปุ่ม Action หลัก หรือสถานะที่ต้องการเน้นย้ำ |
+| On Primary | สีของเนื้อหา เช่น ข้อความหรือไอคอน ที่อยู่บนสี Primary ทำหน้าที่สร้างคอนทราสต์ให้มองเห็นตัวอักษรบนปุ่มได้อย่างชัดเจน ปลอดภัยต่อการอ่าน |
+| Primary Container | สีพื้นหลังสำหรับพื้นที่บรรจุเนื้อหา (Container/Card) ที่ต้องการเน้นรองลงมาจาก Primary มักเป็นโทนสีที่เบาลงมา เพื่อใช้จัดกลุ่มเนื้อหา |
+| On Primary Container | สีของเนื้อหา (ข้อความ/ไอคอน) ที่อยู่บนสี Primary Container มักใช้สีโทนเข้มของแม่สีหลักเพื่อให้เกิดความชัดเจนในการอ่านเนื้อหาภายในกล่องนั้น |
 
 ---
 
@@ -378,10 +378,8 @@ Prompt ที่ไม่ดี:
 **ขั้นตอนที่ 2.8: บันทึกผลการทดลอง**
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
+<img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/cd5c957c-eb67-44c9-bc7d-0768e3d08e41" />
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
 
 ---
 
@@ -873,17 +871,17 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [x] App Bar แสดงชื่อ "Green Market"
+- [x] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [x] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [x] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [x] Bottom Navigation สลับ Tab ได้
+- [x] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/31e18901-3d2f-4b83-b815-9475d3c122d0" />
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/2edc26b7-684b-4620-b4c0-b7adfca9cb7e" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -924,12 +922,303 @@ Add brief comments explaining each section.
 
 อ่าน code ที่ AI สร้างและตอบคำถาม:
 
+- code
+```dart
+import 'package:flutter/material.dart';
+
+/// A Material Design 3 user profile card widget.
+///
+/// Accepts user details and displays an avatar, username, email,
+/// side-by-side action buttons, and statistic counters.
+class UserProfileCard extends StatelessWidget {
+  /// The user's full display name.
+  final String name;
+
+  /// The user's email address.
+  final String email;
+
+  /// Optional URL for the user's avatar image.
+  /// If null or empty, falls back to displaying initials.
+  final String? avatarUrl;
+
+  /// Total number of published posts.
+  final int postsCount;
+
+  /// Total number of followers.
+  final int followersCount;
+
+  /// Total number of accounts being followed.
+  final int followingCount;
+
+  /// Optional callback when the "Follow" button is pressed.
+  final VoidCallback? onFollowPressed;
+
+  /// Optional callback when the "Message" button is pressed.
+  final VoidCallback? onMessagePressed;
+
+  const UserProfileCard({
+    super.key,
+    required this.name,
+    required this.email,
+    this.avatarUrl,
+    required this.postsCount,
+    required this.followersCount,
+    required this.followingCount,
+    this.onFollowPressed,
+    this.onMessagePressed,
+  });
+
+  /// Extracts up to two uppercase initials from the display name.
+  String _getInitials(String displayName) {
+    final trimmed = displayName.trim();
+    if (trimmed.isEmpty) return '?';
+    final parts = trimmed.split(RegExp(r'\s+'));
+    if (parts.length == 1) {
+      return parts.first[0].toUpperCase();
+    }
+    return (parts.first[0] + parts.last[0]).toUpperCase();
+  }
+
+  /// Formats raw counts into human-readable shorthand (e.g., 1250 -> 1.2K).
+  String _formatCount(int count) {
+    if (count >= 1000000) {
+      return '${(count / 1000000).toStringAsFixed(1).replaceAll('.0', '')}M';
+    } else if (count >= 1000) {
+      return '${(count / 1000).toStringAsFixed(1).replaceAll('.0', '')}K';
+    }
+    return count.toString();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // 7. Access current Material 3 ColorScheme and TextTheme from Theme context
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+
+    // 6. Use Card widget with Material 3 elevation and rounded shape
+    return Card(
+      elevation: 1.0, // Material 3 standard card elevation
+      clipBehavior: Clip.antiAlias,
+      child: Padding(
+        // 8. Proper padding (16px) around internal card elements
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // 1. Circular user avatar (radius 32) with image or initials fallback
+            CircleAvatar(
+              radius: 32.0,
+              backgroundColor: colorScheme.primaryContainer,
+              foregroundColor: colorScheme.onPrimaryContainer,
+              backgroundImage: (avatarUrl != null && avatarUrl!.isNotEmpty)
+                  ? NetworkImage(avatarUrl!)
+                  : null,
+              child: (avatarUrl == null || avatarUrl!.isEmpty)
+                  ? Text(
+                      _getInitials(name),
+                      style: textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: colorScheme.onPrimaryContainer,
+                      ),
+                    )
+                  : null,
+            ),
+            const SizedBox(height: 8.0), // 8. 8px vertical spacing
+
+            // 2. Display username using titleLarge TextStyle
+            Text(
+              name,
+              style: textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w600,
+                color: colorScheme.onSurface,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 4.0),
+
+            // 3. Display email using bodyMedium TextStyle in onSurfaceVariant color
+            Text(
+              email,
+              style: textTheme.bodyMedium?.copyWith(
+                color: colorScheme.onSurfaceVariant,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16.0),
+
+            // 5. Row of 3 stats: Posts, Followers, Following (using Column: number + label)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _StatColumn(
+                  label: 'Posts',
+                  count: _formatCount(postsCount),
+                  colorScheme: colorScheme,
+                  textTheme: textTheme,
+                ),
+                _StatDivider(colorScheme: colorScheme),
+                _StatColumn(
+                  label: 'Followers',
+                  count: _formatCount(followersCount),
+                  colorScheme: colorScheme,
+                  textTheme: textTheme,
+                ),
+                _StatDivider(colorScheme: colorScheme),
+                _StatColumn(
+                  label: 'Following',
+                  count: _formatCount(followingCount),
+                  colorScheme: colorScheme,
+                  textTheme: textTheme,
+                ),
+              ],
+            ),
+            const SizedBox(height: 16.0),
+
+            // 4. "Follow" FilledButton and "Message" OutlinedButton side by side
+            Row(
+              children: [
+                Expanded(
+                  child: FilledButton.icon(
+                    onPressed: onFollowPressed ?? () {},
+                    icon: const Icon(Icons.person_add_outlined, size: 18),
+                    label: const Text('Follow'),
+                  ),
+                ),
+                const SizedBox(width: 8.0), // 8. 8px horizontal spacing
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: onMessagePressed ?? () {},
+                    icon: const Icon(Icons.mail_outline, size: 18),
+                    label: const Text('Message'),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Helper widget to render individual statistic columns (number + label)
+class _StatColumn extends StatelessWidget {
+  final String label;
+  final String count;
+  final ColorScheme colorScheme;
+  final TextTheme textTheme;
+
+  const _StatColumn({
+    required this.label,
+    required this.count,
+    required this.colorScheme,
+    required this.textTheme,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Number display
+        Text(
+          count,
+          style: textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: colorScheme.onSurface,
+          ),
+        ),
+        const SizedBox(height: 2.0),
+        // Label display
+        Text(
+          label,
+          style: textTheme.bodySmall?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Subtle vertical divider line between stat columns
+class _StatDivider extends StatelessWidget {
+  final ColorScheme colorScheme;
+
+  const _StatDivider({required this.colorScheme});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 24,
+      width: 1,
+      color: colorScheme.outlineVariant,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Example Usage inside a MaterialApp page:
+// ---------------------------------------------------------------------------
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Material 3 Profile Card',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+          brightness: Brightness.dark,
+        ),
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('UserProfileCard Demo'),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24.0),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 400),
+              child: UserProfileCard(
+                name: 'Alex Rivera',
+                email: 'alex.rivera@flutter.dev',
+                avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250',
+                postsCount: 142,
+                followersCount: 12800,
+                followingCount: 384,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+```
+
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ widget CircleAvatar ในการสร้างรูปภาพโปรไฟล์ทรงกลม โดยกำหนดรัศมี (radius) ไว้ที่ 32.0 units |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ตัวโค้ดจะเช็กเงื่อนไขผ่าน (avatarUrl != null && avatarUrl!.isNotEmpty) หากมี URL จะแสดงภาพผ่าน NetworkImage แต่ถ้าเป็น null หรือค่าว่าง (Empty) จะเปลี่ยนไปใช้ตัวอักษรย่อแทน โดยเรียกฟังก์ชัน _getInitials(name) มาวาดข้อความเป็นตัวลูก (child) แทนการดึงภาพจากเน็ต |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ color จาก Theme ครับ ไม่มีการ Hardcode รหัสสีเลย โดยเรียกใช้โทนสีของระบบ Material 3 ผ่าน Theme.of(context).colorScheme เช่น primaryContainer, onPrimaryContainer, onSurface, และ onSurfaceVariant ทำให้รองรับการเปลี่ยนธีมมืด/สว่าง (Dark/Light mode) ได้ทันที |
+| มีส่วนไหนที่ควรปรับปรุง? | - การโหลดรูปภาพ: ควรเพิ่ม Error Builder เพื่อรองรับกรณีโหลดรูปไม่สำเร็จ (เช่น ลิงก์เสีย, ไม่มีเน็ต) แทนการปล่อยให้แอป Error <br> - สถานะปุ่ม: ไม่ควรใช้ฟังก์ชันว่าง () {} เป็นค่าเริ่มต้น ควรปล่อยเป็น null เพื่อให้ปุ่มแสดงสถานะ Disabled เมื่อไม่มี Action <br> - การจัดวางสถิติ: ควรใช้ Expanded ล้อมรอบแต่ละคอลัมน์สถิติ เพื่อให้แบ่งพื้นที่เท่ากันและป้องกันปัญหาข้อความล้นจอในมือถือหน้าจอแคบ |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -952,10 +1241,15 @@ Add brief comments explaining each section.
    ```
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
-```text
-เขียนผลการเปรียบเทียบที่นี่
-
-```
+- โครงสร้าง Widget Tree:
+    - การทดลองที่3: เน้นโครงสร้างเรียบง่ายและเป็นเส้นตรง (Flat) ใช้ Container ทำกรอบไอคอนสินค้าแบบง่าย ๆ
+    - AI วิเคราะห์ (Multimodal): โครงสร้างลึกและละเอียดกว่า (Deep Hierarchy) มองขาดเรื่องดีไซน์ โดยใช้ ClipRRect ครอบ Image.network ตามภาพ Mockup จริง พร้อมเพิ่ม errorBuilder เพื่อป้องกันแอปพังหากรูปภาพโหลดไม่ขึ้น
+- การจัดการข้อมูล (Logic & Data):
+    - การทดลองที่3: สถาปัตยกรรมดีกว่า แยกส่วนข้อมูลออกจาก UI ชัดเจน มีการสร้าง Product Data Model และใช้ List บริหารข้อมูล
+    - AI วิเคราะห์: มักจะเน้น Hardcode ข้อมูลลงไปใน UI โดยตรง ขาดความยืดหยุ่นในการทำ Dynamic Data
+- ระบบ Material Design 3:
+    - ความเหมือน: ทั้งคู่ดึงค่าสีสัมพันธ์ผ่าน Theme.of(context).colorScheme ได้ถูกต้องตามมาตรฐาน ไม่มีการ Hardcode รหัสสี
+    - ความต่าง: โค้ดที่เขียนเองมีการ Custom ทรงปุ่มเพิ่มด้วย styleFrom ขณะที่ AI จะยึดมาตรฐานเดิมของ Component นั้น ๆ  
 ---
 
 ### การทดลองที่ 5: Dark Mode และ Accessibility Check 
@@ -970,17 +1264,22 @@ Add brief comments explaining each section.
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
+บันทึกผลการทดลอง
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/5ef21bba-d897-46d0-b2fd-1413a6c2b5f0" />
 
-// ยังไม่ต้องทำข้อ 5.2  5.3
+// ยังไม่ต้องทำข้อ 5.2  5.3 <br>
+
 **ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
 
 ใน Flutter DevTools:
 1. รัน App ใน Debug mode: `flutter run --debug`
-2. เปิด **Flutter Inspector** กดคีย์ลัด Ctrl + Shift + P (สำหรับ Windows) หรือ Cmd + Shift + P (สำหรับ macOS)
-
-พิมพ์คำว่า: Flutter: Open DevTools
+2. เปิด **Flutter Inspector** กดคีย์ลัด Ctrl + Shift + P (สำหรับ Windows) หรือ Cmd + Shift + P (สำหรับ macOS) พิมพ์คำว่า: `Flutter: Open DevTools`
 3. Enable **"Show guidelines"** → จะเห็น layout boundary
 4. ตรวจสอบว่า Interactive element ทุกชิ้นมีขนาดอย่างน้อย **48×48 dp**
+
+บันทึกผลการทดลอง
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a53e1449-1087-4b5c-b531-437fd3cba987" />
+
 
 **ขั้นตอนที่ 5.3: ตรวจสอบ Semantic Labels**
 
@@ -1004,33 +1303,34 @@ IconButton(
 ตรวจสอบทุก `IconButton` ว่ามี `tooltip` ครบ
 
 ---
+### Work repository
+- https://github.com/PetchAuisui/week03_ui_lab.git
+---
 
 ### คำถามสรุปการเรียนรู้ (ตอบทุกข้อ)
 
-**ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
+**ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? <br>
+**คำตอบ:** Material 3 เปลี่ยนมาใช้ระบบ Dynamic Color System ที่สร้าง Color Scheme ทั้งหมดขึ้นมาโดยอ้างอิงจากสีหลัก (Seed Color) เพียงสีเดียว โดยจะแปลงเป็น Tonal Palettesและแบ่งกลุ่มหน้าที่การใช้งานออกเป็นคู่สีระหว่างสีพื้นหลัง (Container) และสีของเนื้อหาที่อยู่บนพื้นหลังนั้น (On-Container) อย่างชัดเจน เช่น Primary คู่กับ On Primary ทำให้สามารถควบคุม Contrast และรองรับ Light/Dark Mode ได้ง่ายขึ้น ในขณะที่ Material 2 จะเน้นการกำหนดคู่สีหลัก (Primary, Secondary) แบบคงที่ (Static) โดยไม่ได้แยกส่วน Container และ On-Container อย่างเป็นระบบเท่านี้
 
-```
-คำตอบ: _______________________________________________
-```
+**ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร? <br>
+**คำตอบ:** ปัญหาที่พบและการแก้ไข ได้แก่:
+1. ปัญหาข้อความยาวเกินไปจนล้นหน้าจอ (Overflow) -> แก้ไขโดยการห่อตัวอักษรด้วย Expanded Widget และใช้คุณสมบัติ maxLines ร่วมกับ TextOverflow.ellipsis ใน Text Widget เพื่อตัดคำ
+2. ปัญหาการควบคุมระยะห่างและ Layout -> แก้ไขโดยการวิเคราะห์โครงสร้าง Figma ที่ใช้ Auto Layout มาแปลงเป็น Column, Row และใช้ Padding หรือ SizedBox ในการเว้นระยะห่างใน Flutter
+3. ปัญหาการกดลิงก์ข้ามหน้าจอและการสัมผัส (Touch Target) -> แก้ไขโดยการห่อ Card ด้วย InkWell และกำหนดขอบเขตให้ชัดเจนเพื่อรองรับการกด (On Tap) ไปยังหน้าถัดไป
 
-**ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
+**ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง? <br>
+**คำตอบ:** โค้ดมีความสมบูรณ์สูงในแง่ของโครงสร้างตามหลัก Material Design 3, ไม่มีการ Hardcode สี และมีการแบ่ง Reusable Widget ย่อยที่ดี แต่ยังมีส่วนที่ต้องปรับปรุง ได้แก่:
+1. การโหลดรูปภาพ: ควรเพิ่มการใช้ errorBuilder หรือ placeholders ใน NetworkImage เพื่อรองรับกรณีที่ไม่มีอินเทอร์เน็ตหรือลิงก์รูปภาพเสีย
+2. สถานะปุ่ม: ควรอนุญาตให้ฟังก์ชัน callback เป็น null ได้ เพื่อให้ปุ่มเปลี่ยนเป็นสถานะ Disabled เมื่อไม่มี Action แทนการใส่ () {} เป็นค่าเริ่มต้น
+3. Layout ในหน้าจอแคบ: ควรใช้ Expanded หรือ Flexible ครอบในส่วนของ Stat Column เพื่อกระจายพื้นที่เท่ากันและป้องกันการ Overflow เมื่อเปิดในมือถือเครื่องเล็ก
 
-```
-คำตอบ: _______________________________________________
-```
-
-**ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
-
-```
-คำตอบ: _______________________________________________
-```
-
-**ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
-
-```
-คำตอบ: _______________________________________________
-```
-
+**ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง? <br>
+**คำตอบ:** สิ่งที่ต้องปรับปรุงสำหรับการนำไปใช้ใน Project จริง ได้แก่:
+1. การจัดการสเตท (State Management): เปลี่ยนจาก StatefulWidget พื้นฐาน ไปใช้ตัวจัดการระบบที่สเกลได้ดีขึ้น เช่น Provider, Bloc หรือ Riverpod
+2. การโหลดข้อมูลจริง (Data Binding): ดึงข้อมูลจาก API หรือฐานข้อมูล (Firebase/REST API) แทนการใช้ข้อมูล Mock แบบ Hardcode ในโค้ด
+3. การปรับปรุงประสิทธิภาพ (Performance Optimization): นำรูปภาพจริงเข้ามาใส่แทน Container Placeholder และเพิ่ม Caching ของรูปภาพ
+4. Accessibility & Responsiveness: ตรวจสอบ touch target size ให้ได้มาตรฐาน 48x48 dp และทดสอบกับหน้าจอหลายขนาด (Responsive Layout)
+   
 ---
 
 ## 📖 แหล่งอ้างอิง
