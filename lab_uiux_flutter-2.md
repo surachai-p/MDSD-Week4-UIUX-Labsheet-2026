@@ -924,10 +924,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ซ่อนรูปภาพ แล้วเปลี่ยนไปแสดงตัวอักษรแรกของชื่อ (ถ้าไม่มีชื่อจะขึ้นเครื่องหมาย ?) |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้จาก Theme ทั้งหมด (ใช้ colorScheme ตามมาตรฐาน Material 3) |
+| มีส่วนไหนที่ควรปรับปรุง? | รูปโหลดไม่ได้: ควรเพิ่มตัวจับ Error เมื่อรูปภาพ Network โหลดไม่ขึ้น |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
