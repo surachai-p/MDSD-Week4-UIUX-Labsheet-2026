@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #405f90 |
+| Secondary Color (Hex) | #555f71 |
+| Primary Container (Hex) | #d6e3ff |
+| Surface (Hex) | #f9f9ff |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของระบบ ใช้สำหรับองค์ประกอบที่สำคัญที่สุด ดึงดูดสายตามากที่สุด เช่น ปุ่ม Action หลัก หรือสถานะที่ต้องการเน้นย้ำ |
+| On Primary | สีของเนื้อหา เช่น ข้อความหรือไอคอน ที่อยู่บนสี Primary ทำหน้าที่สร้างคอนทราสต์ให้มองเห็นตัวอักษรบนปุ่มได้อย่างชัดเจน ปลอดภัยต่อการอ่าน |
+| Primary Container | สีพื้นหลังสำหรับพื้นที่บรรจุเนื้อหา (Container/Card) ที่ต้องการเน้นรองลงมาจาก Primary มักเป็นโทนสีที่เบาลงมา เพื่อใช้จัดกลุ่มเนื้อหา |
+| On Primary Container | สีของเนื้อหา (ข้อความ/ไอคอน) ที่อยู่บนสี Primary Container มักใช้สีโทนเข้มของแม่สีหลักเพื่อให้เกิดความชัดเจนในการอ่านเนื้อหาภายในกล่องนั้น |
 
 ---
 
@@ -379,9 +379,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="1470" height="956" alt="ภาพถ่ายหน้าจอ 2569-08-02 เวลา 21 21 23" src="https://github.com/user-attachments/assets/b5dff674-b388-46bb-b6b9-5e55d4669e8b" />
+
 
 ---
 
@@ -873,17 +872,20 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✔️] App Bar แสดงชื่อ "Green Market"
+- [✔️] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✔️] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✔️] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✔️] Bottom Navigation สลับ Tab ได้
+- [✔️] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+<img width="1470" height="956" alt="ภาพถ่ายหน้าจอ 2569-08-02 เวลา 22 33 14" src="https://github.com/user-attachments/assets/95d6a823-c37a-488e-813a-257de12ca8ca" />
+
+<img width="1470" height="956" alt="ภาพถ่ายหน้าจอ 2569-08-02 เวลา 22 33 24" src="https://github.com/user-attachments/assets/acaec031-b8a4-4c55-8482-54e1f405efdf" />
+
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +928,12 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ widget CircleAvatar ในการสร้างรูปภาพโปรไฟล์ทรงกลม โดยกำหนดรัศมี (radius) ไว้ที่ 32.0 units |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ตัวโค้ดจะเช็กเงื่อนไขผ่าน (avatarUrl != null && avatarUrl!.isNotEmpty) หากมี URL จะแสดงภาพผ่าน NetworkImage แต่ถ้าเป็น null หรือค่าว่าง (Empty) จะเปลี่ยนไปใช้ตัวอักษรย่อแทน โดยเรียกฟังก์ชัน _getInitials(name) มาวาดข้อความเป็นตัวลูก (child) แทนการดึงภาพจากเน็ต |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ color จาก Theme ครับ ไม่มีการ Hardcode รหัสสีเลย โดยเรียกใช้โทนสีของระบบ Material 3 ผ่าน Theme.of(context).colorScheme เช่น primaryContainer, onPrimaryContainer, onSurface, และ onSurfaceVariant ทำให้รองรับการเปลี่ยนธีมมืด/สว่าง (Dark/Light mode) ได้ทันที |
+| มีส่วนไหนที่ควรปรับปรุง? | - การโหลดรูปภาพ: ควรเพิ่ม Error Builder เพื่อรองรับกรณีโหลดรูปไม่สำเร็จ (เช่น ลิงก์เสีย, ไม่มีเน็ต) แทนการปล่อยให้แอป Error
+- สถานะปุ่ม: ไม่ควรใช้ฟังก์ชันว่าง () {} เป็นค่าเริ่มต้น ควรปล่อยเป็น null เพื่อให้ปุ่มแสดงสถานะ Disabled เมื่อไม่มี Action
+- การจัดวางสถิติ: ควรใช้ Expanded ล้อมรอบแต่ละคอลัมน์สถิติ เพื่อให้แบ่งพื้นที่เท่ากันและป้องกันปัญหาข้อความล้นจอในมือถือหน้าจอแคบ |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,8 +957,17 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+โครงสร้าง Widget Tree (Widget Tree Structure)
+- การทดลองที่ 3: เน้นโครงสร้าง Widget Tree แบบเรียบง่าย (Flat Structure) ใช้ Container เป็นกรอบสำหรับแสดงไอคอนสินค้า ทำให้โค้ดอ่านง่ายและมีจำนวน Widget ไม่มาก
+- AI วิเคราะห์ (Multimodal): ใช้โครงสร้าง Widget Tree ที่ลึกกว่า (Deep Hierarchy) โดยเพิ่ม ClipRRect ครอบ Image.network เพื่อให้ภาพมีมุมโค้งตรงกับ Mockup และเพิ่ม errorBuilder เพื่อรองรับกรณีโหลดรูปภาพไม่สำเร็จ ช่วยป้องกันแอปเกิดข้อผิดพลาด
 
+การจัดการข้อมูล (Logic & Data)
+- การทดลองที่ 3: มีการออกแบบโครงสร้างข้อมูลที่ดีกว่า โดยแยกข้อมูลออกจากส่วนติดต่อผู้ใช้ (UI) อย่างชัดเจน สร้าง Product Data Model และใช้ List สำหรับจัดเก็บข้อมูล ทำให้รองรับการเพิ่มหรือลดข้อมูลได้ง่าย
+- AI วิเคราะห์: มักใช้การ Hardcode ข้อมูลลงใน UI โดยตรง ทำให้โค้ดมีความยืดหยุ่นน้อย และไม่เหมาะกับการจัดการข้อมูลแบบ Dynamic
+
+ระบบ Material Design 3
+- ความเหมือน: ทั้งสองแนวทางใช้ Theme.of(context).colorScheme ในการดึงค่าสีจาก Theme ตามหลัก Material Design 3 โดยไม่มีการกำหนดรหัสสี (Hardcode Color) โดยตรง
+- ความแตกต่าง: โค้ดจากการทดลองที่ 3 มีการปรับแต่งรูปแบบปุ่มเพิ่มเติมด้วย styleFrom เพื่อให้ตรงกับการออกแบบที่ต้องการ ขณะที่ AI จะใช้รูปแบบมาตรฐาน (Default Component Style) ของ Material Design 3 เป็นหลัก
 ```
 ---
 
@@ -970,6 +983,9 @@ Add brief comments explaining each section.
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
+บันทึกผลการทดลอง
+<img width="1470" height="956" alt="ภาพถ่ายหน้าจอ 2569-08-02 เวลา 21 55 11" src="https://github.com/user-attachments/assets/5dcb11c7-3646-4ff6-97d0-ea258f53ec98" />
+
 
 // ยังไม่ต้องทำข้อ 5.2  5.3
 **ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
@@ -981,6 +997,11 @@ Add brief comments explaining each section.
 พิมพ์คำว่า: Flutter: Open DevTools
 3. Enable **"Show guidelines"** → จะเห็น layout boundary
 4. ตรวจสอบว่า Interactive element ทุกชิ้นมีขนาดอย่างน้อย **48×48 dp**
+
+บันทึกผลการทดลอง
+<img width="1469" height="954" alt="ภาพถ่ายหน้าจอ 2569-08-02 เวลา 23 06 23" src="https://github.com/user-attachments/assets/85e5ed7f-b0ed-403d-8989-cd18f54596d7" />
+
+
 
 **ขั้นตอนที่ 5.3: ตรวจสอบ Semantic Labels**
 
@@ -1010,25 +1031,38 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 เปลี่ยนมาใช้ระบบ Dynamic Color System ที่สร้าง Color Scheme ทั้งหมดขึ้นมาโดยอ้างอิงจากสีหลัก (Seed Color) เพียงสีเดียว โดยจะแปลงเป็น Tonal Palettesและแบ่งกลุ่มหน้าที่การใช้งานออกเป็นคู่สีระหว่างสีพื้นหลัง (Container) และสีของเนื้อหาที่อยู่บนพื้นหลังนั้น (On-Container) อย่างชัดเจน เช่น Primary คู่กับ On Primary ทำให้สามารถควบคุม Contrast และรองรับ Light/Dark Mode ได้ง่ายขึ้น ในขณะที่ Material 2 จะเน้นการกำหนดคู่สีหลัก (Primary, Secondary) แบบคงที่ (Static) โดยไม่ได้แยกส่วน Container และ On-Container อย่างเป็นระบบเท่านี้
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาที่พบและการแก้ไข ได้แก่:
+
+1. ปัญหาข้อความยาวเกินไปจนล้นหน้าจอ (Overflow) -> แก้ไขโดยการห่อตัวอักษรด้วย Expanded Widget และใช้คุณสมบัติ maxLines ร่วมกับ TextOverflow.ellipsis ใน Text Widget เพื่อตัดคำ
+2. ปัญหาการควบคุมระยะห่างและ Layout -> แก้ไขโดยการวิเคราะห์โครงสร้าง Figma ที่ใช้ Auto Layout มาแปลงเป็น Column, Row และใช้ Padding หรือ SizedBox ในการเว้นระยะห่างใน Flutter
+3. ปัญหาการกดลิงก์ข้ามหน้าจอและการสัมผัส (Touch Target) -> แก้ไขโดยการห่อ Card ด้วย InkWell และกำหนดขอบเขตให้ชัดเจนเพื่อรองรับการกด (On Tap) ไปยังหน้าถัดไป
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ค้ดมีความสมบูรณ์สูงในแง่ของโครงสร้างตามหลัก Material Design 3, ไม่มีการ Hardcode สี และมีการแบ่ง Reusable Widget ย่อยที่ดี แต่ยังมีส่วนที่ต้องปรับปรุง ได้แก่:
+
+1. การโหลดรูปภาพ: ควรเพิ่มการใช้ errorBuilder หรือ placeholders ใน NetworkImage เพื่อรองรับกรณีที่ไม่มีอินเทอร์เน็ตหรือลิงก์รูปภาพเสีย
+2. สถานะปุ่ม: ควรอนุญาตให้ฟังก์ชัน callback เป็น null ได้ เพื่อให้ปุ่มเปลี่ยนเป็นสถานะ Disabled เมื่อไม่มี Action แทนการใส่ () {} เป็นค่าเริ่มต้น
+3. Layout ในหน้าจอแคบ: ควรใช้ Expanded หรือ Flexible ครอบในส่วนของ Stat Column เพื่อกระจายพื้นที่เท่ากันและป้องกันการ Overflow เมื่อเปิดในมือถือเครื่องเล็ก
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: สิ่งที่ต้องปรับปรุงสำหรับการนำไปใช้ใน Project จริง ได้แก่:
+
+1. การจัดการสเตท (State Management): เปลี่ยนจาก StatefulWidget พื้นฐาน ไปใช้ตัวจัดการระบบที่สเกลได้ดีขึ้น เช่น Provider, Bloc หรือ Riverpod
+2. การโหลดข้อมูลจริง (Data Binding): ดึงข้อมูลจาก API หรือฐานข้อมูล (Firebase/REST API) แทนการใช้ข้อมูล Mock แบบ Hardcode ในโค้ด
+3. การปรับปรุงประสิทธิภาพ (Performance Optimization): นำรูปภาพจริงเข้ามาใส่แทน Container Placeholder และเพิ่ม Caching ของรูปภาพ
+4. Accessibility & Responsiveness: ตรวจสอบ touch target size ให้ได้มาตรฐาน 48x48 dp และทดสอบกับหน้าจอหลายขนาด (Responsive Layout)
 ```
 
 ---
