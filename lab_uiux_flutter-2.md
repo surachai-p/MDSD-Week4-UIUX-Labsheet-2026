@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #8a5023|
+| Secondary Color (Hex) | #755846 |
+| Primary Container (Hex) | #ffdcc6 |
+| Surface (Hex) | #fff8f5 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | ใช้กับ Action หลักของแอป เช่น พื้นหลังของปุ่มที่สำคัญที่สุด, FAB, หรือ Checkbox ที่เลือกแล้ว |
+| On Primary | สีของตัวอักษรหรือไอคอนที่วางอยู่บน Container ที่เป็นสี Primary (เพื่อให้ตัดกันและอ่านง่าย) |
+| Primary Container | พื้นหลังของคอมโพเนนต์ที่สำคัญรองลงมา หรือกินพื้นที่กว้างกว่า |
+| On Primary Container | สีตัวอักษรหรือไอคอนที่วางอยู่บนคอมโพเนนต์ที่เป็น Primary Container |
 
 ---
 
@@ -379,9 +379,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="1097" height="737" alt="image" src="https://github.com/user-attachments/assets/07bfaee6-badc-41f3-8e5f-41e98b90047f" />
+
 
 ---
 
@@ -873,17 +872,17 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [ ☑ ] App Bar แสดงชื่อ "Green Market"
+- [ ☑ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [ ☑ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ ☑ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [ ☑ ] Bottom Navigation สลับ Tab ได้
+- [ ☑ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<img width="507" height="796" alt="image" src="https://github.com/user-attachments/assets/412f20d9-d311-4930-b824-0a9e00f88d8d" />
+<img width="507" height="797" alt="image" src="https://github.com/user-attachments/assets/307629e4-33ee-4300-a192-ab549d5a2d84" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -924,12 +923,152 @@ Add brief comments explaining each section.
 
 อ่าน code ที่ AI สร้างและตอบคำถาม:
 
+โค้ดที่ได้
+```
+import 'package:flutter/material.dart';
+
+class UserProfileCard extends StatelessWidget {
+  final String name;
+  final String email;
+  final String? avatarUrl;
+  final int postsCount;
+  final int followersCount;
+  final int followingCount;
+
+  const UserProfileCard({
+    super.key,
+    required this.name,
+    required this.email,
+    this.avatarUrl,
+    required this.postsCount,
+    required this.followersCount,
+    required this.followingCount,
+  });
+
+  // Helper method to extract initials from the name
+  String get _initials {
+    if (name.isEmpty) return '';
+    final parts = name.trim().split(' ');
+    if (parts.length > 1) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return parts[0][0].toUpperCase();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Reading color scheme and text theme from context
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
+    return Card(
+      // 6. Card with proper Material 3 elevation (Level 1 is standard for M3)
+      elevation: 1,
+      margin: const EdgeInsets.all(8.0),
+      child: Padding(
+        // 8. Proper padding (16px)
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // 1. Circular User Avatar (Radius 32)
+            CircleAvatar(
+              radius: 32,
+              backgroundColor: colorScheme.primaryContainer,
+              backgroundImage: avatarUrl != null ? NetworkImage(avatarUrl!) : null,
+              child: avatarUrl == null
+                  ? Text(
+                      _initials,
+                      style: TextStyle(color: colorScheme.onPrimaryContainer),
+                    )
+                  : null,
+            ),
+            const SizedBox(height: 8), // 8. Spacing (8px)
+
+            // 2. Username using titleLarge
+            Text(
+              name,
+              style: textTheme.titleLarge?.copyWith(
+                color: colorScheme.onSurface,
+              ),
+            ),
+
+            // 3. Email using bodyMedium and onSurfaceVariant
+            Text(
+              email,
+              style: textTheme.bodyMedium?.copyWith(
+                color: colorScheme.onSurfaceVariant,
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            // 5. Row of 3 stats: Posts, Followers, Following
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _buildStatColumn("Posts", postsCount.toString(), context),
+                _buildStatColumn("Followers", followersCount.toString(), context),
+                _buildStatColumn("Following", followingCount.toString(), context),
+              ],
+            ),
+            const SizedBox(height: 16),
+
+            // 4. Follow (Filled) and Message (Outlined) buttons
+            Row(
+              children: [
+                Expanded(
+                  child: FilledButton(
+                    onPressed: () {},
+                    child: const Text("Follow"),
+                  ),
+                ),
+                const SizedBox(width: 8), // 8. Spacing (8px)
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    child: const Text("Message"),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // 5. Helper to build the stat column
+  Widget _buildStatColumn(String label, String value, BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
+    return Column(
+      children: [
+        Text(
+          value,
+          style: textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: colorScheme.onSurface,
+          ),
+        ),
+        Text(
+          label,
+          style: textTheme.labelMedium?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
+    );
+  }
+}
+```
+
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ Widget ที่ชื่อว่า CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้เงื่อนไขตรวจสอบ (Ternary Operator: ? :) ถ้า avatarUrl เป็น null จะไม่โหลดรูปภาพ แต่จะแสดงตัวอักษรย่อของชื่อ (ดึงจากเมธอด _initials) ออกมาเป็น Text วางไว้ตรงกลางแทน |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้จาก Theme โดยการอ่านค่าผ่าน Theme.of(context).colorScheme แล้วนำมาเรียกใช้  โดยไม่มีการ Hardcode กำหนดรหัสสีลงไปตรง ๆ |
+| มีส่วนไหนที่ควรปรับปรุง? | ควรปรับปรุงส่วนของการดึงรูปภาพ NetworkImage(avatarUrl!)  เพราะในแอปจริงหาก URL พังหรือไม่มีอินเทอร์เน็ต แอปอาจจะแสดง Error ได้ ควรเพิ่มการจัดการข้อผิดพลาด เช่น ใช้ errorBuilder หรือเปลี่ยนไปใช้แพ็กเกจอย่าง cached_network_image เพื่อให้ทำงานได้เสถียรขึ้น|
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -952,9 +1091,10 @@ Add brief comments explaining each section.
    ```
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
-```text
-เขียนผลการเปรียบเทียบที่นี่
-
+```
+- โครงสร้าง UI: Code ที่เขียนเองในการทดลองที่ 3 เรียบง่าย ส่วน AI โครงสร้างซ้อนกันลึกและเก็บรายละเอียดจาก Mockup (เช่น ความโปร่งแสง หรือความโค้งมน) ได้เป๊ะกว่า
+- การจัดการข้อมูล: Code ที่เขียนเองในการทดลองที่ 3 ยืดหยุ่นกว่าเพราะแยกข้อมูลออกจาก UI (ใช้ List) ส่วน AI มักจะ Hardcode พิมพ์ข้อความฝังลงไปเลย ซึ่งเอาไปใช้ต่อกับฐานข้อมูลจริงได้ยาก
+- การจัดระเบียบไฟล์:Code ที่เขียนเองในการทดลองที่ 3 มีการแยกไฟล์ Component ชัดเจนและเป็นระเบียบ ส่วน AI มักจะสร้างทุกอย่างกระจุกรวมมาในไฟล์เดียว
 ```
 ---
 
@@ -969,6 +1109,13 @@ Add brief comments explaining each section.
 2. รัน App → ตรวจสอบว่าทุก Text อ่านออกหรือไหม
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
+
+**ผลการทดลอง**
+<img width="502" height="798" alt="image" src="https://github.com/user-attachments/assets/a1667d8b-b208-4925-ab6a-61a3d1d69148" />
+<img width="503" height="800" alt="image" src="https://github.com/user-attachments/assets/fb45ecf1-1881-4db1-a279-fe04c761afe6" />
+<img width="505" height="797" alt="image" src="https://github.com/user-attachments/assets/0c34553a-6056-4e87-9e01-60c25a0ce6c4" />
+
+
 
 
 // ยังไม่ต้องทำข้อ 5.2  5.3
@@ -1010,25 +1157,32 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 ใช้ระบบ Dynamic Color ที่มีความละเอียดของชุดสีลึกกว่า เช่น มีกลุ่มสีย่อยประเภท Container และสีตัวอักษรที่คู่กัน (On-Colors)
+ซึ่งระบบจะคำนวณคอนทราสต์ให้อัตโนมัติ ทำให้การสลับใช้งานระหว่าง Light Mode และ Dark Mode ได้ดีแบบโดยไม่ต้องตั้งค่าสีใหม่
+ต่างจาก Material 2 ที่นักพัฒนาต้องกำหนดชุดสีแบบคงที่ (Static)
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: พบปัญหาการแสดงผลทับซ้อน ปุ่ม Floating Action Button แสดงค้างในหน้าโปรไฟล์
+แก้ไขโดยการเพิ่มเงื่อนไข (_selectedIndex == 0) เพื่อซ่อนปุ่มในแท็บอื่นที่ไม่ได้ใช้งาน และต้องเขียน Logic จัดการ String ภาษาไทยใหม่ด้วยตนเอง
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: โค้ดมีความสมบูรณ์สูงในแง่ของการจัดวาง Layout และการดึง Theme สีของ Material 3 มาใช้
+และต้องปรับปรุงด้านการจัดการข้อมูล เพราะ AI มักจะใช้วิธี Hardcode ฝังข้อความลงใน UI โดยตรง
+ควรปรับปรุงเรื่อง Error Handling เช่น ดักจับกรณีโหลด URL รูปภาพไม่สำเร็จ และแยกโค้ดออกเป็นไฟล์ Component ย่อยๆ
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ต้องเปลี่ยนการแสดงผลแบบ Hardcode เป็นการดึงข้อมูลจาก API หรือ Database จริง
+และเพิ่มสถานะการโหลด (Loading) หรือแจ้งเตือน (Error State)
+เพิ่มการรองรับผู้พิการ ตรวจสอบขนาดปุ่มให้กดง่าย และเพิ่มระบบค้นหา/กรองสินค้าให้ใช้งานจริงได้
 ```
 
 ---
