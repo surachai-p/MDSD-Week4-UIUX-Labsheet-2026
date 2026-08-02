@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #7397FF |
+| Secondary Color (Hex) | #8990AA |
+| Primary Container (Hex) | #35343A |
+| Surface (Hex) | #131316 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีปุ่มหลัก (จุดที่เด่นที่สุด เช่น ปุ่มตกลง) |
+| On Primary | สีตัวหนังสือ ที่อยู่บนปุ่ม Primary |
+| Primary Container | สีกล่อง/การ์ด (จุดที่เด่นรองลงมา) |
+| On Primary Container | สีตัวหนังสือ ที่อยู่บนกล่อง Primary Container |
 
 ---
 
@@ -379,10 +379,19 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="763" height="515" alt="image" src="https://github.com/user-attachments/assets/f95915b7-1b81-4a55-b17b-e1116696fc3d" />
 
+```
+**1. Home Screen (หน้าหลัก)กดการ์ดสินค้า (เช่น ผักสลัดออร์แกนิก) จะเปิดไป Detail Screen
+     กดแท็บ "โปรไฟล์" (ที่ Bottom Nav) จะเปิดไป Profile Screen
+```
+```
+**2. Detail Screen (หน้ารายละเอียด)กดปุ่มย้อนกลับ (ลูกศรมุมซ้ายบน / ปุ่มย้อนกลับด้านล่าง / แท็บ "หน้าหลัก")  จะกลับไป Home Screen
+     กดแท็บ "โปรไฟล์" (ที่ Bottom Nav)  จะเปิดไป Profile Screen
+```
+```
+**3. Profile Screen (หน้าโปรไฟล์)กดแท็บ "หน้าหลัก" (ที่ Bottom Nav)  จะกลับไป Home Screen
+```
 ---
 
 ### การทดลองที่ 3: แปลง Design เป็น Flutter Code
@@ -873,17 +882,17 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [x] App Bar แสดงชื่อ "Green Market"
+- [x] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [x] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [x] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
 - [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [x] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+<img width="1032" height="745" alt="image" src="https://github.com/user-attachments/assets/52df099c-be97-44a6-8667-f72712d4d95a" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +935,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | กำหนดให้ backgroundImage เป็น null และแสดงตัวอักษรย่อของชื่อ (Initials) ผ่านฟังก์ชัน _getInitials(name) ใน child แทน |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ color จาก Theme ทั้งหมด (Theme.of(context).colorScheme) โดยไม่มีการ hardcode ค่าสี |
+| มีส่วนไหนที่ควรปรับปรุง? | 1.การดักจับข้อผิดพลาดรูปภาพ (Image Error Handling): NetworkImage อาจพังหาก URL เสีย ควรเพิ่ม onBackgroundImageError หรือใช้ package เช่น cached_network_image<br> 2. Event Callbacks: ปุ่ม Follow/Message ยังไม่ได้รองรับการกด ควรรับเป็นฟังก์ชัน VoidCallback? onFollowPressed ผ่าน constructor<br> 3. Number Formatting: จำนวนเลขสถิติ (Posts, Followers) หากมีจำนวนมาก ควรแปลงเป็นรูปแบบย่อ เช่น 1.5K หรือ 2.3M |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -951,9 +960,11 @@ Add brief comments explaining each section.
    Use Material 3 components and read colors from Theme.of(context).colorScheme.
    ```
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
-   
-```text
-เขียนผลการเปรียบเทียบที่นี่
+```   
+โค้ดรูปแบบใหม่ โดดเด่นในเรื่องความสะดวกในการตรวจทาน การจัดการระบบสีตามมาตรฐาน Material 3 และการรวมศูนย์การทำงานไว้ในไฟล์เดียว
+ในขณะที่ โค้ดรูปแบบเดิม โดดเด่นในเรื่องสถาปัตยกรรมซอฟต์แวร์ที่ดี (Clean Architecture) การจัดการข้อมูลแบบ Dynamic และความยืดหยุ่นในการนำ Component ไปพัฒนาต่อยอดในอนาคต
+และ เลือกwidget treeแบบใหม่ หากต้องการความรวดเร็วในการเขียนหน้าจอที่มี AppBar ต่างกันชัดเจนในแต่ละ Tab และต้องการรวมโค้ดไว้ตรวจงานในไฟล์เดียว
+    และเลือกwidget treeแบบเดิม หากต้องการสถาปัตยกรรมที่ถูกต้องตามมาตรฐาน Flutter Performance ไม่ใช้ Scaffold ซ้อนกันโดยไม่จำเป็น และต้องการโค้ดที่อ่านง่ายตามหลัก Component-based
 
 ```
 ---
@@ -1010,25 +1021,25 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ใช้ Dynamic Color สร้างชุดสีทั้งหมดจากสีหลักเพียงสีเดียว, มีการจับคู่สีพื้นหลังและตัวอักษรให้ตัดกันชัดเจน (เช่น primary กับ onPrimary) และใช้เฉดสีบอกระดับความลึก (Surface) แทนการใช้เงา
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 1. UI ล้นจอ (แก้ไขโดยใช้ Expanded หรือ MediaQuery) 2. สีกลืนกันในโหมดมืด (แก้ไขโดยใช้ตัวแปร colorScheme จากระบบแทนสีตายตัว) 3. Screen Reader อ่านไม่ออก (แก้ไขโดยใส่ tooltip ให้กับไอคอน)
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: สมบูรณ์ราว 80-90% สามารถรัน UI ได้ทันที แต่ต้องปรับปรุง 2 เรื่องคือ: 1. แยกไฟล์ให้เป็นระเบียบ (Clean Code) 2. เปลี่ยนข้อมูลจำลอง (Hardcode) ให้รับค่าแบบ Dynamic
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ต้องเชื่อมต่อข้อมูลจาก Backend/API จริง, เพิ่มเครื่องมือจัดการ State (เช่น Provider หรือ Riverpod), ทำหน้าต่างแจ้งเตือน/หน้าโหลดข้อมูล (Loading State) และปรับ UI ให้รองรับหน้าจอหลายขนาด (Responsive)
 ```
 
 ---
