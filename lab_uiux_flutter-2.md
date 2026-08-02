@@ -239,8 +239,8 @@ Prompt ที่ไม่ดี:
 |--------|---------|
 | Primary Color (Hex) | #7397FF |
 | Secondary Color (Hex) | #8990AA |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Container (Hex) | #35343A |
+| Surface (Hex) | #131316 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
