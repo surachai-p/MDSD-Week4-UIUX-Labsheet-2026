@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #2E7D32 |
+| Secondary Color (Hex) | #83967D |
+| Primary Container (Hex) | #bcf0b4 |
+| Surface (Hex) | #f7fbf1 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary |	สีหลักของแบรนด์/แอป ใช้กับ UI element ที่สำคัญที่สุดและต้องการให้ผู้ใช้สังเกตเห็นก่อน เช่น พื้นหลังของ FilledButton, FAB, ตัว Checkbox/Switch ที่ถูกเลือก, indicator ของ Tab ที่ active |
+| On Primary |สีที่ใช้กับตัวอักษรหรือไอคอนที่วางอยู่ บนพื้น Primary โดยตรง (เช่น ข้อความบนปุ่ม FilledButton) ต้องมีค่าคอนทราสต์สูงพอให้อ่านง่าย ระบบจะคำนวณให้อัตโนมัติเพื่อผ่านมาตรฐาน accessibility |
+| Primary Container | เวอร์ชัน "อ่อนกว่า/นุ่มกว่า" ของ Primary ใช้เป็นพื้นหลังของ container ที่ต้องการเน้นด้วยธีมสีหลัก แต่ไม่ต้องการความเข้มเท่าปุ่ม action หลัก เช่น พื้นหลังการ์ดที่ถูกเลือก, chip ที่ active, background ของ icon ที่สำคัญรอง ๆ ลงมา |
+| On Primary Container | สีตัวอักษร/ไอคอนที่ใช้วางทับบนพื้น Primary Container เพื่อให้อ่านออกชัดเจนบนพื้นสีอ่อนนั้น ๆ |
 
 ---
 
@@ -382,6 +382,7 @@ Screenshot หน้าจอ Design ทั้ง 3 หน้า และบั
 ```image
 วางรูปหน้าจอ ที่นี่
 ```
+<img width="1070" height="699" alt="image" src="https://github.com/user-attachments/assets/789b6a84-2663-47ce-a68d-e09d27c294d5" />
 
 ---
 
@@ -873,17 +874,21 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✅ ] App Bar แสดงชื่อ "Green Market"
+- [ ✅] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✅ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✅ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✅ ] Bottom Navigation สลับ Tab ได้
+- [✅ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
 ```image
 บันทึกรูปที่นี่
-``` 
+```
+<img width="930" height="995" alt="image" src="https://github.com/user-attachments/assets/fc439d89-0905-47cf-8583-76507ef569c1" />
+<img width="925" height="912" alt="image" src="https://github.com/user-attachments/assets/93cf4d61-dcd8-4ae6-b6ce-d51da814d04f" />
+
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +931,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar ตรงๆ (radius: 32) ตรงตาม requirement ข้อ 1 เป๊ะ |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้ foregroundImage: avatarUrl != null ? NetworkImage(avatarUrl!) : null แล้วใส่ child: Text(_getInitials(name)) เป็น fallback — ถูกหลักการ เพราะ foregroundImage เป็น null จะทำให้เห็น child (initials) แทน ต่างจาก backgroundImage ตรงที่ foregroundImage จะซ้อนทับ child ได้เมื่อโหลดสำเร็จ วิธีนี้ถูกต้องและเป็น pattern ที่แนะนำจริงใน Flutter |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ Theme ทั้งหมด ไม่มี Colors.xxx เลยแม้แต่ตัวเดียว — ผ่าน requirement ข้อ 7 ครบถ้วน (colorScheme.primaryContainer, colorScheme.onSurface )|
+| มีส่วนไหนที่ควรปรับปรุง? | ไม่มี error handling เมื่อโหลดรูปไม่สำเร็จ — ถ้า URL รูปเสียหรือโหลดไม่ได้ (เช่น network error) NetworkImage จะโยน exception ขึ้น console แต่ไม่ตกไปที่ initials fallback อัตโนมัติ ควรเพิ่ม onForegroundImageError callback |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -956,6 +961,31 @@ Add brief comments explaining each section.
 เขียนผลการเปรียบเทียบที่นี่
 
 ```
+/*
+MainScaffold (StatelessWidget)
+└── Scaffold
+    ├── AppBar (CenterAlignedAppBar)
+    │   ├── leading: IconButton (Menu/Back)
+    │   ├── title: Text (Screen Title)
+    │   └── actions: [CircleAvatar (User Small)]
+    ├── body: IndexedStack / PageView
+    │   ├── HomeScreen
+    │   │   └── Stack
+    │   │       ├── ListView.builder
+    │   │       │   └── ProductCard (Card -> Row -> [CircleAvatar, Column, ProductImage])
+    │   │       └── Positioned (Extended FloatingActionButton)
+    │   ├── DetailScreen
+    │   │   └── Column
+    │   │       ├── HeaderImage (Container with rounded corners)
+    │   │       └── Padding (Column -> [Title, Price, Header, Description, Buttons])
+    │   └── ProfileScreen
+    │       └── Column (Centered)
+    │           ├── CircleAvatar (Large User)
+    │           ├── Text (Username)
+    │           ├── Text (Email)
+    │           └── FilledButton (Edit Profile)
+    └── bottomNavigationBar: NavigationBar (Home, Search, Profile)
+*/
 ---
 
 ### การทดลองที่ 5: Dark Mode และ Accessibility Check 
@@ -970,6 +1000,7 @@ Add brief comments explaining each section.
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
+<img width="910" height="928" alt="image" src="https://github.com/user-attachments/assets/490a61ce-e5a7-4517-aff8-31ee79731c66" />
 
 // ยังไม่ต้องทำข้อ 5.2  5.3
 **ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
@@ -1010,25 +1041,34 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 ใช้ระบบ Dynamic Color ที่สร้าง Color Scheme ทั้งหมดอัตโนมัติจาก seed color เพียงสีเดียว (เช่นที่ทำใน Material Theme Builder ด้วย 
+#2E7D32) ผ่าน Tonal Palette Algorithm ต่างจาก Material 2 ที่ต้องกำหนดสี Primary/Accent แยกกันเองแบบตายตัว นอกจากนี้ Material 3 ยังแบ่งแต่ละสีเป็นคู่ "Container/On-Container" (เช่น Primary Container, On Primary Container) ทำให้มี tone ให้เลือกใช้หลากหลายและคอนทราสต์ผ่านมาตรฐาน accessibility โดยอัตโนมัติ ซึ่ง Material 2 ไม่มีระบบนี้
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: (ส่วนนี้แนะนำให้เขียนจากประสบการณ์จริงของคุณ แต่ตัวอย่างจากที่เราทำมาด้วยกัน เช่น)
+
+ติดปัญหาเรื่องสภาพแวดล้อม (Flutter ยังไม่ได้ติดตั้ง/ไม่อยู่ใน PATH) ทำให้รันโปรเจกต์ไม่ได้ในตอนแรก แก้โดยติดตั้ง Flutter SDK และเพิ่ม PATH ให้ถูกต้อง
+ตอนกด Card สินค้าแล้วไม่ navigate ไปหน้า Detail ต้องเช็คว่า onTap เชื่อมถูกจุดไหม และใช้ Hot Restart แทน Hot Reload เพื่อให้โค้ดใหม่ถูกโหลดครบ
+การแปลง Layout จาก Figma (เช่นการ์ดพื้นเขียวเข้มพร้อม avatar วงกลม) เป็น Widget Tree ต้องตัดสินใจว่าจะใช้ Container ซ้อน Row/Column แบบไหนให้ตรงกับดีไซน์มากที่สุด
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: จากการวิเคราะห์ UserProfileCard ที่ Google AI Studio สร้างให้ (การทดลองที่ 4) พบว่าโค้ดทำตาม spec ได้ประมาณ 90% — ใช้ CircleAvatar ถูกต้อง จัดการ avatarUrl เป็น null ได้ดีด้วย foregroundImage, และดึงสีจาก Theme.of(context).colorScheme ครบไม่มี hardcode เลย แต่ยังขาดจุดที่ต้องปรับปรุง เช่น ไม่มี error handling เมื่อโหลดรูปไม่สำเร็จ, spacing ระหว่าง name กับ email หายไป, และปุ่ม Follow/Message ยังไม่มี state ให้กดแล้วเปลี่ยนสถานะจริง สรุปคือ AI ช่วยลดเวลาเขียนโครงสร้างเริ่มต้นได้มาก แต่ยังต้องมี Developer review และปรับแต่งรายละเอียดก่อนใช้งานจริงเสมอ
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เปลี่ยนข้อมูลสินค้า/โปรไฟล์จาก hardcoded List ให้ดึงจาก API หรือฐานข้อมูลจริง
+เพิ่ม State Management (เช่น Provider, Riverpod, หรือ Bloc) แทนการใช้ setState ตรงๆ เพราะแอปจริงจะมี state ซับซ้อนกว่านี้มาก
+ทำ Semantic Labels และ tooltip ให้ครบทุก IconButton ตามหลัก Accessibility (ข้อ 5.3 ที่ยังไม่ได้ทำในแลปนี้)
+เพิ่ม Error handling และ Loading state ตอนโหลดรูปภาพหรือข้อมูลจาก network
+ทำหน้า "ค้นหา" ที่ยังเป็น placeholder ให้ใช้งานได้จริง
 ```
 
 ---
