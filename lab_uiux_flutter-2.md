@@ -378,7 +378,7 @@ Prompt ที่ไม่ดี:
 **ขั้นตอนที่ 2.8: บันทึกผลการทดลอง**
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
-<img width="1710" height="983" alt="ภาพถ่ายหน้าจอ 2569-08-03 เวลา 01 46 04" src="https://github.com/user-attachments/assets/66749fad-5b92-4ddd-8b4f-55b1ccea2a04" />
+<img width="1709" height="991" alt="ภาพถ่ายหน้าจอ 2569-08-03 เวลา 01 48 19" src="https://github.com/user-attachments/assets/a85caf6d-acad-4c9a-a617-aa082d71393a" />
 
 
 ---
