@@ -1,4 +1,4 @@
-# 📱 ใบงานปฏิบัติที่ 3: UI/UX Design — จาก Mockup สู่ Flutter
+<img width="930" height="995" alt="image" src="https://github.com/user-attachments/assets/72961fbd-5760-4f52-bcb1-ee601ef64984" /># 📱 ใบงานปฏิบัติที่ 3: UI/UX Design — จาก Mockup สู่ Flutter
 
 > **วิชา:** การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่  
 > **สัปดาห์ที่:** 3  
@@ -874,17 +874,21 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✅ ] App Bar แสดงชื่อ "Green Market"
+- [ ✅] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✅ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✅ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✅ ] Bottom Navigation สลับ Tab ได้
+- [✅ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
 ```image
 บันทึกรูปที่นี่
-``` 
+```
+<img width="930" height="995" alt="image" src="https://github.com/user-attachments/assets/fc439d89-0905-47cf-8583-76507ef569c1" />
+<img width="925" height="912" alt="image" src="https://github.com/user-attachments/assets/93cf4d61-dcd8-4ae6-b6ce-d51da814d04f" />
+
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
