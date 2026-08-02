@@ -951,7 +951,10 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+AppBar: เหมือนกันทั้ง Leading, Title และ Actions
+FAB & NavigationBar: ปุ่ม Add Product และ เมนู 3 หน้า (Home, Search, Profile) เหมือนกันเป๊ะ
+Body Structure: ใช้ ListView.builder วาง ProductCard สัดส่วน 16px เหมือนกัน
+ProductCard Layout: จัดเรียงเป็น Row 3 ส่วน (Leading Circle + Expanded Column Title/Price + Trailing Icon) ตรงกันทุกจุด
 
 ```
 ---
@@ -1008,25 +1011,27 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 เปลี่ยนมาใช้ระบบ Tonal Palettes (Dynamic Color) ที่สร้างเฉดสีสัมพันธ์กันเป็นคู่ๆ เช่น primary คู่กับ onPrimary และเพิ่มสีกลุ่ม Container เช่น primaryContainer / onPrimaryContainer เพื่อเพิ่มมิติและความยืดหยุ่นในการทำ Dark Mode ให้เข้ากันได้ดีขึ้น ต่างจาก Material 2 ที่เน้นแค่สีหลัก (Primary) และสีรอง (Secondary) แบบคงที่
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
-```
+คำตอบ: สมบูรณ์ในระดับ UI Skeleton (โครงสร้างหน้าตา) ประมาณ 80-90% แต่นำไปใช้จริงทันทีไม่ได้
 
-**ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
-
-```
-คำตอบ: _______________________________________________
+สิ่งที่ต้องปรับปรุง:
+การ Handle Exception: เช่น กรณีรูป Network โหลดไม่ได้ (เพิ่ม Error State)
+Logic การประมวลผล: ปรับการแสดงผล เช่น ตัวเลข 1000 ไม่ควรแสดงเป็น 1.0k
+การส่งผ่าน Event: ปุ่มกดถูก hardcode onPressed: () {} ต้องเปลี่ยนมารับ Callback จาก Parameter ข้างนอก
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ทบทวน State Management: แยกส่วน UI ออกจาก Business Logic (เช่น นำ BLoC, Provider หรือ Riverpod มาจัดการข้อมูล)
+ทำ Component ให้ Reusable: เคลียร์ Hardcoded value ทั้งหมดเป็น Parameter (เช่น เพิ่ม onFollowPressed, onMessagePressed)
+รองรับ Localization (l10n): เปลี่ยนข้อความต่างๆ (เช่น "Posts", "Followers", "Follow") ให้รองรับหลายภาษา
+เพิ่ม Loading & Error State: จัดการ UI ระหว่างรอข้อมูลจาก API หรือเมื่อโหลดข้อมูลไม่สำเร็จ
 ```
 
 ---
