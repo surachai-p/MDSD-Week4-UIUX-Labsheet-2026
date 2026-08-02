@@ -379,7 +379,7 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-<img width="1117" height="743" alt="image" src="https://github.com/user-attachments/assets/3e093112-e3c6-433b-b34f-f939c948b33a" />
+<img width="763" height="515" alt="image" src="https://github.com/user-attachments/assets/f95915b7-1b81-4a55-b17b-e1116696fc3d" />
 
 ```
 **1. Home Screen (หน้าหลัก)กดการ์ดสินค้า (เช่น ผักสลัดออร์แกนิก) จะเปิดไป Detail Screen
