@@ -1,4 +1,4 @@
-<img width="930" height="995" alt="image" src="https://github.com/user-attachments/assets/72961fbd-5760-4f52-bcb1-ee601ef64984" /># 📱 ใบงานปฏิบัติที่ 3: UI/UX Design — จาก Mockup สู่ Flutter
+# 📱 ใบงานปฏิบัติที่ 3: UI/UX Design — จาก Mockup สู่ Flutter
 
 > **วิชา:** การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่  
 > **สัปดาห์ที่:** 3  
