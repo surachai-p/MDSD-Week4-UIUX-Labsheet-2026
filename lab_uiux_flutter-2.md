@@ -954,8 +954,17 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+โครงสร้างองค์ประกอบ (Card Layout)
+- โค้ดที่เขียนการทดลองที่ 3 ใช้ Container + Icon (ไอคอนสินค้า) + Column ข้อความ + Icon (Chevron ขวา)
+- โค้ดที่ได้จาก AI Studio สกัดเลย์เอาต์ตามภาพ Figma ชัดเจน มี CircleAvatar (ตัวอักษร A, B, C) และช่องขวาเป็น Image Placeholder
 
+การสร้างรายการสินค้า (List View)
+- โค้ดที่เขียนการทดลองที่ 3 ใช้ ใช้ ListView.builder พร้อม ItemCard แยกไฟล์
+- โค้ดที่ได้จาก AI Studio ใช้ ListView.separated ช่วยใส่ระยะห่างระหว่าง Card (SizedBox(height: 12)) ได้เนียนขึ้น
+
+การจัดการข้อมูล (Data Handling)
+- โค้ดที่เขียนการทดลองที่ 3 ใช้ รวมราคาและคำอธิบายไว้ใน string เดียว (subtitle)
+- โค้ดที่ได้จาก AI Studio แยกข้อมูลชัดเจนขึ้น (title, sub, price, letter) ทำให้จัด Style ตัวหนังสือแยกกันได้
 ```
 ---
 
