@@ -379,9 +379,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="762" height="551" alt="ภาพถ่ายหน้าจอ 2569-08-03 เวลา 19 32 33" src="https://github.com/user-attachments/assets/a930bda2-79dc-4ea2-a3a5-bef306b91459" />
+
 
 ---
 
