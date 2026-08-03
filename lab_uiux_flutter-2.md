@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #6B538C |
+| Secondary Color (Hex) | #7C4E7E |
+| Primary Container (Hex) | #EDDCFF |
+| Surface (Hex) | #FFF7FF |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอปพลิเคชัน ใช้สำหรับองค์ประกอบสำคัญที่ต้องการดึงดูดสายตา เช่น ปุ่มหลัก (Prominent Buttons), ไอคอนเปิดใช้งาน (Active State) หรือส่วนของ Navigation Bar |
+| On Primary | สีสำหรับข้อความ หรือไอคอนที่ แสดงอยู่บนพื้นหลังที่เป็นสี Primary ถูกออกแบบมาให้มีความขัดแย้งของสี (Contrast) สูง เพื่อให้อ่านง่ายและชัดเจน |
+| Primary Container | สีพื้นหลังโทนอ่อน (Shade) ที่แตกย่อยมาจากสี Primary สำหรับกลุ่มองค์ประกอบที่มีความสำคัญรองลงมา เช่น การ์ดส่วนหัว, Floating Action Button (FAB) หรือองค์ประกอบที่เน้นขอบเขต |
+| On Primary Container | สีของข้อความ หรือไอคอนที่ แสดงอยู่บนพื้นหลังที่เป็นสี Primary Container โดยมีเฉดสีเข้มขึ้นเพื่อให้ตัดกับพื้นหลังโทนอ่อน |
 
 ---
 
@@ -379,9 +379,7 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="988" height="723" alt="image" src="https://github.com/user-attachments/assets/54b4d62a-a8f4-457c-a1cf-ab978a570a37" />
 
 ---
 
@@ -881,9 +879,9 @@ flutter run
 - [ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+<img width="1917" height="1013" alt="image" src="https://github.com/user-attachments/assets/da416576-2344-44e0-8e93-7cb08518e1f6" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +924,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ไม่แสดงรูปภาพ (backgroundImage: null) และแสดงตัวอักษรแรกของชื่อ (Initials) แทนในช่อง child |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ color จาก Theme (เรียกผ่าน colorScheme เช่น colorScheme.primaryContainer, colorScheme.onSurface) |
+| มีส่วนไหนที่ควรปรับปรุง? | 1. การจัดการรูปภาพหลุด/โหลดไม่ได้ ควรใช้ Image.network ร่วมกับ errorBuilder แทน NetworkImage เพื่อจัดการกรณี URL ผิดหรือรูปโหลดไม่ได้ 2. Format ตัวเลข _formatCount ถูกใช้แค่กับ followers และ following แต่ไม่ได้ใช้กับ postsCount ควรปรับให้แสดงผลสม่ำเสมอกัน |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,8 +951,8 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
-
+- ส่วนที่เขียนเอง มีการแบ่งสัดส่วนรายละเอียดของแต่ละหน้าออกเป็นส่วนๆในแต่ละไฟล์ที่มีข้อมูลแตกต่างกัน
+- ส่วนที่ให้ AIเขียน มีการนำรายละเอียดข้อมูลทุกอย่างมารวมกันไว้ในไฟล์เดียว
 ```
 ---
 
@@ -1010,25 +1008,27 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 ปรับมาใช้ระบบสีแบบ Dynamic Color (Tonal Palettes) ที่มีความสเปกตรัมยืดหยุ่นมากขึ้น ไม่ได้มีแค่ Primary/Secondary เหมือน Material 2 แต่มีโทนสีย่อยๆ สำหรับคอนเทนเนอร์และตัวอักษรโดยเฉพาะ ทำให้รองรับระบบ Light/Dark Mode และการปรับแต่งธีมได้เนียนและเข้ากันทั้งแอปมากขึ้น
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ชื่อสไตล์ กับการตั้งค่าสีใน Figma ไม่ตรงกับชื่อ Property ใน Flutter โครงสร้าง Layout ใน Figma บางทีพอแปลงเป็น Flutter แล้วซ้อนคลาสเกินไป และเรื่อง Margin/Spacing ไม่เป๊ะ
+สร้างไฟล์ให้เรียบร้อยก่อนแล้วดึงค่าสีมาใช้ผ่าน Theme.of(context) แทนการลงรหัสสีตรงๆ รวมถึงทำการ Refactor โครงสร้าง Layout ให้กระชับขึ้น
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: สมบูรณ์ในระดับ 50-70% AI สามารถวางโครงสร้าง UI ได้ สิ่งที่ต้องปรับปรุง การแบ่งแยกไฟล์ในแต่ละส่วนของข้อมูล
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 1.ผูกกับ State/Data จริง: เปลี่ยนจาก Hardcode Data มารับข้อมูลผ่าน API หรือ State Management
+2.ใส่ Interactive & Callback: เพิ่มการคลิกปุ่มต่างๆ ให้ส่งค่าออกไปได้จริง 
 ```
 
 ---
