@@ -12,8 +12,6 @@
 
 ## ผลการทดลองที่ 3 แปลง Design เป็น Flutter Code
 
-ภาพเคลื่อนไหวผลการทดสอบการทำงานของแอปพลิเคชันจริงบน Web Simulator แสดงการนำทางระหว่างหน้าจอ (Navigation) และฟังก์ชันต่าง ๆ
-
 <p align="center">
   <img src="assets/app_run.gif" alt="App Running Demo" width="300" />
 </p>
