@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #405F90 |
+| Secondary Color (Hex) | #555F71 |
+| Primary Container (Hex) | #D6E3FF |
+| Surface (Hex) | #F9F9FF |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอป ใช้กับองค์ประกอบที่สำคัญและต้องการเน้นมากที่สุด |
+| On Primary | สีของข้อความและไอคอนที่วางอยู่ บนพื้นหลังสี Primary |
+| Primary Container | สีพื้นหลังสำหรับคอนเทนเนอร์ที่ต้องการความโดดเด่นรองลงมา |
+| On Primary Container | สีของข้อความและไอคอนที่วางอยู่ บนพื้นหลังสี Primary Container |
 
 ---
 
@@ -379,9 +379,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="1920" height="1080" alt="สกรีนช็อต 2026-08-03 210830" src="https://github.com/user-attachments/assets/69273b19-c913-432c-b5cd-29162e374811" />
+
 
 ---
 
@@ -873,17 +872,17 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [x] App Bar แสดงชื่อ "Green Market"
+- [x] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [x] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [x] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [x] Bottom Navigation สลับ Tab ได้
+- [x] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<img width="1920" height="1020" alt="สกรีนช็อต 2026-08-03 213225" src="https://github.com/user-attachments/assets/5bb9593d-464a-4e7b-8c39-d9e164642d75" />
+<img width="1920" height="1020" alt="สกรีนช็อต 2026-08-03 213300" src="https://github.com/user-attachments/assets/a9dc302b-c4be-4982-a4ec-64c39d8e729c" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +925,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | AI เลือกใช้ CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | เช็คเงื่อนไข avatarUrl == null หากเป็น null จะไม่โหลดรูปภาพ (backgroundImage: null) แต่จะแสดงอักษรย่อชื่อผู้ใช้ (_initials) ผ่านตัวอักษรใน child แทน |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ color จาก Theme โดยอ้างอิงผ่าน Theme.of(context).colorScheme (เช่น colorScheme.primaryContainer, colorScheme.onSurface, colorScheme.onSurfaceVariant) โดยไม่มีการ Hardcode สี |
+| มีส่วนไหนที่ควรปรับปรุง? | ไม่มีการ Handling กรณีลิงก์รูปเสีย: หาก avatarUrl ไม่เป็น null แต่รูปโหลดไม่ได้ โค้ดจะเกิด Error ไม่มีการ Format ตัวเลข หากตัวเลขสถิติมีจำนวนมากจะแสดงตัวเลขดิบโดยไม่มีคอมมาหรือตัวย่อ ปุ่มกดไม่มีการทำงานจริง onPressed ของปุ่มยังเป็นฟังก์ชันว่าง () {} ควรรับ VoidCallback เข้ามาจาก Constructor เพื่อเรียกใช้งานจริง |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,7 +952,20 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+โครงสร้าง Widget Tree
+- ความคล้ายคลึง ทั้งสองส่วนใช้โครงสร้างหลักแบบเดียวกัน คือเริ่มจาก Card → Padding → Column เพื่อจัดวางองค์ประกอบในแนวยาว
+และใช้ Row สำหรับจัดกลุ่มองค์ประกอบในแนวนอน (สถิติ และ ปุ่มกด)
+- ข้อแตกต่าง โค้ดจาก AI มีการแยก Helper Function (_buildStatColumn) เพื่อสร้าง Widget ในส่วนสถิติ ทำให้โครงสร้าง Widget Tree
+ใน build() ดูสะอาด สั้น และอ่านง่ายขึ้น ใช้ SizedBox(height: 8/16) ในการจัดการระยะห่าง (Spacing) ระหว่างชั้นชัดเจนขึ้น
+การใช้ Material Design 3 & ColorScheme
+- โค้ดที่เขียนเอง มักจะมีการ Hardcode สีบางส่วน หรืออ้างอิงสีจาก Colors โดยตรง (เช่น Colors.grey, Colors.blue)
+- โค้ดจาก AI ใช้ Dynamic Color System ผ่าน Theme.of(context).colorScheme ทั้งหมด 100% (เช่น onSurface,
+onSurfaceVariant, primaryContainer) ทำให้รองรับ Light/Dark Mode ได้โดยอัตโนมัติทันที
+การจัดการ State และ Logic
+- การจัดการ รูปโปรไฟล์ AI มีการเขียน Logic จัดการ Fallback (_initials) หาก avatarUrl เป็น null
+จะดึงตัวอักษรแรกของชื่อมาแสดงใน CircleAvatar ทันที ซึ่งสมบูรณ์กว่าโค้ดทั่วไป
+- ความยืดหยุ่น โค้ดจาก AI กำหนดค่า Param ทั้งหมดเป็น required / nullable ผ่าน Constructor ชัดเจน
+พร้อมระบุ super.key ตามแนวทางการเขียน Flutter สมัยใหม่
 
 ```
 ---
@@ -1010,25 +1022,40 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 ใช้ระบบ Dynamic Color System ที่สร้างชุดสี (Tonal Palettes)
+ทั้งหมดโดยอัตโนมัติจากสีหลักเพียงสีเดียว (Seed Color) และมีการแบ่งบทบาทสีชัดเจนเป็นคู่สีพื้นหลังและสีองค์ประกอบ
+เพื่อรับประกันระดับความต่างระดับสี (Contrast Ratio) ที่อ่านง่ายตามมาตรฐาน Accessibility ต่างจาก
+Material 2 ที่กำหนดสีแบบเป็นค่าคงที่ (Static Colors) และไม่มีระบบ Container Role
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาที่พบ - การจัดสร้างโครงสร้าง Layout ซับซ้อนจาก Figma แปลงมาเป็น Flutter Widget Tree ได้ยาก
+- การดึงค่าพารามิเตอร์ของสีและข้อความไม่ตรงตาม Dynamic Scheme ของ Material 3
+วิธีแก้ไข - วาด/วิเคราะห์โครงสร้าง Widget Tree ล่วงหน้าโดยแปลง Auto Layout ใน Figma เป็น Column, Row, Expanded
+หรือใส่ SingleChildScrollView เพื่อป้องกัน Overflow
+- เปลี่ยนจากการ Hardcode ค่าสีเป็นการอ้างอิงผ่าน Theme.of(context).colorScheme และ textTheme เพื่อให้ตรงตาม M3 Spec
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: โค้ดที่ AI สร้างมีความสมบูรณ์ในแประเด็นโครงสร้าง Layout การใช้ Material 3 ColorScheme/TextTheme และการแยก Component
+ส่วนที่ต้องปรับปรุงเพิ่มเติม
+- Error Handling: เพิ่มการจัดการกรณีลิงก์รูปโปรไฟล์เสียหรือโหลดไม่ได้
+- Functionality: เปลี่ยน onPressed: () {} บนปุ่มกดให้รับ VoidCallback จาก Constructor เพื่อให้ปุ่มใช้งานจริงได้
+- Data Formatting: จัดรูปแบบตัวเลขสถิติ (เช่น การแปลง 10000 เป็น 10k หรือใส่เครื่องหมายจุลภาค)
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: - การเชื่อมต่อข้อมูล (State Management & API): เชื่อมต่อกับ Backend API และใช้ State Management
+ เพื่อจัดการสถานะข้อมูลแบบ Dynamic
+- Responsive Design: ปรับแต่งให้ Layout แสดงผลได้สวยงามบนหน้าจอหลายขนาด (Mobile, Tablet, Foldable)
+- Interactive & Micro-interactions: เพิ่ม Animation ในการกดปุ่ม (Loading State) และการเปลี่ยนหน้า (Page Transitions)
+- Theme Support: ทดสอบและปรับแต่งค่าความสว่าง/ความต่างสีเพิ่มเติมทั้ง Light Mode และ Dark Mode ให้สมบูรณ์
 ```
 
 ---
