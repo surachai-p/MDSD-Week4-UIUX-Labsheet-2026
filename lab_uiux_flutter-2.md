@@ -941,6 +941,8 @@ Add brief comments explaining each section.
 3. แก้ไขส่วนที่ผิดหรือไม่เหมาะสม (ถ้ามี)
 4. Import และใช้ใน Profile Tab ของ Home Screen (สอบถาม AI ว่าต้องทำอย่างไร)
 
+<img width="779" height="767" alt="image" src="https://github.com/user-attachments/assets/5cb624e9-a7d2-4b02-9a26-028d67a15aa9" />
+
 **ขั้นตอนที่ 4.5: ทดลอง Multimodal — ส่งรูป Figma ให้ AI วิเคราะห์**
 
 1. Screenshot Design จาก Figma ที่ทำในการทดลองที่ 2
