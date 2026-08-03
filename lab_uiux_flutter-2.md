@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | 0xff322f66|
+| Secondary Color (Hex) |0xff5e5c71 |
+| Primary Container (Hex) | 0xffe3dfff |
+| Surface (Hex) | 0xff5b5891 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | ช้กับองค์ประกอบที่ต้องการเน้นย้ำสูงสุด (High Emphasis) เช่น ปุ่มดำเนินการหลัก (Primary Button), Floating Action Button (FAB), หรือสถานะที่กำลังเลือกอยู่ (Active State) |
+| On Primary | สีของตัวอักษร ไอคอน หรือเส้นขอบ ที่วางอยู่ "บน" พื้นหลังสี Primary โดยออกแบบมาเพื่อให้เกิดค่าความต่าง (Contrast) ที่อ่านได้ |
+| Primary Container | สีพื้นหลังที่ดึงเฉดมาจากสี Primary แต่มีความสดหรือความเข้มที่เบาลง ใช้สำหรับกล่อง กรอบ หรือคอนเทนเนอร์ที่ต้องการความโดดเด่น |
+| On Primary Container | สีของตัวอักษรหรือไอคอนที่วางอยู่ "บน" พื้นหลังสี Primary Container |
 
 ---
 
