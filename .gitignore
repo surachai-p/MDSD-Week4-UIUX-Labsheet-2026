@@ -19,6 +19,12 @@ migrate.log
 
 # Visual Studio Code Related
 .vscode/
+.claude/
+
+# Environments & Local Files
+.env
+.env.*
+
 
 # Flutter/Dart Related
 **/doc/api/
