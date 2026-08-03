@@ -958,7 +958,55 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+การทดลองที่ 3
+
+Scaffold
+ ├── AppBar (centerTitle: true)
+ │    ├── title: Text("Dev by Ittikorn Tongsima")
+ │    └── actions: [IconButton(Icons.search)]
+ ├── body: _buildBody()  ← switch ตาม _selectedIndex (มี state จริง)
+ │    ├── [0] ListView.builder → ItemCard
+ │    │        └── Card(elevation:1) → InkWell → Padding → Row
+ │    │             ├── Container 48x48 (primaryContainer + Icon สินค้า)
+ │    │             ├── Expanded→Column(title, subtitle รวมราคาในบรรทัดเดียว)
+ │    │             └── Icon(chevron_right)
+ │    ├── [1] Center(Text('ค้นหาสินค้า'))
+ │    └── [2] UserProfileCard (โปรไฟล์ผู้ใช้)
+ ├── FloatingActionButton.extended (สีตาม default theme)
+ └── NavigationBar (selectedIndex ผูกกับ state, onDestinationSelected ใช้งานได้จริง)
+
+Design ใหม่จาก Figma
+
+Scaffold
+ ├── AppBar
+ │    ├── leading: Icon(menu)  ← มีปุ่มเมนู
+ │    ├── title: "Green Market by Ittikorn"
+ │    └── actions: [CircleAvatar โลโก้]  ← มี avatar ท้าย AppBar
+ ├── body: ListView (แสดงเฉพาะ list สินค้า ไม่มี tab switching)
+ │    └── _ProductCard
+ │         └── Card(secondaryContainer, elevation:0) → IntrinsicHeight → Row
+ │              ├── CircleAvatar (ตัวอักษรนำ)
+ │              ├── Expanded→Column(title, subtitle, price แยก 3 บรรทัด)
+ │              └── Container ขวา (พื้นที่ตกแต่ง surfaceVariant + Icon)
+ ├── FloatingActionButton.extended (สีกำหนดเอง primaryContainer/onPrimaryContainer)
+ └── NavigationBar (selectedIndex: 0 hardcoded, ไม่มี onDestinationSelected)
+```
+
+```text
+การทดลองที่ 3
+    - การ์ดสินค้า Container สี่เหลี่ยม + Icon, ราคารวมใน subtitle, มี chevron
+    - ใช้สี Card default elevation 1 ที่เอามาจากการทดลแงเเรกๆ
+    - appbar ไม่มี leading, ไม่มี avatar ท้าย, centerTitle
+    - ผูก state จริง ใช้งานสลับแท็บได้
+    - มี body สำหรับ ค้นหา โปรไฟล์
+    - แยก HomeScreen เเละ ItemCard 
+
+Design ใหม่จาก Figma
+    - CircleAvatar ตัวอักษร + แยก title/subtitle/price 3 บรรทัด + แถบตกแต่งด้านขวา ไม่มี chevron
+    - สี Card ใช้ secondaryContainer.withOpacity(0.4) elevation 0
+    - AppBar มี leading menu icon และ CircleAvatar โลโก้ท้าย AppBar
+    - NavigationBar เป็น static mockup — `selectedIndex: 0` ตายตัว ไม่มี callback
+    - ไม่มี Tab อื่นเลย เป็นแค่หน้า list เดียว
 
 ```
 ---
