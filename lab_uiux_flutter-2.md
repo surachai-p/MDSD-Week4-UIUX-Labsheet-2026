@@ -1069,25 +1069,34 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 2 กำหนดสีแบบตายตัวเป็นชุด Primary/Accent เพียงไม่กี่ตัว และมักต้อง hardcode สีเองใน component แต่ละตัว ส่วน Material 3 ใช้ระบบ Dynamic Color ที่ generate ทั้ง Tonal Palette (Primary, Secondary, Tertiary, Error, Neutral) จากสี seed เพียงสีเดียว แต่ละ role ยังแตกเป็นคู่ Container/On-Container ทำให้มีสีให้เลือกใช้ตามระดับความสำคัญของ element ได้ละเอียดขึ้น และรับประกัน contrast ระหว่างพื้นหลังกับตัวอักษรโดยอัตโนมัติ ทั้ง Light/Dark mode นอกจากนี้ Elevation ใน Material 3 ใช้ Color Overlay แทน Drop Shadow แบบ Material 2 ด้วย
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาหลักคือ layout ที่ออกแบบใน Figma ตำแหน่ง X Y แบบ absolute, ขนาด fix เป็น px) ไม่ตรงกับแนวคิด Flutter ที่เน้น Row Column Expanded ต้องตีความ Auto Layout ใน Figma กลับมาเป็น Row/Column + Spacing เอง เช่น Card สินค้าที่ใน Figma วางแบบ Horizontal Card ต้องแปลงเป็น Row อีกปัญหาคือสีและ Text Style ที่เลือกใน Figmaต้อง map มาเป็น TextTheme ของ Flutter ให้ตรง role ไม่ใช้ hardcode และ Component บางตัวใน Figma Kit มีรายละเอียด ปลีกย่อยที่ต้องเขียน state เพิ่มเอง เพราะ mockup ใน Figma เป็นภาพนิ่ง ไม่มี logic
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: จากการทดลองที่ 4 พบว่า AI เขียนโครงสร้างหลัก ได้ถูกต้องตาม requirement ที่ระบุ เช่น ใช้ Theme.of(context).colorScheme  ทั้งหมดไม่ hardcode สี, handle กรณี avatarUrl เป็น null ด้วย conditional expression และป้องกัน RangeError ตอนดึงตัวอักษรตัวแรกของชื่อ
+แต่ยังไม่สมบูรณ์ คือ:
+    - ไม่ handle กรณีโหลดรูปจาก Network ไม่สำเร็จ ต้องเพิ่ม state _avatarLoadFailed และ onBackgroundImageError callback เอง
+    - TextStyle ใน CircleAvatar ไม่ได้อิงจาก TextTheme -> ต้องแก้ให้ใช้ textTheme.titleLarge
+    - FontWeight.bold ทับ Typography Scale ซึ่งขัดกับ Material 3 ต้องเอาออกให้ใช้ style ตาม TextTheme ตรง ๆ
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:
+    - เปลี่ยนข้อมูล mock ให้ดึงจาก API/Database จริง พร้อมทำ Model class แทน Map เพื่อ type safety
+    - เพิ่ม Loading Error state แทนการ setState ตรง ๆ ใน StatefulWidget
+    - ทำ Navigation ด้วย named routes หรือ go_router แทน Navigator.push(MaterialPageRoute) ตรง ๆ เพื่อรองรับ deep link
+    - เพิ่ม accessibility ให้ครบ เช่น tooltip ใน IconButton ทุกตัว, ตรวจ touch target ให้ >= 48x48 dp ตามที่ทำในการทดลองที่ 5
+    - แยก ItemCard/UserProfileCard ให้ configurable มากขึ้น  ต้องผูก callback จริงเข้ากับ business logic
 ```
 
 ---
