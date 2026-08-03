@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | 0xff495d92 |
+| Secondary Color (Hex) | 0xff585e71 |
+| Primary Container (Hex) | 0xffdae2ff |
+| Surface (Hex) | 0xfffaf8ff |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแบรนด์ ใช้กับองค์ประกอบที่เด่นที่สุดในหน้าจอ เช่น ปุ่มหลัก (Filled Button), FAB หรือ Header |
+| On Primary | สีของตัวอักษรหรือไอคอนที่แสดง บนพื้นหลังสี Primary |
+| Primary Container | สีพื้นหลังโทนอ่อนของ Primary ใช้สำหรับกลุ่มการ์ดหรือคอนเทนเนอร์ที่ต้องการเน้นรองลงมาจาก Primary |
+| On Primary Container | สีของตัวอักษรหรือไอคอนที่แสดง บนพื้นหลังสี Primary Container |
 
 ---
 
@@ -379,9 +379,9 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+![](https://github.com/user-attachments/assets/a719f80e-fa13-4c2c-a348-e98d609ca44d)
+
+
 
 ---
 
@@ -873,17 +873,16 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [ ✓ ] App Bar แสดงชื่อ "Green Market"
+- [ ✓ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [ ✓ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ ✓ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
 - [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [ ✓ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+![](https://github.com/user-attachments/assets/1b16a46c-6510-43b7-9715-9d2cce787ffa)
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +925,12 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้สร้าง CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | backgroundImage ใช้ Ternary Operator ตรวจสอบ ถ้า avatarUrl != null จะโหลดรูปผ่าน NetworkImage(avatarUrl!) แต่ถ้าเป็น null จะใส่ค่าเป็น null |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ color จาก Theme (Material 3) |
+| มีส่วนไหนที่ควรปรับปรุง? | การดึงตัวอักษรย่อ (_initials)
+ไม่มี Error Handling สำหรับรูปภาพ
+การส่ง Event Action (Follow / Message)|
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,8 +954,17 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+โครงสร้างองค์ประกอบ (Card Layout)
+- โค้ดที่เขียนการทดลองที่ 3 ใช้ Container + Icon (ไอคอนสินค้า) + Column ข้อความ + Icon (Chevron ขวา)
+- โค้ดที่ได้จาก AI Studio สกัดเลย์เอาต์ตามภาพ Figma ชัดเจน มี CircleAvatar (ตัวอักษร A, B, C) และช่องขวาเป็น Image Placeholder
 
+การสร้างรายการสินค้า (List View)
+- โค้ดที่เขียนการทดลองที่ 3 ใช้ ใช้ ListView.builder พร้อม ItemCard แยกไฟล์
+- โค้ดที่ได้จาก AI Studio ใช้ ListView.separated ช่วยใส่ระยะห่างระหว่าง Card (SizedBox(height: 12)) ได้เนียนขึ้น
+
+การจัดการข้อมูล (Data Handling)
+- โค้ดที่เขียนการทดลองที่ 3 ใช้ รวมราคาและคำอธิบายไว้ใน string เดียว (subtitle)
+- โค้ดที่ได้จาก AI Studio แยกข้อมูลชัดเจนขึ้น (title, sub, price, letter) ทำให้จัด Style ตัวหนังสือแยกกันได้
 ```
 ---
 
@@ -1010,25 +1020,38 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 เปลี่ยนมาใช้ระบบ Color Roles และ Dynamic Color ตามความหมายใช้งาน (เช่น PrimaryContainer, OnPrimary, SurfaceVariant) แทนการตั้งค่าสีหลัก-สีรองแบบคงที่เหมือน Material 2 ส่งผลให้จับคู่สีพื้นหลังและสีตัวอักษรได้ถูกต้องตามมาตรฐาน Contrast Ratio โดยอัตโนมัติ ทั้งใน Light และ Dark Mode
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: โครงสร้าง Layout ซับซ้อน: แก้ด้วยการแยก UI เป็น Reusable Widgets (เช่น ItemCard, UserProfileCard) เพื่อให้อ่านโค้ดง่ายและนำกลับมาใช้ซ้ำได้สะดวก
+
+ข้อความยืดขยายล้นจอ: แก้ด้วยการใช้ Expanded ครอบ Column หรือ Text พร้อมใส่ overflow: TextOverflow.ellipsis
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: AI สร้างโครงสร้าง UI และการดึงสีจาก Theme มาใช้ ต้องปรับปรุงเพิ่มเติม คือ Event Handling: ปุ่มต่างๆ ถูกใส่ onPressed () {} แบบว่างไว้ ต้องเพิ่ม Callback Function เพื่อให้ปุ่มรับคำสั่งจากภายนอกได้จริง
+
+ความยืดหยุ่นของข้อมูล การตัดคำ เช่น การหาอักษรย่อจากชื่อ ยังไม่ครอบคลุมภาษาไทยหรือกรณีเว้นวรรคแปลกๆ
+
+การจัดการข้อผิดพลาด Error Handling ยังไม่มีระบบรองรับกรณีรูปภาพจาก Network โหลดไม่ขึ้น
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:
+เชื่อมต่อ State Management นำ Provider, BLoC หรือ Riverpod มาจัดการข้อมูลแทนการ Hardcode ไว้ใน Widget
+
+ดึงข้อมูลจาก API / Database ปรับเปลี่ยน Data Model ให้รับข้อมูลจริงจาก Backend หรือ Firebase
+
+รองรับ Responsive & Adaptive ปรับขนาดเลย์เอาต์ให้ยืดหยุ่นตามขนาดหน้าจอแท็บเล็ตหรือคอมพิวเตอร์
+
+เพิ่มระบบรูปภาพ ใช้แพ็กเกจจัดการแคชรูปภาพ เช่น cached_network_image พร้อมใส่ Loading Indicator และ Placeholder รูปภาพกรณีโหลดไม่สำเร็จ
 ```
 
 ---
