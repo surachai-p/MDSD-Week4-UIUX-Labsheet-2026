@@ -1,4 +1,4 @@
-# 📱 ใบงานปฏิบัติที่ 3: UI/UX Design — จาก Mockup สู่ Flutter
+># 📱 ใบงานปฏิบัติที่ 3: UI/UX Design — จาก Mockup สู่ Flutter
 
 > **วิชา:** การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่  
 > **สัปดาห์ที่:** 3  
@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #3c6939 |
+| Secondary Color (Hex) | #52634f |
+| Primary Container (Hex) | #bcf0b4 |
+| Surface (Hex) | #f7fbf1 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอปพลิเคชันใช้กับองค์ประกอบที่ต้องการการเน้นย้ำ เช่น ปุ่มดำเนินการหลัก |
+| On Primary | สีของข้อความ ไอคอน หรือสัญลักษณ์ที่อยู่บนพื้นหลังสี Primary เพื่อให้มีค่า Contrast คมชัด อ่านออกง่าย |
+| Primary Container | สีพื้นหลังสำหรับองค์ประกอบที่ต้องการการเน้นระดับปานกลาง เช่น การเติมสีพื้นหลังให้ Card |
+| On Primary Container | สีของข้อความ ไอคอน หรือสัญลักษณ์ที่วางอยู่บนพื้นหลังสี Primary Container เพื่อให้ตัดกับสี Container ได้พอดี |
 
 ---
 
@@ -379,9 +379,9 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+
+<img width="1162" height="760" alt="image" src="https://github.com/user-attachments/assets/99ea23e2-291a-4507-95a1-b07c0652aa70" />
+
 
 ---
 
@@ -873,17 +873,18 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [ / ] App Bar แสดงชื่อ "Green Market"
+- [ / ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [ / ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ / ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [ / ] Bottom Navigation สลับ Tab ได้
+- [ / ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+<img width="1297" height="983" alt="image" src="https://github.com/user-attachments/assets/234daf19-989f-44f9-a0cc-7121049ce011" />
+<img width="1287" height="981" alt="image" src="https://github.com/user-attachments/assets/9e28b5dc-6a5b-4eea-858c-5ea8a9f6eb15" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +927,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้เงื่อนไขเช็กตรงๆ เช่น ถ้าส่งรูปมา (avatarUrl ไม่เป็น null) จะดึงรูปจากอินเทอร์เน็ตมาโชว์ ถ้าไม่ได้ส่งรูปมา (avatarUrl เป็น null) ไม่ต้องโหลดรูป แต่จะดึงตัวอักษรแรกของชื่อมาโชว์แทน |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme ไม่ได้ใส่โค้ดสีตายตัว แต่ใช้คำสั่งดึงสีจากระบบ |
+| มีส่วนไหนที่ควรปรับปรุง? | ตอนนี้ถ้าใส่ URL มั่วหรือเน็ตหลุด รูปจะโหลดไม่ขึ้นและอาจจะขึ้นError ควรเพิ่มตัวดักจับเพื่อสลับไปโชว์ชื่อย่อแทนเมื่อรูปโหลดเสีย |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,7 +954,10 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+- Code และ Widget tree ที่เขียนเอง มองเป็นคอนเทนต์จริง บอกชัดว่าในหน้ามี ผักสลัด,สตรอว์เบอร์รี และปุ่มเพิ่มสินค้า เน้นขยายต่อ ไม่ได้พูดถึงโครงสร้างไฟล์
+รวมส่วนประกอบทุกอย่างอยู่ใน Tree เดียว
+- Code และ Widget Tree ที่ได้จาก AI มองเป็น Widget Tree ยิบย่อยบอกละเอียดถึงขั้น leading, title, subtitle ใน ListTile เน้นเห็นภาพง่าย
+วางโครงสร้างไฟล์ชัดเจน แยก Component ดึงการ์ดสินค้าออกมาเป็น Widget แยก (item_card.dart) เพื่อเรียกใช้ซ้ำ
 
 ```
 ---
@@ -969,6 +973,9 @@ Add brief comments explaining each section.
 2. รัน App → ตรวจสอบว่าทุก Text อ่านออกหรือไหม
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
+   
+<img width="1285" height="976" alt="image" src="https://github.com/user-attachments/assets/2d8fb7b1-a9d2-4e2f-8f31-6b6f0c8fa421" />
+<img width="1302" height="975" alt="image" src="https://github.com/user-attachments/assets/7ca40f12-b1af-449f-a96c-bcd94d0933b1" />
 
 
 // ยังไม่ต้องทำข้อ 5.2  5.3
@@ -1010,25 +1017,25 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 ใช้ Dynamic Color และ Tonal Palette ทำให้สีปรับตามธีมและรองรับ Light/Dark Mode ได้ดีขึ้น โดยมีสีแยกชัดเจน เช่น primary, primaryContainer และ onPrimary
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: พบว่าตำแหน่งและขนาดใน Figma บางส่วนตายตัว ทำให้ไม่ยืดหยุ่นกับหน้าจอ และยังไม่มีการทำงานของปุ่ม แก้โดยใช้ Auto Layout ใน Figma และใช้ Row, Column, Theme รวมถึง Callback ใน Flutter
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: สมบูรณ์ประมาณ 70% ในด้าน UI แต่ยังต้องปรับเรื่องการทำงานของปุ่ม การเชื่อมข้อมูลจริง การจัดการ Error และแก้ Logic บางส่วน
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ควรเชื่อมต่อ API และ State Management ใช้ข้อมูลจริง รองรับหลายภาษา จัดการรูปภาพ และปรับ Responsive ให้เหมาะกับหน้าจอหลายขนาด
 ```
 
 ---
