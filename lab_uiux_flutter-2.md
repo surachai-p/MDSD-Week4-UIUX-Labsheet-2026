@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | 0xff322f66|
+| Secondary Color (Hex) |0xff5e5c71 |
+| Primary Container (Hex) | 0xffe3dfff |
+| Surface (Hex) | 0xff5b5891 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | ช้กับองค์ประกอบที่ต้องการเน้นย้ำสูงสุด (High Emphasis) เช่น ปุ่มดำเนินการหลัก (Primary Button), Floating Action Button (FAB), หรือสถานะที่กำลังเลือกอยู่ (Active State) |
+| On Primary | สีของตัวอักษร ไอคอน หรือเส้นขอบ ที่วางอยู่ "บน" พื้นหลังสี Primary โดยออกแบบมาเพื่อให้เกิดค่าความต่าง (Contrast) ที่อ่านได้ |
+| Primary Container | สีพื้นหลังที่ดึงเฉดมาจากสี Primary แต่มีความสดหรือความเข้มที่เบาลง ใช้สำหรับกล่อง กรอบ หรือคอนเทนเนอร์ที่ต้องการความโดดเด่น |
+| On Primary Container | สีของตัวอักษรหรือไอคอนที่วางอยู่ "บน" พื้นหลังสี Primary Container |
 
 ---
 
@@ -379,9 +379,11 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
+``image
 วางรูปหน้าจอ ที่นี่
-```
+<img width="1917" height="1017" alt="image" src="https://github.com/user-attachments/assets/38f279d8-ae39-48b1-adb2-d705e15c28a3" />
+
+``
 
 ---
 
@@ -873,17 +875,20 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [ ✓ ] App Bar แสดงชื่อ "Green Market"
+- [ ✓ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✓ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ ✓] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✓ ] Bottom Navigation สลับ Tab ได้
+- [✓ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
+``image
 บันทึกรูปที่นี่
-``` 
+
+<img width="1917" height="1020" alt="image" src="https://github.com/user-attachments/assets/1e24a1e1-fce5-4adc-8ca6-956a9a3f2338" />
+
+``
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +931,23 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | AI ใช้ CircleAvatar Widget ในการสร้าง รูปโปรไฟล์ (Avatar) ครับ โดยมีการตั้งค่าตรงตามข้อกำหนด Material Design 3 |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | สลับไปใช้ child แทน backgroundImage  เมื่อ avatarUrl เป็น null ฟังก์ชันนี้จะนำข้อความในตัวแปร name มาแปลงเป็นอักษรย่อภาษาอังกฤษตัวพิมพ์ใหญ่สูงสุด 2 ตัวอักษร  การเลือกใช้สีตาม Material Design 3
+พื้นหลังวงกลม (backgroundColor): ใช้สี colorScheme.primaryContainer
+ตัวอักษรย่อ (child Text): ใช้สี colorScheme.onPrimaryContainer |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme ทั้งหมด 100% (ไม่มี Hardcoded Colors) โดยดึงจาก Theme.of(context).colorScheme เพื่อรองรับทั้ง Light Mode และ Dark Mode โดยอัตโนมัติ |
+| มีส่วนไหนที่ควรปรับปรุง? | ใช้ foregroundImage ร่วมกับ onForegroundImageError หรือเปลี่ยนไปใช้ CachedNetworkImage 
+รองรับ Accessibility (Screen Readers / TalkBack / VoiceOver)
+แนวทางปรับปรุง:
+ครอบด้วย Semantics widget เพื่อให้ผู้พิการทางสายตาอ่านค่าสถิติและรูปภาพได้อย่างถูกต้อง
+รองรับการคัสตอมคำ (Localization / Multi-language Support)
+ปัจจุบัน:
+ข้อความปุ่มและสถิติ เช่น "Follow", "Message", "Posts", "Followers", "Following" ถูกเขียนไว้เป็น Hardcoded String ในโค้ด
+แนวทางปรับปรุง:
+เพิ่มพารามิเตอร์เสริมสำหรับป้ายคำ หรือเปิดให้ส่ง Callback เมื่อแตะที่รูปโปรไฟล์
+การจัดการปุ่มกดและ State
+แนวทางปรับปรุง:
+หากต้องการแสดงสถานะกำลังโหลด (Loading Spinner) หรือเปลี่ยนเป็นปุ่ม "Following" (ชั่วคราว) อาจรับพารามิเตอร์ bool isFollowing = false เข้ามาทาง Constructor เพื่อสลับเปลี่ยน Icon และ Style ของ FilledButton / TonalButton ได้โดยอัตโนมัติ|
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -1010,19 +1028,51 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: การสร้างจานสี (Tonal Palettes vs. Static Swatches)
+Material 2: ใช้ระบบสีแบบคงที่ (Primary, Secondary, Primary Variant) โดยต้องระบุสีในแต่ละจุดหรืออิงกับ Palette 100–900 แบบเดิม
+Material 3: ใช้ระบบ Tonal Palette โดยสร้างโทนสีขึ้นจากสีตั้งต้นเพียงสีเดียว (Seed Color) ผ่าน ColorScheme.fromSeed(seedColor: ...) ซึ่งจะคำนวณจานสีสม่ำเสมอตั้งแต่โทน 0 (ดำสนิท) ถึง 100 (ขาวสนิท) ทั้งหมด 5 กลุ่ม (Primary, Secondary, Tertiary, Neutral, Neutral Variant)
+
+บทบาทสีที่ละเอียดขึ้น (Expanded Color Roles & Containers)
+Material 2: มีสีหลักๆ ไม่กี่ตัว เช่น primary, primaryVariant, secondary, secondaryVariant, surface, background, error
+Material 3: เพิ่มระบบ Container Pair และ Tertiary Color เพื่อสร้างมิติและความลึกของ UI:
+Primary & OnPrimary: สีหลักและสีตัวอักษรบนสีหลัก
+PrimaryContainer & OnPrimaryContainer: สีพื้นหลังบล็อก/การ์ดระดับรองของสีหลัก และสีตัวอักษรบนบล็อกนั้น
+Tertiary & TertiaryContainer: สีเติมเต็มสำหรับการเน้นองค์ประกอบที่สาม (เช่น Badge, Accent)
+Surface Variants & Outlines: เพิ่ม surfaceVariant, onSurfaceVariant, outline, outlineVariant เพื่อแยกแยะขอบและพื้นหลังได้ละเอียดขึ้นโดยไม่ต้องคิดค่า Opacity เอง
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 1. ปัญหาเรื่อง Layout & Spacing (Figma Auto Layout vs Flutter Flex)
+ปัญหาที่พบ: ใน Figma ใช้ Auto Layout (Padding, Gap, Hug, Fill) เมื่อแปลงเป็น Flutter อาจเผลอใช้ตำแหน่ง Absolute/Fixed หรือใช้ Stack พร่ำเพรื่อ ทำให้ UI พังเมื่อขนาดหน้าจอเปลี่ยน
+วิธีแก้ไข:
+Auto Layout (Vertical / Horizontal): แปลงเป็น Column หรือ Row
+Gap ใน Figma: ใช้ SizedBox(width/height: gap) กั้นกลางระหว่างวิดเจ็ต
+Hug Content: ไม่ต้องกำหนด width/height ให้วิดเจ็ต ให้ขยายตาม Child หรือใช้ MainAxisSize.min
+Fill Container: ใช้ Expanded หรือ Flexible(fit: FlexFit.tight) หรือ SizedBox(width: double.infinity)
+2. ปัญหาเรื่อง Line Height และ Typography
+ปัญหาที่พบ:
+ใน Figma ระบุ Line Height เป็น Pixel (เช่น Font Size 16px, Line Height 24px)
+แต่ใน Flutter TextStyle กำหนด height เป็น Multiplier (อัตราส่วน) ไม่ใช่ Pixel โดยตรง ทำให้บรรทัดเบียดหรือห่างเกินไป
+วิธีแก้ไข:
+คำนวณ height ใน Flutter = Line Height (px) / Font Size (px) (เช่น 24 / 16 = 1.5)
+ข้อแนะนำ: แมปสไตล์ฟอนต์เข้ากับ Material 3 TextTheme แทนการสร้างใหม่ทั้งหมด เช่น Theme.of(context).textTheme.titleLarge
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:
+1. การจัดการเมื่อรูปภาพโหลดไม่สำเร็จ (Network Error Handling)
+ปัญหา: หาก URL รูปภาพเสีย หรือผู้ใช้งานไม่มีอินเทอร์เน็ต NetworkImage อาจแสดง Exception
+การแก้ไข: เพิ่ม onBackgroundImageError ใน CircleAvatar หรือใช้แพ็กเกจ cached_network_image เพื่อแสดงผังรูปสำรองอย่างละมุน
+2. การรองรับหน้าจอแคบและการปรับขนาดตัวอักษร (Accessibility & Font Scaling)
+ปัญหา: หากผู้ใช้เปิดโหมดตัวอักษรใหญ่ในเครื่อง (Accessibility Large Text) ข้อความในปุ่มหรือแถบสถิติล้นจอได้
+การแก้ไข: ใช้ FittedBox ในปุ่มกด หรือกำหนด maxLines: 1 พร้อม TextOverflow.ellipsis ในแถบสถิติ
+3. การเพิ่ม Event Callback สำหรับแถบสถิติ (Stats Interaction)
+ปัญหา: ปัจจุบันรองรับ Callback เฉพาะปุ่ม Follow และ Message แต่แถบสถิติยังคลิกไม่ได้
+การแก้ไข: เพิ่ม VoidCallback? onPostsTap, onFollowersTap, onFollowingTap และห่อด้วย InkWell เพื่อให้ผู้ใช้กดดูรายชื่อ Followers ได้
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
