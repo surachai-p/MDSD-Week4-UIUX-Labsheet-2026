@@ -237,19 +237,20 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #4E5B92 |
+| Secondary Color (Hex) | #595D72 |
+| Primary Container (Hex) | #DCE1FF |
+| Surface (Hex) | #FAF8FF |
 
-> **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
+> **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  
+> **คำตอบ:** เป็นการจับคู่สีระหว่าง **"สีพื้นหลัง"** กับ **"สีตัวอักษร/ไอคอน"** เพื่อให้ข้อความอ่านง่ายเสมอ โดย **Primary** คือสีหลักสำหรับปุ่มสำคัญ ส่วน **Container** คือสีพื้นหลังกล่องข้อมูลที่เน้นความสำคัญรองลงมา
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลัก ใช้กับปุ่ม/จุดสำคัญที่สุด |
+| On Primary | สีตัวอักษรหรือไอคอน บนปุ่ม Primary (เช่น สีขาว) |
+| Primary Container | สีพื้นหลังกล่อง/การ์ด ที่ต้องการเน้นรองลงมา |
+| On Primary Container | สีตัวอักษรหรือไอคอน บนกล่อง Primary Container |
 
 ---
 
@@ -377,11 +378,37 @@ Prompt ที่ไม่ดี:
 
 **ขั้นตอนที่ 2.8: บันทึกผลการทดลอง**
 
-Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
+### 📱 สรุปผลการออกแบบ UI Mockup (Green Market) ทั้ง 3 หน้าจอ
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+1. **`1_Home_Screen` (หน้าหลัก):**
+   - **Top App Bar:** แสดงชื่อแอป *"Green Market by Piyawit"* พร้อมไอคอน Menu (ด้านซ้าย) และ Profile (ด้านขวา)
+   - **Product List (Card Component):** แสดงรายการสินค้า 4 รายการ ได้แก่ ผักสลัดออร์แกนิก, สตรอว์เบอร์รีสด, กล้วยหอมทอง, และ มะเขือเทศเชอร์รี พร้อมราคาและรายละเอียด
+   - **Extended FAB:** ปุ่ม `+ เพิ่มสินค้า` วางมุมล่างขวา
+   - **Bottom Navigation Bar:** เมนู 3 ไอคอน (*หน้าหลัก*, *ค้นหา*, *โปรไฟล์*) กำหนดสถานะ Active อยู่ที่ **"หน้าหลัก"**
+
+2. **`2_Detail_Screen` (หน้ารายละเอียดสินค้า):**
+   - **Top App Bar:** แสดงปุ่มย้อนกลับ (`←`) และหัวข้อ *"รายละเอียดสินค้า"*
+   - **Banner Image:** แสดงรูปภาพสินค้าผักสลัดออร์แกนิกขนาดใหญ่
+   - **Product Info:**
+     - ชื่อสินค้า: *"ผักสลัดออร์แกนิก"* (`Headline Medium`)
+     - ราคา: *"45 บาท / กิโลกรัม"* (`Title Large`)
+     - รายละเอียด: หัวข้อ *"รายละเอียดสินค้า"* (`Title Medium`) และข้อความบรรยายคุณลักษณะสินค้า (`Body Large`)
+   - **Action Buttons:** ปุ่ม `+ เพิ่มลงตะกร้าสินค้า` (`Filled Button`) และปุ่ม `← ย้อนกลับ` (`Outlined Button`)
+
+3. **`3_Profile_Screen` (หน้าโปรไฟล์ผู้ใช้):**
+   - **Top App Bar:** แสดงปุ่มย้อนกลับ (`←`) และหัวข้อ *"โปรไฟล์ผู้ใช้"*
+   - **User Info:** Avatar วงกลมสี `Primary Container` ขนาด 80x80px พร้อมไอคอน `person`, ชื่อผู้ใช้ *"สมชาย ใจดี"* (`Headline Small`) และอีเมล *"67030142@kmitl.ac.th"* (`Body Medium`)
+   - **Action Button:** ปุ่ม `แก้ไขข้อมูลโปรไฟล์` (`Outlined Button`)
+   - **Bottom Navigation Bar:** กำหนดสถานะ Active อยู่ที่ **"โปรไฟล์"**
+
+### 🖼️ ภาพถ่ายหน้าจอการออกแบบและ Prototype Connection
+
+![Prototype Overview](images/prototype_overview.png)
+
+#### รายละเอียดหน้าจอแต่ละส่วน:
+| 1. Home Screen | 2. Detail Screen | 3. Profile Screen |
+| :---: | :---: | :---: |
+| ![Home Screen](images/home_screen.png) | ![Detail Screen](images/detail_screen.png) | ![Profile Screen](images/profile_screen.png) |
 
 ---
 
@@ -873,17 +900,28 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [x] App Bar แสดงชื่อ "Green Market Dev by Piyawit"
+- [x] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [x] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [x] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [x] Bottom Navigation สลับ Tab ได้
+- [x] FAB แสดง SnackBar เมื่อถูกคลิก
 
-**แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+**ผลการทดลองและการแสดงผล App Bar (`Dev by Piyawit`):**
+
+#### 📱 ผลการรัน Flutter App (Green Market Home Screen):
+
+![Flutter Home Screen](images/flutter_home_screen.png)
+
+#### 📄 ผลการทดสอบกดดูรายละเอียดสินค้าแต่ละรายการ (Detail Screens):
+| ผักสลัดออร์แกนิก | สตรอว์เบอร์รีสด | กล้วยหอมทอง | มะเขือเทศเชอร์รี |
+| :---: | :---: | :---: | :---: |
+| ![ผักสลัดออร์แกนิก](images/flutter_detail_salad.png) | ![สตรอว์เบอร์รีสด](images/flutter_detail_strawberry.png) | ![กล้วยหอมทอง](images/flutter_detail_banana.png) | ![มะเขือเทศเชอร์รี](images/flutter_detail_tomato.png) | 
+
+#### 🔔 ผลการทดสอบ SnackBar (การตอบสนองเมื่อคลิกปุ่ม):
+| SnackBar เมื่อกดปุ่ม "+ เพิ่มสินค้า" (FAB) | SnackBar เมื่อกดปุ่ม "เพิ่มลงตะกร้าสินค้า" |
+| :---: | :---: |
+| ![SnackBar FAB](images/flutter_snackbar_fab.png) | ![SnackBar Cart](images/flutter_snackbar_cart.png) | 
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +964,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ `CircleAvatar` (กำหนด `radius: 32` และสีพื้นหลังเป็น `colorScheme.primaryContainer`) |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้เงื่อนไข `avatarUrl != null ? NetworkImage(avatarUrl!) : null` และแสดงผล `Text` ตัวอักษรย่อ (Initials) จากฟังก์ชัน `getInitials(name)` เมื่อ `avatarUrl` เป็น `null` |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme ทั้งหมดผ่าน `Theme.of(context).colorScheme` (เช่น `primaryContainer`, `onPrimaryContainer`, `onSurface`, `onSurfaceVariant`, `outlineVariant`) โดยไม่มีการ Hardcode สี |
+| มีส่วนไหนที่ควรปรับปรุง? | ย้ายฟังก์ชัน `getInitials(name)` ออกจากเมธอด `build()` ไปไว้เป็นเมธอดระดับคลาส เพื่อป้องกันไม่ให้ประกาศฟังก์ชันซ้ำทุกครั้งที่มีการ Rebuild Widget |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -950,11 +988,14 @@ Add brief comments explaining each section.
    Then implement it as a Flutter StatelessWidget.
    Use Material 3 components and read colors from Theme.of(context).colorScheme.
    ```
-5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
+5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+สรุปผลการเปรียบเทียบ (AI Code vs เขียนเองในการทดลองที่ 3):
 
+1. การจัดโครงสร้างไฟล์: AI เขียนโค้ดทุกหน้ารวมกันในไฟล์เดียว ส่วนแบบเขียนเองแยกโฟลเดอร์/ไฟล์เป็นสัดส่วน (lib/widgets, lib/screens) อ่านและแก้ไขได้ง่ายกว่า
+2. การเปลี่ยนหน้า (Navigation): AI ซ้อน Scaffold และ NavigationBar ในหน้าเดียวกัน ส่วนแบบเขียนเองใช้ Navigator.push สลับหน้าแบบเปิดหน้าใหม่ตามมาตรฐาน UX
+3. ระบบสีและ Theme: AI กำหนดสีคร่าวๆ ผ่าน ColorScheme.fromSeed ส่วนแบบเขียนเองใช้ไฟล์ theme.dart จาก Material Theme Builder ทำให้รองรับ Theme ครบถ้วนตาม Spec Material 3
 ```
 ---
 
@@ -965,43 +1006,9 @@ Add brief comments explaining each section.
 
 **ขั้นตอนที่ 5.1: ทดสอบ Dark Mode**
 
-1. ใน `main.dart` เปลี่ยน `themeMode` เป็น `ThemeMode.dark` ชั่วคราว
-2. รัน App → ตรวจสอบว่าทุก Text อ่านออกหรือไหม
-3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
-4. เปลี่ยนกลับเป็น `ThemeMode.system`
-
-
-// ยังไม่ต้องทำข้อ 5.2  5.3
-**ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
-
-ใน Flutter DevTools:
-1. รัน App ใน Debug mode: `flutter run --debug`
-2. เปิด **Flutter Inspector** กดคีย์ลัด Ctrl + Shift + P (สำหรับ Windows) หรือ Cmd + Shift + P (สำหรับ macOS)
-
-พิมพ์คำว่า: Flutter: Open DevTools
-3. Enable **"Show guidelines"** → จะเห็น layout boundary
-4. ตรวจสอบว่า Interactive element ทุกชิ้นมีขนาดอย่างน้อย **48×48 dp**
-
-**ขั้นตอนที่ 5.3: ตรวจสอบ Semantic Labels**
-
-เพิ่ม `Semantics` widget สำหรับ element ที่ไม่มี label ชัดเจน:
-
-```dart
-// ก่อน: Icon ที่ไม่มี label
-IconButton(
-  icon: const Icon(Icons.search),
-  onPressed: () {},
-)
-
-// หลัง: เพิ่ม tooltip เป็น Semantic label
-IconButton(
-  icon: const Icon(Icons.search),
-  onPressed: () {},
-  tooltip: 'ค้นหา',  // Screen Reader จะอ่านค่านี้
-)
-```
-
-ตรวจสอบทุก `IconButton` ว่ามี `tooltip` ครบ
+1. ใน `main.dart` เปลี่ยน `themeMode` เป็น `ThemeMode.dark`
+2. ผลการทดสอบ: ทุกข้อความอ่านได้ชัดเจน ตัวอักษรสีขาว/สีอ่อนตัดกับพื้นหลังสีเข้มตามมาตรฐาน Material 3 Contrast Ratio โดยไม่ต้องแก้สี manual
+3. เปลี่ยนกลับเป็น `ThemeMode.system` เพื่อให้สลับตามโหมดของเครื่อง
 
 ---
 
@@ -1010,25 +1017,25 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 ใช้ระบบ Dynamic Color เจนสีทั้งระบบจากสี Seed เพียงสีเดียว โดยจับคู่แบบ Base-On (เช่น Primary/On Primary) เพื่อประกัน Contrast ที่อ่านง่าย ต่างจาก Material 2 ที่ต้องกำหนดสีเองทีละจุด
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: พบปัญหาการจัดระยะห่าง (Padding) และการขยายขนาด Widget ไม่ตรงกับ Auto Layout แก้ไขโดยใช้ Column/Row ร่วมกับ Expanded และกำหนด EdgeInsets ให้ตรงตาม dp ใน Figma
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: AI สร้าง UI ได้สมบูรณ์ประมาณ 80-90% แต่ควรปรับปรุงโดยแยกโค้ดเป็นไฟล์ Reusable Widget และย้ายฟังก์ชัน Helper ออกนอกเมธอด build() เพื่อประสิทธิภาพการทำงาน
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพิ่มระบบ State Management, ดึงข้อมูลสินค้าจาก Backend API จริง, เพิ่มระบบตะกร้าสินค้า และใช้รูปภาพสินค้าจริงความละเอียดสูง
 ```
 
 ---

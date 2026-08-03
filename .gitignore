@@ -1,0 +1,19 @@
+week03_ui_lab/
+
+# Flutter / Dart build files
+.dart_tool/
+.pub-cache/
+.pub/
+build/
+*.apk
+
+# Temp & extracted files
+*.zip
+!material-theme.zip
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
