@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | `#495D92` |
+| Secondary Color (Hex) | `#585E71` |
+| Primary Container (Hex) | `#DAE2FF` |
+| Surface (Hex) | `#FAF8FF` |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแบรนด์ (`#495D92`) ใช้กับ Element ที่สำคัญที่สุดในหน้าจอ เช่น พื้นหลังของ FilledButton, FAB, Checkbox/Switch ที่ถูกเลือก เพื่อดึงดูดสายตาไปยัง Action หลัก |
+| On Primary | สีของตัวอักษร/ไอคอนที่วางอยู่ **บน** พื้นสี Primary (`#FFFFFF`) ถูกออกแบบให้มี contrast สูงพอกับ Primary เพื่อให้อ่านออกชัดเจนตามมาตรฐาน Accessibility |
+| Primary Container | สีที่ใช้กับพื้นหลังของ Component ที่เกี่ยวข้องกับ Primary แต่ต้องการความเด่นน้อยกว่า Primary เอง (`#DAE2FF`) เช่น พื้นหลังของ Chip ที่เลือก หรือ Container ของไอคอนสินค้า ให้ความรู้สึกเป็นกลุ่มเดียวกับสี Primary แต่ไม่แย่งความสนใจจาก Action หลัก |
+| On Primary Container | สีของตัวอักษร/ไอคอนที่วางอยู่ **บน** พื้นสี Primary Container (`#314578`) เป็นสี Primary ที่เข้มขึ้นเพื่อให้มี contrast เพียงพอเมื่ออยู่บนพื้นสีอ่อนของ Primary Container |
 
 ---
 
