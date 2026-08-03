@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #006A60 |
+| Secondary Color (Hex) | #4A635E |
+| Primary Container (Hex) | #9EF2E4 |
+| Surface (Hex) | #F4FBF8 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอป เอาไว้เน้นความสำคัญ |
+| On Primary | สีตัวหนังสือที่อยู่บนพื้น Primary |
+| Primary Container | สีพื้นหลังที่อ่อนลงมาซึ่งใช้กับการ์ดหรือปุ่มรองๆ |
+| On Primary Container | สีตัวหนังสือที่อยู่บนพื้น Primary Container |
 
 ---
 
@@ -379,10 +379,14 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/09899bae-372f-439a-8586-6fb71f3090a9" />
 
+```text
+บันทึกข้อมูลสรุป ดังนี้
+- หน้า Home Screen แสดงรายการสินค้าในรูปแบบการ์ด มีแถบเมนูด้านล่าง (Navigation Bar) และปุ่มลอย (FAB) สีเข้มสำหรับเพิ่มสินค้า
+- หน้า Detail Screen แสดงรูปภาพ ข้อมูล และราคาสินค้า พร้อมปุ่ม "เพิ่มลงตะกร้า" ที่ใช้สีหลักเพื่อให้โดดเด่น
+- หน้า Profile Screen แสดงข้อมูลพื้นฐานและรูปภาพผู้ใช้งาน พร้อมปุ่มสำหรับกดเข้าไปแก้ไขข้อมูลส่วนตัว
+```
 ---
 
 ### การทดลองที่ 3: แปลง Design เป็น Flutter Code
@@ -873,17 +877,17 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✅] App Bar แสดงชื่อ "Green Market"
+- [✅] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✅] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✅] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✅] Bottom Navigation สลับ Tab ได้
+- [✅] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/8f8ef30b-0998-413d-8957-62c65e7a0b79" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +930,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | แสดงตัวอักษรย่อของชื่อ (Initials) แทนรูป |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้จาก Theme (colorScheme) |
+| มีส่วนไหนที่ควรปรับปรุง? | ควรเพิ่ม Callback ภายนอกให้ปุ่ม onPressed ใช้งานได้จริง |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -937,6 +941,8 @@ Add brief comments explaining each section.
 2. วาง code จาก AI Studio
 3. แก้ไขส่วนที่ผิดหรือไม่เหมาะสม (ถ้ามี)
 4. Import และใช้ใน Profile Tab ของ Home Screen (สอบถาม AI ว่าต้องทำอย่างไร)
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/f4050cc8-0f25-406b-b25d-dccfd81c0a56" />
 
 **ขั้นตอนที่ 4.5: ทดลอง Multimodal — ส่งรูป Figma ให้ AI วิเคราะห์**
 
@@ -953,7 +959,12 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+ผลการเปรียบเทียบ Code และ Widget Tree เป็นดังนี้
+1. โครงสร้างไฟล์นั้น AI เขียนโค้ดทุกหน้ากระจุกรวมในไฟล์เดียว ส่วนการทดลองที่ 3 มีการแยกโฟลเดอร์ (screens, widgets) เป็นสัดส่วน ทำให้โค้ดสะอาดและนำไปใช้ซ้ำ (Reusable) ได้ดีกว่า
+2. ระบบ Theme นั้น AI กำหนดสีเองแบบ Hardcode แต่การทดลองที่ 3 ใช้ Material Theme Builder ซึ่งเป็นมาตรฐาน จัดการง่าย และรองรับ Light/Dark Mode อัตโนมัติ
+3. การจัดการหน้าต่าง (Navigation) นั้น AI สร้าง MainShell มาครอบแอปอีกที แต่การทดลองที่ 3 ฝัง BottomNavigationBar ไว้ในหน้า Home แล้วใช้ฟังก์ชันสลับ Widget ทำให้โค้ดตรงไปตรงมากว่า
+4. ความสมจริงของ UI นั้น AI สร้างการ์ดด้วย Container ธรรมดา แต่การทดลองที่ 3 ใช้ Card ร่วมกับ InkWell ทำให้ได้เอฟเฟกต์การกด (Ripple Effect) ตามมาตรฐาน Material 3
+5. การรับส่งข้อมูลนั้นหน้า Detail ของ AI พิมพ์ข้อความฝังลงไปตรงๆ (Hardcode) แต่ของการทดลองที่ 3 มีการส่งข้อมูลผ่าน Constructor ทำให้ข้อมูลเปลี่ยนตามรายการสินค้าที่กดได้จริง (Dynamic)
 
 ```
 ---
@@ -969,7 +980,6 @@ Add brief comments explaining each section.
 2. รัน App → ตรวจสอบว่าทุก Text อ่านออกหรือไหม
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
-
 
 // ยังไม่ต้องทำข้อ 5.2  5.3
 **ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
@@ -1010,25 +1020,27 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 3 ใช้ระบบสี Tonal Palettes ทำให้สร้างชุดสีโทนสว่างและมืดได้เป็นระบบและสอดคล้องกัน ต่างจาก Material 2 ที่กำหนดสีหลักแบบตายตัว
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาคือระยะและโครงสร้างใน Figma มักไม่ตรงกับ Widget ของ Flutter พอดีซึ่งแก้ไขโดยเลือกใช้ Widget พื้นฐานมาจัดรูปและเปลี่ยนสี Hardcode ให้ดึงจาก Theme ของแอป
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: AI เขียนโครงสร้าง UI ออกมาได้ดีแต่ชอบเขียนรวมเป็นไฟล์เดียวและ Hardcode ข้อมูลต้องนำมาแยกไฟล์เป็น Reusable Widget และปรับให้เชื่อมกับ MaterialTheme ของเรา
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: - เพิ่ม State Management เพื่อจัดการข้อมูล
+- ทำ Responsive Design ให้รองรับหน้าจอหลายขนาด
+- ดึงข้อมูลจริงจาก API แทนการใช้ข้อมูลสมมติ (Mock Data)
 ```
 
 ---
