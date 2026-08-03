@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | `#495D92` |
+| Secondary Color (Hex) | `#585E71` |
+| Primary Container (Hex) | `#DAE2FF` |
+| Surface (Hex) | `#FAF8FF` |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแบรนด์ (`#495D92`) ใช้กับ Element ที่สำคัญที่สุดในหน้าจอ เช่น พื้นหลังของ FilledButton, FAB, Checkbox/Switch ที่ถูกเลือก เพื่อดึงดูดสายตาไปยัง Action หลัก |
+| On Primary | สีของตัวอักษร/ไอคอนที่วางอยู่ **บน** พื้นสี Primary (`#FFFFFF`) ถูกออกแบบให้มี contrast สูงพอกับ Primary เพื่อให้อ่านออกชัดเจนตามมาตรฐาน Accessibility |
+| Primary Container | สีที่ใช้กับพื้นหลังของ Component ที่เกี่ยวข้องกับ Primary แต่ต้องการความเด่นน้อยกว่า Primary เอง (`#DAE2FF`) เช่น พื้นหลังของ Chip ที่เลือก หรือ Container ของไอคอนสินค้า ให้ความรู้สึกเป็นกลุ่มเดียวกับสี Primary แต่ไม่แย่งความสนใจจาก Action หลัก |
+| On Primary Container | สีของตัวอักษร/ไอคอนที่วางอยู่ **บน** พื้นสี Primary Container (`#314578`) เป็นสี Primary ที่เข้มขึ้นเพื่อให้มี contrast เพียงพอเมื่ออยู่บนพื้นสีอ่อนของ Primary Container |
 
 ---
 
@@ -379,9 +379,9 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<p align="center">
+  <img src="assets/design_screenshot.png" alt="Design Screenshots" width="80%" />
+</p>
 
 ---
 
@@ -873,17 +873,17 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [x] App Bar แสดงชื่อ "Green Market"
+- [x] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [x] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [x] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [x] Bottom Navigation สลับ Tab ได้
+- [x] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<p align="center">
+  <img src="assets/app_run.gif" alt="App Running Demo" width="300" />
+</p> 
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +926,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | `CircleAvatar` |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้การทำ Ternary operator ตรวจสอบเงื่อนไข: หากเป็น `null` จะแสดง `Text(_initials)` (อักษรย่อ) และมีสีพื้นหลังเป็น `colorScheme.primaryContainer` แทนการแสดง `backgroundImage` |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme (`Theme.of(context).colorScheme`) ทั้งหมด เช่น `primaryContainer`, `onPrimaryContainer`, `onSurface`, และ `onSurfaceVariant` โดยไม่มีการ hardcode รหัสสีเลย |
+| มีส่วนไหนที่ควรปรับปรุง? | 1. ปุ่ม Follow และ Message มีการ hardcode `onPressed: () {}` ควรรับเป็น `VoidCallback?` จาก Constructor เพื่อให้สามารถเรียกใช้งาน action ด้านนอกได้จริง<br>2. การใช้ `NetworkImage` โหลดรูปจากเว็บโดยตรง ควรเปลี่ยนเป็น `CachedNetworkImage` หรือจัดการ placeholder/error state เพื่อไม่ให้เกิดภาพแตกเมื่อโหลดภาพไม่สำเร็จ |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,8 +953,22 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+ผลการเปรียบเทียบระหว่าง Code ที่ AI สร้าง (Multimodal) กับ Code ที่เขียนเองในการทดลองที่ 3:
 
+1. โครงสร้าง Widget Tree:
+   - โค้ดที่เขียนเองในการทดลองที่ 3: ออกแบบหน้าจอ Home Screen ให้แยกส่วนเนื้อหา (ListView) และ NavigationBar ออกจากกัน และเรียกใช้ ItemCard ที่เป็น Reusable Widget
+   - โค้ดที่ AI สร้าง: วิเคราะห์สกรีนโปรไฟล์แยกออกมาเป็นหน้าจอเดี่ยว (ProfileScreen) ที่มี Scaffold, AppBar, Column กลางที่มี CircleAvatar และ OutlinedButton.icon ซึ่งตรงกับความต้องการของสกรีนนั้นตาม Mockup Figma
+
+2. การเรียกใช้สีและฟอนต์ (Material 3 Theme):
+   - ทั้งสองแบบไม่มีการฮาร์ดโค้ดรหัสสี (Hex Color) โดยใช้ Theme.of(context).colorScheme (เช่น primaryContainer, onPrimaryContainer, surfaceVariant, onSurfaceVariant) และใช้ Theme.of(context).textTheme (เช่น headlineSmall, bodyMedium, headlineMedium) ซึ่งทำให้รองรับการปรับเปลี่ยน Light/Dark Mode ได้โดยอัตโนมัติ
+
+3. ข้อดีของโค้ดที่ AI สร้าง:
+   - AI สามารถสร้าง UI Layout ได้รวดเร็วและถูกต้องตาม Mockup Figma
+   - ใช้ Widget M3 ที่เหมาะสม เช่น NavigationBar, OutlinedButton.icon และการสร้างสไตล์ขอบมนได้สวยงาม
+
+4. ข้อจำกัดของโค้ดที่ AI สร้าง:
+   - โค้ดที่ AI สร้างมีการฮาร์ดโค้ดค่า (Hardcoded values) บางจุด เช่น รหัสนักศึกษาและชื่อ "สมชาย ใจดี", "67030011@kmitl.ac.th" และไม่มีพารามิเตอร์ส่งผ่าน Constructor ทำให้ไม่สามารถเป็น Reusable Widget ได้ดีเท่าตัวที่เขียนเอง
+   - ไม่มี callback ฟังก์ชันตอบสนองการกดปุ่ม (เช่น onPressed ของปุ่มแก้ไขข้อมูลโปรไฟล์) ต้องนำมาเขียนเพิ่มเอง
 ```
 ---
 
@@ -1007,28 +1021,28 @@ IconButton(
 
 ### คำถามสรุปการเรียนรู้ (ตอบทุกข้อ)
 
-**ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
+**ข้อ 1** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+Material 3 ใช้ระบบสีแบบไดนามิกที่คำนวณจากสีเริ่มต้นเพียงสีเดียว ทำให้ได้โทนสีที่เข้ากันอย่างอัตโนมัติผ่าน Tonal Palettes โดยแบ่งสีเป็นกลุ่มสำหรับ Container และ On-container ต่างจาก Material 2 ที่ใช้สีแบบตายตัวและเน้นเพียงสีหลักกับสีรองเท่านั้น
 ```
 
-**ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
+**ข้อ 2** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+พบปัญหาเรื่องความแตกต่างของการตั้งค่าสีพื้นหลังและขนาดของตัวอักษรบางส่วนรวมถึงการใช้คุณสมบัติที่ล้าสมัยของธีม วิธีแก้ไขคือปรับแต่งค่า Theme ของโปรเจกต์ให้สอดคล้องกับ Figma และใช้คุณสมบัติใหม่ของระบบ Material 3 เช่น การใช้สีของ surface แทนคำสั่ง background ที่ยกเลิกไปแล้ว
 ```
 
-**ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
+**ข้อ 3** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+โค้ดที่ AI สร้างมีความสมบูรณ์ในการจัดโครงสร้างหน้าตาแอปและใช้โทนสีจากระบบธีมได้อย่างถูกต้องแต่ยังมีข้อจำกัดที่จำเป็นต้องปรับปรุงเพิ่มเติมนั่นคือการรับค่าต่าง ๆ ผ่านตัวรับข้อมูลของคลาสและสร้างส่วนตอบสนองเมื่อผู้ใช้กดปุ่มแทนการปล่อยให้เป็นฟังก์ชันว่างเปล่า
 ```
 
-**ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
+**ข้อ 4** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+หากจะนำไปใช้ในงานจริงควรปรับปรุงโดยการเชื่อมต่อระบบจัดการสถานะของแอปเพื่อความเสถียร ใช้ไลบรารีเพื่อเพิ่มประสิทธิภาพการโหลดและเก็บแคชรูปภาพจากอินเทอร์เน็ตเพื่อป้องกันรูปภาพไม่แสดงผล รวมทั้งการแยกส่วน UI ออกมาเป็น Widget ย่อยเพื่อให้สามารถนำกลับมาใช้ซ้ำได้ง่ายในอนาคต
 ```
 
 ---

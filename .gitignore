@@ -1,0 +1,68 @@
+# Miscellaneous
+material-theme.zip
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate.log
+
+# IntelliJ Related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Visual Studio Code Related
+.vscode/
+.claude/
+
+# Environments & Local Files
+.env
+.env.*
+
+
+# Flutter/Dart Related
+**/doc/api/
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/.pub-cache/
+**/.pub/
+**/build/
+
+# Android Related
+**/android/local.properties
+**/android/key.properties
+**/android/app/src/main/res/values/strings.xml
+**/android/app/src/main/res/values/google-services.json
+**/android/.gradle/
+**/android/app/build/
+**/android/app/src/main/java/io/flutter/plugins/
+**/android/app/src/main/kotlin/io/flutter/plugins/
+
+# iOS/macOS Related
+**/ios/Flutter/.flutter-plugins
+**/ios/Flutter/.flutter-plugins-dependencies
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/flutter_plugins_dependencies.plist
+**/ios/Flutter/ephemeral/
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/DerivedData/
+**/macos/Flutter/ephemeral/
+**/macos/Flutter/Generated.xcconfig
+**/macos/Flutter/flutter_export_environment.sh
+**/macos/Flutter/flutter_plugins_dependencies.plist
+
+# Linux/Windows/Web Related
+**/linux/flutter/ephemeral/
+**/windows/flutter/ephemeral/
+**/web/flutter_service_worker.js
+**/web/flutter_service_worker.js.map
