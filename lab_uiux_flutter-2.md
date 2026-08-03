@@ -236,20 +236,20 @@ Prompt ที่ไม่ดี:
 **ขั้นตอนที่ 1.4: บันทึกผล**
 
 | รายการ | ค่าที่ได้ |
-|--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+|--------|:---------:|
+| Primary Color (Hex) | #004d99 |
+| Secondary Color (Hex) | #4a5f83 |
+| Primary Container (Hex) | #1565c0 |
+| Surface (Hex) | #f9f9ff |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของธีม ใช้กับ component ที่สำคัญที่สุดในหน้าจอ เช่น พื้นหลังปุ่ม FAB หรือ element ที่อยู่ในสถานะ active selected  |
+| On Primary | สีของตัวอักษรและไอคอนที่วางอยู่บนพื้น Primary เพื่อให้อ่านออกชัดเจน เช่น สีตัวหนังสือบนปุ่ม FilledButton  |
+| Primary Container | สีพื้นหลังของ container ที่ต้องการสื่อความสำคัญรองจาก Primary แต่ยังอยู่ในโทนเดียวกัน มักเป็นเฉดที่นุ่มนวลกว่า ใช้กับพื้นที่กว้างขึ้นโดยไม่เน้นจัดเกินไป เช่น พื้นหลังกล่องไอคอน |
+| On Primary Container | สีของตัวอักษร ไอคอนที่วางอยู่บนพื้น Primary Container เพื่อให้ contrast พอดีกับพื้นหลังนั้น เช่น สีไอคอนใน ItemCard |
 
 ---
 
@@ -379,9 +379,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="762" height="551" alt="ภาพถ่ายหน้าจอ 2569-08-03 เวลา 19 32 33" src="https://github.com/user-attachments/assets/a930bda2-79dc-4ea2-a3a5-bef306b91459" />
+
 
 ---
 
@@ -873,17 +872,21 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✔] App Bar แสดงชื่อ "Green Market"
+- [✔] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✔] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✔] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✔] Bottom Navigation สลับ Tab ได้
+- [✔] FAB แสดง SnackBar เมื่อถูกคลิก
+
+<img width="761" height="791" alt="image" src="https://github.com/user-attachments/assets/fd86224b-fe02-44cb-9bf9-6a951d8438fe" />
+
+<img width="795" height="795" alt="image" src="https://github.com/user-attachments/assets/e9e3ef1b-e554-4d80-9bf2-3087070ba2f4" />
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+<img width="758" height="776" alt="image" src="https://github.com/user-attachments/assets/680ad09c-43f6-4c39-aee6-7cc05eceac25" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +929,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar radius = 32 โดยกำหนด backgroundColor เป็น colorScheme.primaryContainer, ใส่รูปผ่าน backgroundImage: NetworkImage(avatarUrl!) และใช้ Text เป็น child สำหรับแสดงตัวอักษรย่อ |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้ conditional expression 2 จุดคู่กัน คือ backgroundImage: avatarUrl != null ? NetworkImage(avatarUrl!) : null และ child: avatarUrl == null ? Text(...) : null ถ้าเป็น null จะแสดงตัวอักษรตัวแรกของ name แปลงเป็นพิมพ์ใหญ่ (name[0].toUpperCase()) และถ้า name เป็นค่าว่างจะ fallback เป็น '?' มีการเช็ค name.isNotEmpty ป้องกัน RangeError |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้จาก Theme ทั้งหมด ไม่มี hardcode สี — ดึงผ่าน Theme.of(context).colorScheme แล้วเรียกใช้ role ต่าง ๆ ได้แก่ primaryContainer, onPrimaryContainer, onSurface, onSurfaceVariant ส่วน FilledButton / OutlinedButton ปล่อยให้รับสีจาก Theme โดยอัตโนมัติ ถือว่าตรงตามหลัก Material 3 |
+| มีส่วนไหนที่ควรปรับปรุง? | 1. ไม่ handle กรณีโหลดรูปจาก Network ไม่สำเร็จ <br> 2. TextStyle ใน CircleAvatar ไม่ได้ใช้ TextTheme <br> 3. ใส่ fontWeight: FontWeight.bold ทับ Typography Scale<br>4. ไม่ handle กรณีโหลดรูปจาก Network ไม่สำเร็จ |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -937,6 +940,8 @@ Add brief comments explaining each section.
 2. วาง code จาก AI Studio
 3. แก้ไขส่วนที่ผิดหรือไม่เหมาะสม (ถ้ามี)
 4. Import และใช้ใน Profile Tab ของ Home Screen (สอบถาม AI ว่าต้องทำอย่างไร)
+
+<img width="779" height="767" alt="image" src="https://github.com/user-attachments/assets/5cb624e9-a7d2-4b02-9a26-028d67a15aa9" />
 
 **ขั้นตอนที่ 4.5: ทดลอง Multimodal — ส่งรูป Figma ให้ AI วิเคราะห์**
 
@@ -953,7 +958,55 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+การทดลองที่ 3
+
+Scaffold
+ ├── AppBar (centerTitle: true)
+ │    ├── title: Text("Dev by Ittikorn Tongsima")
+ │    └── actions: [IconButton(Icons.search)]
+ ├── body: _buildBody()  ← switch ตาม _selectedIndex (มี state จริง)
+ │    ├── [0] ListView.builder → ItemCard
+ │    │        └── Card(elevation:1) → InkWell → Padding → Row
+ │    │             ├── Container 48x48 (primaryContainer + Icon สินค้า)
+ │    │             ├── Expanded→Column(title, subtitle รวมราคาในบรรทัดเดียว)
+ │    │             └── Icon(chevron_right)
+ │    ├── [1] Center(Text('ค้นหาสินค้า'))
+ │    └── [2] UserProfileCard (โปรไฟล์ผู้ใช้)
+ ├── FloatingActionButton.extended (สีตาม default theme)
+ └── NavigationBar (selectedIndex ผูกกับ state, onDestinationSelected ใช้งานได้จริง)
+
+Design ใหม่จาก Figma
+
+Scaffold
+ ├── AppBar
+ │    ├── leading: Icon(menu)  ← มีปุ่มเมนู
+ │    ├── title: "Green Market by Ittikorn"
+ │    └── actions: [CircleAvatar โลโก้]  ← มี avatar ท้าย AppBar
+ ├── body: ListView (แสดงเฉพาะ list สินค้า ไม่มี tab switching)
+ │    └── _ProductCard
+ │         └── Card(secondaryContainer, elevation:0) → IntrinsicHeight → Row
+ │              ├── CircleAvatar (ตัวอักษรนำ)
+ │              ├── Expanded→Column(title, subtitle, price แยก 3 บรรทัด)
+ │              └── Container ขวา (พื้นที่ตกแต่ง surfaceVariant + Icon)
+ ├── FloatingActionButton.extended (สีกำหนดเอง primaryContainer/onPrimaryContainer)
+ └── NavigationBar (selectedIndex: 0 hardcoded, ไม่มี onDestinationSelected)
+```
+
+```text
+การทดลองที่ 3
+    - การ์ดสินค้า Container สี่เหลี่ยม + Icon, ราคารวมใน subtitle, มี chevron
+    - ใช้สี Card default elevation 1 ที่เอามาจากการทดลแงเเรกๆ
+    - appbar ไม่มี leading, ไม่มี avatar ท้าย, centerTitle
+    - ผูก state จริง ใช้งานสลับแท็บได้
+    - มี body สำหรับ ค้นหา โปรไฟล์
+    - แยก HomeScreen เเละ ItemCard 
+
+Design ใหม่จาก Figma
+    - CircleAvatar ตัวอักษร + แยก title/subtitle/price 3 บรรทัด + แถบตกแต่งด้านขวา ไม่มี chevron
+    - สี Card ใช้ secondaryContainer.withOpacity(0.4) elevation 0
+    - AppBar มี leading menu icon และ CircleAvatar โลโก้ท้าย AppBar
+    - NavigationBar เป็น static mockup — `selectedIndex: 0` ตายตัว ไม่มี callback
+    - ไม่มี Tab อื่นเลย เป็นแค่หน้า list เดียว
 
 ```
 ---
@@ -967,11 +1020,17 @@ Add brief comments explaining each section.
 
 1. ใน `main.dart` เปลี่ยน `themeMode` เป็น `ThemeMode.dark` ชั่วคราว
 2. รัน App → ตรวจสอบว่าทุก Text อ่านออกหรือไหม
+
+<img width="804" height="759" alt="image" src="https://github.com/user-attachments/assets/7422d177-951b-4b76-9753-b0461d59fc44" />
+
+<img width="716" height="758" alt="image" src="https://github.com/user-attachments/assets/8dd3b1cf-2bea-4102-999f-98b708c07b29" />
+
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
 
-// ยังไม่ต้องทำข้อ 5.2  5.3
+### ยังไม่ต้องทำข้อ 5.2  5.3
+
 **ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
 
 ใน Flutter DevTools:
@@ -1010,25 +1069,34 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 2 กำหนดสีแบบตายตัวเป็นชุด Primary/Accent เพียงไม่กี่ตัว และมักต้อง hardcode สีเองใน component แต่ละตัว ส่วน Material 3 ใช้ระบบ Dynamic Color ที่ generate ทั้ง Tonal Palette (Primary, Secondary, Tertiary, Error, Neutral) จากสี seed เพียงสีเดียว แต่ละ role ยังแตกเป็นคู่ Container/On-Container ทำให้มีสีให้เลือกใช้ตามระดับความสำคัญของ element ได้ละเอียดขึ้น และรับประกัน contrast ระหว่างพื้นหลังกับตัวอักษรโดยอัตโนมัติ ทั้ง Light/Dark mode นอกจากนี้ Elevation ใน Material 3 ใช้ Color Overlay แทน Drop Shadow แบบ Material 2 ด้วย
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาหลักคือ layout ที่ออกแบบใน Figma ตำแหน่ง X Y แบบ absolute, ขนาด fix เป็น px) ไม่ตรงกับแนวคิด Flutter ที่เน้น Row Column Expanded ต้องตีความ Auto Layout ใน Figma กลับมาเป็น Row/Column + Spacing เอง เช่น Card สินค้าที่ใน Figma วางแบบ Horizontal Card ต้องแปลงเป็น Row อีกปัญหาคือสีและ Text Style ที่เลือกใน Figmaต้อง map มาเป็น TextTheme ของ Flutter ให้ตรง role ไม่ใช้ hardcode และ Component บางตัวใน Figma Kit มีรายละเอียด ปลีกย่อยที่ต้องเขียน state เพิ่มเอง เพราะ mockup ใน Figma เป็นภาพนิ่ง ไม่มี logic
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: จากการทดลองที่ 4 พบว่า AI เขียนโครงสร้างหลัก ได้ถูกต้องตาม requirement ที่ระบุ เช่น ใช้ Theme.of(context).colorScheme  ทั้งหมดไม่ hardcode สี, handle กรณี avatarUrl เป็น null ด้วย conditional expression และป้องกัน RangeError ตอนดึงตัวอักษรตัวแรกของชื่อ
+แต่ยังไม่สมบูรณ์ คือ:
+    - ไม่ handle กรณีโหลดรูปจาก Network ไม่สำเร็จ ต้องเพิ่ม state _avatarLoadFailed และ onBackgroundImageError callback เอง
+    - TextStyle ใน CircleAvatar ไม่ได้อิงจาก TextTheme -> ต้องแก้ให้ใช้ textTheme.titleLarge
+    - FontWeight.bold ทับ Typography Scale ซึ่งขัดกับ Material 3 ต้องเอาออกให้ใช้ style ตาม TextTheme ตรง ๆ
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:
+    - เปลี่ยนข้อมูล mock ให้ดึงจาก API/Database จริง พร้อมทำ Model class แทน Map เพื่อ type safety
+    - เพิ่ม Loading Error state แทนการ setState ตรง ๆ ใน StatefulWidget
+    - ทำ Navigation ด้วย named routes หรือ go_router แทน Navigator.push(MaterialPageRoute) ตรง ๆ เพื่อรองรับ deep link
+    - เพิ่ม accessibility ให้ครบ เช่น tooltip ใน IconButton ทุกตัว, ตรวจ touch target ให้ >= 48x48 dp ตามที่ทำในการทดลองที่ 5
+    - แยก ItemCard/UserProfileCard ให้ configurable มากขึ้น  ต้องผูก callback จริงเข้ากับ business logic
 ```
 
 ---
