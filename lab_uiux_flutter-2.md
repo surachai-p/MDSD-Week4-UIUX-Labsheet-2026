@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #3C6939|
+| Secondary Color (Hex) | #52634F |
+| Primary Container (Hex) | #BCF0B4 |
+| Surface (Hex) | #F7FBF1 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอป กำหนดเป็น #3C6939 ใช้เป็นสีหลักขององค์ประกอบสำคัญ เช่น ปุ่มหลักและส่วนที่ต้องการเน้น |
+| On Primary | สีของข้อความหรือไอคอนที่แสดงบนพื้นหลังสี Primary กำหนดเป็น #FFFFFF เพื่อให้มองเห็นได้ชัดเจนบนพื้นสีเขียวเข้ม |
+| Primary Container | สีพื้นหลังรองของ Primary กำหนดเป็น #BCF0B4 ใช้กับพื้นที่หรือองค์ประกอบที่ต้องการเน้นแต่ไม่เด่นเท่าสี Primary เช่น การ์ดหรือคอนเทนเนอร์ |
+| On Primary Container | สีของข้อความหรือไอคอนที่อยู่บนพื้นหลัง Primary Container กำหนดเป็น #245024 เพื่อให้มีความคมชัดและอ่านง่ายบนพื้นสีเขียวอ่อน |
 
 ---
 
@@ -379,9 +379,10 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+``image
+<img width="1123" height="722" alt="image" src="https://github.com/user-attachments/assets/4556879e-f285-4b9f-bc5e-e991c41f3b7a" />
+
+``
 
 ---
 
@@ -881,9 +882,12 @@ flutter run
 - [ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+``image
+<img width="1321" height="1022" alt="image" src="https://github.com/user-attachments/assets/dcad3164-2efb-40d2-9790-8f912a2ef945" />
+<img width="1322" height="1010" alt="image" src="https://github.com/user-attachments/assets/42daa44b-7379-4057-a41b-73e107acee46" />
+
+
+`` 
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +930,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar สำหรับแสดงรูปโปรไฟล์ โดยสามารถแสดงรูปภาพหรืออักษรย่อของชื่อผู้ใช้ได้ |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ตรวจสอบว่า avatarUrl เป็น null หรือเป็นค่าว่าง (`avatarUrl == null |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Material Theme (Theme.of(context).colorScheme) เช่น primaryContainer, onPrimaryContainer, onSurface และ onSurfaceVariant ไม่ได้กำหนดสีแบบ Hardcode |
+| มีส่วนไหนที่ควรปรับปรุง? | ควรเพิ่มการจัดการกรณีโหลดรูปภาพจาก URL ไม่สำเร็จ (เช่นใช้ errorBuilder หรือ FadeInImage), เพิ่มการทำงานของปุ่ม Follow และ Message แทน TODO, และอาจเพิ่มการรองรับข้อความยาวหรือ Responsive Layout เพื่อให้แสดงผลได้ดีในทุกขนาดหน้าจอ |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,7 +957,24 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+ หัวข้อ | Widget Tree ใหม่ | Widget Tree เดิม |
+|--------|------------------|------------------|
+| **Home Screen** | ใช้ `Stack` ร่วมกับ `ListView` | ใช้ `ListView.separated` โดยตรง |
+| **จำนวนรายการสินค้า** | แสดงสินค้า 3 รายการ | แสดงสินค้า 4 รายการด้วย `itemCount` |
+| **Product Card** | ระบุเพียงชื่อสินค้า รายละเอียด และราคา | ระบุโครงสร้างภายใน `Card` เช่น `ClipRRect`, `Padding`, `Column` และ Placeholder รูปภาพ |
+| **Floating Action Button** | มี `Icon` และ `Text` | เพิ่มการกำหนด `backgroundColor`, `onPressed` และใช้ `colorScheme.primary` |
+| **Navigation Bar** | ระบุรายการเมนู 3 รายการ | เพิ่ม `selectedIndex` เพื่อกำหนดเมนูที่กำลังใช้งาน |
+| **Detail Screen** | ใช้ `Container` เป็นพื้นที่แสดงรูปภาพ | รองรับ `Image.network()` และใช้ `Container` เป็น Placeholder เมื่อไม่มีรูป |
+| **ปุ่มใน Detail Screen** | ใช้ `FilledButton` และ `OutlinedButton` | เพิ่มการกำหนด Style และ `Navigator.pop()` สำหรับปุ่มย้อนกลับ |
+| **Profile Screen** | แสดง Avatar, ชื่อ, อีเมล และปุ่มแก้ไขโปรไฟล์ | เพิ่มรายละเอียดของ `CircleAvatar`, สีจาก Theme และ `selectedIndex` ของ Navigation Bar |
+| **การใช้ Theme** | ใช้ `colorScheme.primary` สำหรับ AppBar | ใช้ Material 3 Theme ครบถ้วน เช่น `surface`, `primary`, `secondaryContainer`, `onSurface` |
+| **ระดับรายละเอียด** | เป็นโครงสร้างภาพรวมของแต่ละหน้าจอ | ระบุรายละเอียดของ Widget และ Properties มากกว่า สามารถนำไปพัฒนาเป็นโค้ดได้ทันที |
+
+### สรุป
+
+Widget Tree **ใหม่** เน้นการอธิบายโครงสร้างโดยรวมของแต่ละหน้าจอ ทำให้เข้าใจลำดับการจัดวาง Widget ได้ง่าย เหมาะสำหรับการออกแบบและวางแผนโครงสร้างของแอปพลิเคชัน
+
+ส่วน Widget Tree **เดิม** มีรายละเอียดเชิงเทคนิคมากกว่า โดยระบุคุณสมบัติของ Widget ต่าง ๆ เช่น สีจาก Material Design 3, `selectedIndex`, `Padding`, `ClipRRect`, `Image.network()` และการทำงานของปุ่ม จึงสามารถนำไปพัฒนาเป็นโค้ด Flutter ได้โดยตรง
 
 ```
 ---
@@ -1007,28 +1028,34 @@ IconButton(
 
 ### คำถามสรุปการเรียนรู้ (ตอบทุกข้อ)
 
-**ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
+**ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System?
 
+```text
+คำตอบ: Material 3 ใช้ระบบ Color Scheme ที่สร้างจาก Seed Color ทำให้สามารถสร้างชุดสีหลักและสีรองได้อัตโนมัติ พร้อมกำหนดคู่สี เช่น Primary/On Primary และ Primary Container/On Primary Container รวมถึงเพิ่มสีสำหรับ Surface และ Container หลายระดับ ทำให้การออกแบบมีความยืดหยุ่น สม่ำเสมอ และรองรับ Light/Dark Theme ได้ดีกว่า Material 2
 ```
-คำตอบ: _______________________________________________
-```
+
+---
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
+```text
+คำตอบ: พบว่าบาง Component ใน Figma ไม่มี Widget ที่ตรงกันทั้งหมด เช่น Auto Layout, Spacing และการจัดตำแหน่ง จึงต้องใช้ Widget ของ Flutter เช่น Column, Row, Stack, ListView, Padding และ SizedBox มาประยุกต์ใช้ นอกจากนี้ยังต้องปรับขนาด ระยะห่าง และสีให้ตรงกับ Material 3 Theme เพื่อให้ UI ใกล้เคียงกับต้นแบบมากที่สุด
 ```
-คำตอบ: _______________________________________________
-```
+
+---
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
+```text
+คำตอบ: AI สามารถสร้างโครงสร้าง UI และ Widget ได้ค่อนข้างสมบูรณ์ มีการใช้ Material 3 Theme และ Widget ที่เหมาะสม แต่ยังต้องปรับปรุงในส่วนของการจัดการข้อมูลจริง การเชื่อมต่อ Navigation การทำงานของปุ่ม การตรวจสอบข้อมูล การจัดการ State และการเชื่อมต่อกับ Backend หรือฐานข้อมูล
 ```
-คำตอบ: _______________________________________________
-```
+
+---
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
-```
-คำตอบ: _______________________________________________
+```text
+คำตอบ: ควรเชื่อมต่อข้อมูลจาก API หรือฐานข้อมูลจริง เพิ่มการจัดการ State เช่น Provider, Riverpod หรือ Bloc ปรับปรุง Responsive Design ให้รองรับหลายขนาดหน้าจอ เพิ่มการตรวจสอบข้อมูลและการจัดการข้อผิดพลาด รวมถึงเพิ่ม Animation และการทดสอบระบบ เพื่อให้แอปพลิเคชันมีประสิทธิภาพและพร้อมใช้งานจริง
 ```
 
 ---
