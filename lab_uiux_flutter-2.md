@@ -1,4 +1,4 @@
-<img width="1917" height="1032" alt="image" src="https://github.com/user-attachments/assets/f96f3cb1-d871-4872-87e9-932cd04b117a" /># 📱 ใบงานปฏิบัติที่ 3: UI/UX Design — จาก Mockup สู่ Flutter
+# 📱 ใบงานปฏิบัติที่ 3: UI/UX Design — จาก Mockup สู่ Flutter
 
 > **วิชา:** การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่  
 > **สัปดาห์ที่:** 3  
@@ -925,10 +925,12 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้สร้าง CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | backgroundImage ใช้ Ternary Operator ตรวจสอบ ถ้า avatarUrl != null จะโหลดรูปผ่าน NetworkImage(avatarUrl!) แต่ถ้าเป็น null จะใส่ค่าเป็น null |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ color จาก Theme (Material 3) |
+| มีส่วนไหนที่ควรปรับปรุง? | การดึงตัวอักษรย่อ (_initials)
+ไม่มี Error Handling สำหรับรูปภาพ
+การส่ง Event Action (Follow / Message)|
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
