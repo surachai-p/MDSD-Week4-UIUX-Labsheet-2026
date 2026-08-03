@@ -932,10 +932,7 @@ Add brief comments explaining each section.
 | AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar radius = 32 โดยกำหนด backgroundColor เป็น colorScheme.primaryContainer, ใส่รูปผ่าน backgroundImage: NetworkImage(avatarUrl!) และใช้ Text เป็น child สำหรับแสดงตัวอักษรย่อ |
 | AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้ conditional expression 2 จุดคู่กัน คือ backgroundImage: avatarUrl != null ? NetworkImage(avatarUrl!) : null และ child: avatarUrl == null ? Text(...) : null ถ้าเป็น null จะแสดงตัวอักษรตัวแรกของ name แปลงเป็นพิมพ์ใหญ่ (name[0].toUpperCase()) และถ้า name เป็นค่าว่างจะ fallback เป็น '?' มีการเช็ค name.isNotEmpty ป้องกัน RangeError |
 | AI ใช้ color จาก Theme หรือ hardcode? | ใช้จาก Theme ทั้งหมด ไม่มี hardcode สี — ดึงผ่าน Theme.of(context).colorScheme แล้วเรียกใช้ role ต่าง ๆ ได้แก่ primaryContainer, onPrimaryContainer, onSurface, onSurfaceVariant ส่วน FilledButton / OutlinedButton ปล่อยให้รับสีจาก Theme โดยอัตโนมัติ ถือว่าตรงตามหลัก Material 3 |
-| มีส่วนไหนที่ควรปรับปรุง? | - ไม่ handle กรณีโหลดรูปจาก Network ไม่สำเร็จ
-- TextStyle ใน CircleAvatar ไม่ได้ใช้ TextTheme
-- ใส่ fontWeight: FontWeight.bold ทับ Typography Scale
-- ไม่ handle กรณีโหลดรูปจาก Network ไม่สำเร็จ |
+| มีส่วนไหนที่ควรปรับปรุง? | 1. ไม่ handle กรณีโหลดรูปจาก Network ไม่สำเร็จ <br> 2. TextStyle ใน CircleAvatar ไม่ได้ใช้ TextTheme <br> 3. ใส่ fontWeight: FontWeight.bold ทับ Typography Scale<br>4. ไม่ handle กรณีโหลดรูปจาก Network ไม่สำเร็จ |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
