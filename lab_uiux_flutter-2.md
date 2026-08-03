@@ -379,9 +379,7 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+![Design Screenshots](assets/design_screenshot.png)
 
 ---
 
