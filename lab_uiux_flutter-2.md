@@ -884,9 +884,9 @@ flutter run
 <img width="795" height="795" alt="image" src="https://github.com/user-attachments/assets/e9e3ef1b-e554-4d80-9bf2-3087070ba2f4" />
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+<img width="758" height="776" alt="image" src="https://github.com/user-attachments/assets/680ad09c-43f6-4c39-aee6-7cc05eceac25" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
