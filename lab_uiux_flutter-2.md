@@ -1020,11 +1020,17 @@ Design ใหม่จาก Figma
 
 1. ใน `main.dart` เปลี่ยน `themeMode` เป็น `ThemeMode.dark` ชั่วคราว
 2. รัน App → ตรวจสอบว่าทุก Text อ่านออกหรือไหม
+
+<img width="804" height="759" alt="image" src="https://github.com/user-attachments/assets/7422d177-951b-4b76-9753-b0461d59fc44" />
+
+<img width="716" height="758" alt="image" src="https://github.com/user-attachments/assets/8dd3b1cf-2bea-4102-999f-98b708c07b29" />
+
 3. มีสีไหนที่ contrast ต่ำเกินไปไหม (ตัวอักษรจางบนพื้นหลังจาง)
 4. เปลี่ยนกลับเป็น `ThemeMode.system`
 
 
-// ยังไม่ต้องทำข้อ 5.2  5.3
+### ยังไม่ต้องทำข้อ 5.2  5.3
+
 **ขั้นตอนที่ 5.2: ตรวจสอบ Touch Target Size**
 
 ใน Flutter DevTools:
