@@ -872,12 +872,16 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✔] App Bar แสดงชื่อ "Green Market"
+- [✔] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✔] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✔] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✔] Bottom Navigation สลับ Tab ได้
+- [✔] FAB แสดง SnackBar เมื่อถูกคลิก
+
+<img width="761" height="791" alt="image" src="https://github.com/user-attachments/assets/fd86224b-fe02-44cb-9bf9-6a951d8438fe" />
+
+<img width="795" height="795" alt="image" src="https://github.com/user-attachments/assets/e9e3ef1b-e554-4d80-9bf2-3087070ba2f4" />
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
 ```image
