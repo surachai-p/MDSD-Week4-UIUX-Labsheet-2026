@@ -881,7 +881,8 @@ flutter run
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
 <img width="1917" height="1101" alt="image" src="https://github.com/user-attachments/assets/00a12d3f-394c-418d-b350-3e2c504bbb9a" />
-<img width="1917" height="1198" alt="image" src="https://github.com/user-attachments/assets/46382688-dc53-473a-95d4-a4e673b65cee" />
+<img width="1917" height="1198" alt="image" src="https://github.com/user-attachments/assets/299052da-4b7f-42b2-8f01-fa383b53afff" />
+
 
 
 ---
