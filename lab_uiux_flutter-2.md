@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #2E7D32 |
+| Secondary Color (Hex) | #4D6352 |
+| Primary Container (Hex) | #B0F5BC |
+| Surface (Hex) | #F7FBF3 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอป ใช้กับองค์ประกอบที่เด่นและสำคัญที่สุด เช่น ปุ่มหลัก (Primary Button), Floating Action Button (FAB), สวิตช์ที่ถูกเลือก (Active State) และแถบ Highlight |
+| On Primary | สีขององค์ประกอบบน Primary ใช้เป็นสีตัวอักษร ไอคอน หรือองค์ประกอบที่ วางอยู่บนพื้นหลังสี Primary เพื่อให้มีความคมชัด (Contrast) สูงสุด อ่านง่ายตามมาตรฐาน Accessibility |
+| Primary Container | สีพื้นหลังเน้นความสำคัญระดับรอง ใช้กับพื้นที่ หรือการ์ดที่ต้องการเน้นย้ำแต่ไม่เด่นเท่า Primary เช่น Card เด่น, Filter Chip, Badge หรือ Floating Action Button แบบย่อย |
+| On Primary Container | สีขององค์ประกอบบน Primary Container ใช้เป็นสีตัวอักษรหรือไอคอนที่ วางอยู่บนพื้นหลังสี Primary Container เพื่อให้ตัดกับสีพื้นหลังอย่างพอดี |
 
 ---
 
@@ -379,9 +379,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="1915" height="1078" alt="image" src="https://github.com/user-attachments/assets/8b90f14a-7914-47b9-96c0-d5acd982831f" />
+
 
 ---
 
