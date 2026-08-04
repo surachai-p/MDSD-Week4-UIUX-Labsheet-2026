@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #256A4A |
+| Secondary Color (Hex) | #4D6356 |
+| Primary Container (Hex) | #ABF2C9 |
+| Surface (Hex) | #F5FBF4 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอป ใช้เน้นจุดสำคัญสูงสุด |
+| On Primary | สีของข้อความหรือไอคอนที่ วางอยู่บนสี Primary |
+| Primary Container | สีพื้นหลังสำหรับองค์ประกอบรองที่มีความสำคัญถัดมา |
+| On Primary Container | สีของข้อความหรือไอคอนที่ วางอยู่บนสี Primary |
 
 ---
 
@@ -379,9 +379,9 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="881" height="606" alt="figma" src="https://github.com/user-attachments/assets/aadb8914-7438-46ff-a2d0-dff9d810788b" />
+
+
 
 ---
 
@@ -873,17 +873,19 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✓ ] App Bar แสดงชื่อ "Green Market"
+- [✓ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✓ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✓ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✓ ] Bottom Navigation สลับ Tab ได้
+- [✓ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+<img width="500" alt="รูป 2" src="https://github.com/user-attachments/assets/83410118-e738-439e-a7ab-f0e10df427f0" />
+<img width="500" alt="รูป 1" src="https://github.com/user-attachments/assets/98bd7b55-7a72-49f5-af2d-a27d47ba2343" />
+
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
