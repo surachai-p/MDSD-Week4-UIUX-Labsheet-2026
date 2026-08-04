@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #2E7D32 |
+| Secondary Color (Hex) | #4D6352 |
+| Primary Container (Hex) | #B0F5BC |
+| Surface (Hex) | #F7FBF3 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอป ใช้กับองค์ประกอบที่เด่นและสำคัญที่สุด เช่น ปุ่มหลัก (Primary Button), Floating Action Button (FAB), สวิตช์ที่ถูกเลือก (Active State) และแถบ Highlight |
+| On Primary | สีขององค์ประกอบบน Primary ใช้เป็นสีตัวอักษร ไอคอน หรือองค์ประกอบที่ วางอยู่บนพื้นหลังสี Primary เพื่อให้มีความคมชัด (Contrast) สูงสุด อ่านง่ายตามมาตรฐาน Accessibility |
+| Primary Container | สีพื้นหลังเน้นความสำคัญระดับรอง ใช้กับพื้นที่ หรือการ์ดที่ต้องการเน้นย้ำแต่ไม่เด่นเท่า Primary เช่น Card เด่น, Filter Chip, Badge หรือ Floating Action Button แบบย่อย |
+| On Primary Container | สีขององค์ประกอบบน Primary Container ใช้เป็นสีตัวอักษรหรือไอคอนที่ วางอยู่บนพื้นหลังสี Primary Container เพื่อให้ตัดกับสีพื้นหลังอย่างพอดี |
 
 ---
 
@@ -379,9 +379,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="1915" height="1078" alt="image" src="https://github.com/user-attachments/assets/8b90f14a-7914-47b9-96c0-d5acd982831f" />
+
 
 ---
 
@@ -873,17 +872,19 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [☑️] App Bar แสดงชื่อ "Green Market"
+- [☑️] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [☑️] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [☑️] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [☑️] Bottom Navigation สลับ Tab ได้
+- [☑️] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<img width="1917" height="1101" alt="image" src="https://github.com/user-attachments/assets/00a12d3f-394c-418d-b350-3e2c504bbb9a" />
+<img width="1917" height="1198" alt="image" src="https://github.com/user-attachments/assets/299052da-4b7f-42b2-8f01-fa383b53afff" />
+
+
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +927,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar (โดยใช้ร่วมกับ NetworkImage สำหรับรูป และ Text สำหรับตัวอักษรย่อ) |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้ Ternary Operator (? :) เช็กค่า avatarUrl หาก ไม่เป็น null จะดึงรูปจาก backgroundImage: NetworkImage(avatarUrl!) หาก เป็น null จะตั้งค่า backgroundImage เป็น null แล้วแสดง child: เป็นตัวอักษรย่อตัวแรกของชื่อแทน (name[0].toUpperCase()) |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้จาก Theme ทั้งหมดผ่าน Theme.of(context).colorScheme (เช่น colorScheme.primaryContainer, colorScheme.onSurfaceVariant) โดยไม่มีการ Hardcode ค่าสีที่เป็น Hex Code |
+| มีส่วนไหนที่ควรปรับปรุง? | 1. การเช็ก String ตัวอักษรย่อ: ควรระวังเรื่องการดึง name[0] หากค่า name ส่งเข้ามาเป็น Empty String ("") อาจเกิด Runtime Error ได้ ควรสอดส่องเงื่อนไขป้องกันไว้  <br> 2. การคลิกปุ่ม (Button Callbacks): ปุ่ม "Follow" และ "Message" ในโค้ด AI ใส่ onPressed: () {} แบบว่างไว้ ควรเพิ่ม Parameter ประเภท VoidCallback? เข้ามาที่ Constructor เพื่อให้หน้านอกสั่งการคลิกได้จริง |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,8 +954,21 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+จากการทดลองนำภาพ Screenshot UI Design จาก Figma อัปโหลดให้ AI Studio วิเคราะห์และสร้างโค้ดเปรียบเทียบกับโค้ดที่เขียนเองในขั้นตอนก่อนหน้า ได้ผลสรุปดังนี้
 
+1. โครงสร้าง Widget Tree
+   - โค้ดที่เขียนเอง วางโครงสร้างเรียบง่าย เน้นแยก Layer ชัดเจน (Scaffold -> Column/ListView) และเน้นความอ่านง่ายของโค้ดเป็นหลัก
+   - โค้ดจาก AI Multimodal: AI สามารถวิเคราะห์ระยะห่าง (Spacing/Padding) และ Alignment จากภาพได้ละเอียดมาก โดยจะใช้ Widget ซ้อนกันหลายชั้น เช่น Card -> Padding -> Column -> Row เพื่อเก็บรายละเอียดทุก Element ในภาพ
+
+2. การใช้งานองค์ประกอบ Material Design 3 (M3)
+   - ทั้งสองแบบเลือกใช้ M3 Components ได้ถูกต้อง เช่น Card, CircleAvatar, FilledButton และ OutlinedButton
+   - AI มีจุดเด่นตรงที่สกัดค่า Typography (เช่น titleLarge, bodyMedium) ออกมาจากลักษณะขนาดฟอนต์ในรูปภาพ และเรียกใช้ TextTheme ได้ตรงตามสเปก M3
+
+3. การจัดการสี (Color Scheme)
+   - AI สามารถตรวจจับโซนสีในภาพและจับคู่กับ Theme.of(context).colorScheme ได้อย่างถูกต้องแม่นยำ เช่น การใช้ colorScheme.primaryContainer สำหรับพื้นหลัง และ colorScheme.onSurfaceVariant สำหรับข้อความรอง โดยไม่มีการ Hardcode ค่าสี Hex Code
+
+ข้อสรุปและสิ่งที่เรียนรู้
+การใช้ AI Multimodal ช่วยวิเคราะห์ UI จาก Figma ช่วยลดเวลาในการแกะโครงสร้าง Widget Tree ได้อย่างมาก โดยเฉพาะการคำนวณ Spacing และ Layout พื้นฐาน อย่างไรก็ตาม โค้ดที่ AI เจนให้อาจมีความซับซ้อนของการซ้อน Widget มากเกินไป (Over-nested) จึงควรนำมา Refactor ปรับโครงสร้างให้กระชับและเพิ่ม Parameter สำหรับการรับส่งข้อมูลจริงเพิ่มเติม
 ```
 ---
 
@@ -1010,25 +1024,34 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+Material 3 เปลี่ยนจากการใช้สีคงที่แบบ Material 2 มาเป็น Dynamic Color Scheme ที่สร้างชุดสีหลักตาม Tonal Palettes (ประกอบด้วย Primary, Secondary, Tertiary, Neutral) และใช้หลักการจับคู่สีแบบเป็นคู่สมบูรณ์ เช่น primary คู่กับ onPrimary, primaryContainer คู่กับ onPrimaryContainer ซึ่งช่วยให้รองรับ Light/Dark Mode ได้อัตโนมัติ และรับประกันค่า Contrast ความอ่านง่ายตามมาตรฐาน Accessibility ได้ดีขึ้นกว่า M2
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+1. ปัญหา Spacing และ Alignment ไม่ตรงกับ Figma แก้ไขโดยการใช้ Layout Widgets เช่น Column, Row ซ้อนกันอย่างถูกต้อง และใช้ Padding หรือ SizedBox ในการจัดระยะห่างแทนการตั้งค่าขนาดแบบ Hardcode 
+2. ปัญหาการแสดงผล Responsive บนหน้าจอขนาดต่างกัน Element อาจล้นจอ (Overflow) แก้ไขโดยการใช้ Expanded, Flexible หรือหุ้มด้วย SingleChildScrollView / ListView 
+3. ปัญหาเรื่องสีไม่ตรง Theme แก้ไขโดยดึงค่าสีจาก Theme.of(context).colorScheme มาใช้งาน แทนการนำ Hex code จาก Figma มาใส่ตรงๆ
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+โครงสร้างโค้ดที่ AI เจนให้อยู่ในเกณฑ์ดีมาก (ประมาณ 80-90%) โดย AI สามารถเลือกใช้ Material 3 Components, จัดกลุ่ม Layout ได้สมบูรณ์ และดึงค่าสีจาก ColorScheme ได้ถูกต้อง 
+
+สิ่งที่ต้องปรับปรุงเพิ่มเติมคือ
+1. การจัดการ Edge Cases: เช่น กรณีค่าเป็น null หรือ String ว่าง ("") ที่อาจเกิด Exception (Runtime Error)
+2. การผูก Callback/State Management: ปุ่มต่างๆ ที่ AI เจนให้อาจเป็นปุ่มเปล่า (onPressed: () {}) ต้องเพิ่ม Constructor Parameters (เช่น VoidCallback) เพื่อให้คอมโพเนนต์นำไปรับ event จากภายนอกได้จริง
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+1. State Management นำตัวจัดการ State เช่น Provider, Riverpod หรือ BLoC มาใช้จัดการข้อมูลสินค้า ข้อมูลโปรไฟล์ และการเปลี่ยน Tab 
+2. API & Data Integration เปลี่ยนข้อมูล Mockup ให้ดึงมาจาก REST API หรือ Firebase พร้อมรองรับสถานะ Loading และ Error State
+3. Accessibility & Optimization ใส่ tooltip/semantics ให้ปุ่มต่างๆ ครบถ้วน เพื่อผู้พิการสายตา และทำ Image Caching (เช่น CachedNetworkImage) สำหรับรูปภาพสินค้าและโปรไฟล์
+4. Refactoring แยก Code ย่อยที่ใช้ซ้ำบ่อยๆ ออกเป็น Reusable Widgets เพื่อให้โปรเจกต์ดูแลรักษาง่ายขึ้น
 ```
 
 ---
