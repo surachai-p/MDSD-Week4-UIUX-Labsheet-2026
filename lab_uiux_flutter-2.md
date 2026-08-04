@@ -1028,9 +1028,9 @@ Material 3 เปลี่ยนจากการใช้สีคงที่
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-1. ปัญหา Spacing และ Alignment ไม่ตรงกับ Figma: แก้ไขโดยการใช้ Layout Widgets เช่น Column, Row ซ้อนกันอย่างถูกต้อง และใช้ Padding หรือ SizedBox ในการจัดระยะห่างแทนการตั้งค่าขนาดแบบ Hardcode 
-2. ปัญหาการแสดงผล Responsive: บนหน้าจอขนาดต่างกัน Element อาจล้นจอ (Overflow) แก้ไขโดยการใช้ Expanded, Flexible หรือหุ้มด้วย SingleChildScrollView / ListView 
-3. ปัญหาเรื่องสีไม่ตรง Theme: แก้ไขโดยดึงค่าสีจาก Theme.of(context).colorScheme มาใช้งาน แทนการนำ Hex code จาก Figma มาใส่ตรงๆ
+1. ปัญหา Spacing และ Alignment ไม่ตรงกับ Figma แก้ไขโดยการใช้ Layout Widgets เช่น Column, Row ซ้อนกันอย่างถูกต้อง และใช้ Padding หรือ SizedBox ในการจัดระยะห่างแทนการตั้งค่าขนาดแบบ Hardcode 
+2. ปัญหาการแสดงผล Responsive บนหน้าจอขนาดต่างกัน Element อาจล้นจอ (Overflow) แก้ไขโดยการใช้ Expanded, Flexible หรือหุ้มด้วย SingleChildScrollView / ListView 
+3. ปัญหาเรื่องสีไม่ตรง Theme แก้ไขโดยดึงค่าสีจาก Theme.of(context).colorScheme มาใช้งาน แทนการนำ Hex code จาก Figma มาใส่ตรงๆ
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
@@ -1038,7 +1038,7 @@ Material 3 เปลี่ยนจากการใช้สีคงที่
 ```
 โครงสร้างโค้ดที่ AI เจนให้อยู่ในเกณฑ์ดีมาก (ประมาณ 80-90%) โดย AI สามารถเลือกใช้ Material 3 Components, จัดกลุ่ม Layout ได้สมบูรณ์ และดึงค่าสีจาก ColorScheme ได้ถูกต้อง 
 
-สิ่งที่ต้องปรับปรุงเพิ่มเติมคือ:
+สิ่งที่ต้องปรับปรุงเพิ่มเติมคือ
 1. การจัดการ Edge Cases: เช่น กรณีค่าเป็น null หรือ String ว่าง ("") ที่อาจเกิด Exception (Runtime Error)
 2. การผูก Callback/State Management: ปุ่มต่างๆ ที่ AI เจนให้อาจเป็นปุ่มเปล่า (onPressed: () {}) ต้องเพิ่ม Constructor Parameters (เช่น VoidCallback) เพื่อให้คอมโพเนนต์นำไปรับ event จากภายนอกได้จริง
 ```
@@ -1046,10 +1046,10 @@ Material 3 เปลี่ยนจากการใช้สีคงที่
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-1. State Management: นำตัวจัดการ State เช่น Provider, Riverpod หรือ BLoC มาใช้จัดการข้อมูลสินค้า ข้อมูลโปรไฟล์ และการเปลี่ยน Tab 
-2. API & Data Integration: เปลี่ยนข้อมูล Mockup ให้ดึงมาจาก REST API หรือ Firebase พร้อมรองรับสถานะ Loading และ Error State
-3. Accessibility & Optimization: ใส่ tooltip/semantics ให้ปุ่มต่างๆ ครบถ้วน เพื่อผู้พิการสายตา และทำ Image Caching (เช่น CachedNetworkImage) สำหรับรูปภาพสินค้าและโปรไฟล์
-4. Refactoring: แยก Code ย่อยที่ใช้ซ้ำบ่อยๆ ออกเป็น Reusable Widgets เพื่อให้โปรเจกต์ดูแลรักษาง่ายขึ้น
+1. State Management นำตัวจัดการ State เช่น Provider, Riverpod หรือ BLoC มาใช้จัดการข้อมูลสินค้า ข้อมูลโปรไฟล์ และการเปลี่ยน Tab 
+2. API & Data Integration เปลี่ยนข้อมูล Mockup ให้ดึงมาจาก REST API หรือ Firebase พร้อมรองรับสถานะ Loading และ Error State
+3. Accessibility & Optimization ใส่ tooltip/semantics ให้ปุ่มต่างๆ ครบถ้วน เพื่อผู้พิการสายตา และทำ Image Caching (เช่น CachedNetworkImage) สำหรับรูปภาพสินค้าและโปรไฟล์
+4. Refactoring แยก Code ย่อยที่ใช้ซ้ำบ่อยๆ ออกเป็น Reusable Widgets เพื่อให้โปรเจกต์ดูแลรักษาง่ายขึ้น
 ```
 
 ---
