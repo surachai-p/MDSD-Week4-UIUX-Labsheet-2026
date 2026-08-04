@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #256A4A |
+| Secondary Color (Hex) | #4D6356 |
+| Primary Container (Hex) | #ABF2C9 |
+| Surface (Hex) | #F5FBF4 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของแอป ใช้เน้นจุดสำคัญสูงสุด |
+| On Primary | สีของข้อความหรือไอคอนที่ วางอยู่บนสี Primary |
+| Primary Container | สีพื้นหลังสำหรับองค์ประกอบรองที่มีความสำคัญถัดมา |
+| On Primary Container | สีของข้อความหรือไอคอนที่ วางอยู่บนสี Primary |
 
 ---
 
@@ -379,9 +379,9 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="881" height="606" alt="figma" src="https://github.com/user-attachments/assets/aadb8914-7438-46ff-a2d0-dff9d810788b" />
+
+
 
 ---
 
@@ -873,17 +873,19 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✓ ] App Bar แสดงชื่อ "Green Market"
+- [✓ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✓ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✓ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✓ ] Bottom Navigation สลับ Tab ได้
+- [✓ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+
+<img width="500" alt="รูป 2" src="https://github.com/user-attachments/assets/83410118-e738-439e-a7ab-f0e10df427f0" />
+<img width="500" alt="รูป 1" src="https://github.com/user-attachments/assets/98bd7b55-7a72-49f5-af2d-a27d47ba2343" />
+
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +928,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ใช้ Ternary Operator เช็กเงื่อนไข หากเป็น null จะไม่แสดงรูป แต่จะใช้ Getter _initials ดึงอักษรย่อจากชื่อ (เช่น "John Doe" -> "JD") มาแสดงเป็นข้อความแทน |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก Theme 100% ผ่าน colorScheme โดยไม่มีการ Hardcode สี ทำให้รองรับทั้ง Light และ Dark Mode ได้ทันที |
+| มีส่วนไหนที่ควรปรับปรุง? | ปุ่มกด: ควรเพิ่ม Callback Parameter ให้ปุ่มกดทำงานได้จริงตามการเรียกใช้ รูปภาพ: ควรเพิ่ม Error Handling กรณี NetworkImage โหลดรูปไม่สำเร็จ ข้อความ: ควรเปลี่ยนข้อความภาษาอังกฤษตายตัวให้เป็นภาษาไทย หรือเปิดรับ Parameter |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,7 +955,15 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+1. ประเภทคลาส (Class Type)
+โค้ดทดลองที่ 3: ใช้ StatefulWidget เพื่อให้สามารถจัดการ State เช่น การเปลี่ยนหน้า Tab Navigation ได้จริง
+โค้ดทดลองที่ 4.5: ใช้เพียง StatelessWidget ซึ่งเน้นไปที่การสร้างโครงสร้างหน้าตา UI แบบ Static ตามรูปภาพที่วิเคราะห์มาเท่านั้น
+2. ความแม่นยำด้านดีไซน์ (Visual Accuracy)
+โค้ดทดลองที่ 3: เน้นการใช้ Layout มาตรฐานของ Flutter (เช่น ListTile หรือ Card ทั่วไป) โดยให้น้ำหนักกับฟังก์ชันการทำงานมากกว่าความสวยงาม
+โค้ดทดลองที่ 4.5: เก็บรายละเอียดจากภาพ Figma ได้ลึกและใกล้เคียงของจริงมากกว่า เช่น มีการเพิ่มแถบสีตกแต่งด้านขวามือใน Card สินค้า และมีการใส่เมนูไอคอนต่างๆ ใน AppBar ได้ครบถ้วน
+3. การใช้ Material Design 3 Theme
+โค้ดทดลองที่ 3: มีการดึงค่าสีมาตรฐานจาก Theme.of(context) มาใช้งานตรงๆ เช่น การใช้ primaryContainer
+โค้ดทดลองที่ 4.5: AI สามารถตีความสีจากรูปภาพ แล้วนำมาแมปเข้ากับ M3 Color Scheme ได้อย่างแม่นยำ พร้อมทั้งรู้จักการใช้ withOpacity() เพื่อปรับความโปร่งแสงให้เฉดสีออกมาตรงตามดีไซน์ในรูป
 
 ```
 ---
@@ -1010,25 +1020,25 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: M3 ใช้ระบบ Tonal Palettes และดึงค่าสีย่อยผ่าน colorScheme ที่คำนวณอัตโนมัติจาก Seed Color เดียว ทำให้สีกลมกลืนกันและรองรับ Dynamic Color (สีตามเครื่องผู้ใช้) ต่างจาก M2 ที่ตั้งค่าสี Primary/Accent แบบตายตัว
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: มักพบปัญหาเรื่องระยะห่างและการจัดตำแหน่งที่ไม่พอดี (เช่น รูปโปรไฟล์อยู่ต่ำไป หรือล้นกรอบ) แก้ไขโดยการปรับแต่ง Padding (EdgeInsets), Margin แบบแมนนวล และห่อ Widget ด้วย Expanded หรือ SingleChildScrollView เพื่อป้องกันปัญหา Layout Overflow
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: สมบูรณ์เฉพาะส่วนของโครงสร้างหน้าตา (Static UI) และการใช้โทนสี แต่ต้องนำมาปรับปรุงเพิ่มเรื่องการดึงข้อมูลจริง (Dynamic Data), การเปลี่ยนมาใช้ StatefulWidget จัดการ State และใส่ Logic การทำงาน (Event Callback) เมื่อผู้ใช้กดปุ่ม
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ต้องนำไปเชื่อมต่อกับ State Management, ดึงข้อมูลสินค้าและโปรไฟล์จาก API/Database จริง, ปรับแต่งให้เป็น Responsive Design เพื่อให้รองรับหน้าจอมือถือและแท็บเล็ตทุกขนาด และเพิ่มระบบยืนยันตัวตน (Authentication)
 ```
 
 ---
