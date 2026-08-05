@@ -14,6 +14,10 @@
 
 ---
 
+## รายละเอียดอยู่ใน Report
+
+---
+
 ## 🎨 การทดลองที่ 1: สร้าง Color Scheme ด้วย Material Theme Builder
 
 **วัตถุประสงค์:** ใช้ระบบ Dynamic Color ของ Material 3 เพื่อสร้าง Color Scheme สำหรับ Project 
