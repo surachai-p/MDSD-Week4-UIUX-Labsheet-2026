@@ -19,7 +19,7 @@
 
 **Screenshot หน้าจอ Design ทั้ง 3 หน้า:**
 
-![Screenshot หน้าจอ Design](ใส่ URL รูปภาพ หรือ Path ของรูปภาพที่นี่)
+![alt text](image/02/image.png)
 
 ---
 [⬅️ ย้อนกลับไปหน้าหลัก (สารบัญ)](README.md)
