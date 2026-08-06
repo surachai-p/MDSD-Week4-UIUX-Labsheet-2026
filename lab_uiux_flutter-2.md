@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #FFE2AD |
+| Secondary Color (Hex) | #5D6052 |
+| Primary Container (Hex) | #FFE2AD |
+| Surface (Hex) | #FEF7FF |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของ UI ใช้กับองค์ประกอบที่สำคัญหรือเด่นที่สุด |
+| On Primary | สีของข้อความ ไอคอน หรือองค์ประกอบที่อยู่บนพื้นหลังสี Primary เพื่อให้ตัดกันและอ่านง่าย |
+| Primary Container | สีพื้นหลังรองที่มีความเด่นน้อยกว่า Primary ใช้สำหรับพื้นที่ขนาดใหญ่ |
+| On Primary Container | สีของข้อความ ไอคอน หรือองค์ประกอบที่อยู่บนพื้นหลังสี Primary Container เพื่อให้ตัดกับสี Container |
 
 ---
 
