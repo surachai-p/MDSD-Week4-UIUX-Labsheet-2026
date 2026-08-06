@@ -380,7 +380,7 @@ Prompt ที่ไม่ดี:
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
 ```image
-วางรูปหน้าจอ ที่นี่
+<img width="1072" height="730" alt="cap1" src="https://github.com/user-attachments/assets/0f492d84-f733-4f44-9a6d-9a4628df930d" />
 ```
 
 ---
@@ -873,16 +873,17 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [ ✓ ] App Bar แสดงชื่อ "Green Market"
+- [ ✓ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [ ✓ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [ ✓ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [ ✓ ] Bottom Navigation สลับ Tab ได้
+- [ ✓✓ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
 ```image
-บันทึกรูปที่นี่
+<img width="1916" height="1078" alt="image" src="https://github.com/user-attachments/assets/eb697a26-7b85-4721-8fbe-ce6f06a92623" />
+
 ``` 
 ---
 
@@ -926,10 +927,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | AI ใช้ CircleAvatar ในการสร้างรูปโปรไฟล์ของผู้ใช้ |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | AI มีการตรวจสอบว่า avatarUrl เป็น null หรือค่าว่าง ถ้าไม่มีรูปก็จะแสดงตัวอักษรย่อของชื่อแทน|
+| AI ใช้ color จาก Theme หรือ hardcode? | AI ใช้สีจาก Theme.of(context).colorScheme และ textTheme ไม่ได้กำหนดสีแบบ hardcode |
+| มีส่วนไหนที่ควรปรับปรุง? | ควรเพิ่มการจัดการกรณีโหลดรูปไม่สำเร็จ และอาจเพิ่มการปรับแต่งขนาดหรือสีของ Avatar |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,7 +954,21 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+สำหรับ Green Market Home Screen:
+
+Scaffold
+├── AppBar
+│   └── Text("Green Market")
+├── body: ListView
+│   ├── ItemCard (ผักสลัดออร์แกนิก)
+│   ├── ItemCard (สตรอว์เบอร์รีสด)
+│   ├── ItemCard (กล้วยหอมทอง)
+│   └── ItemCard (มะเขือเทศเชอร์รี)
+├── floatingActionButton: FloatingActionButton.extended ("+ เพิ่มสินค้า")
+└── bottomNavigationBar: NavigationBar
+      ├── NavigationDestination (หน้าหลัก)
+      ├── NavigationDestination (ค้นหา)
+      └── NavigationDestination (โปรไฟล์)
 
 ```
 ---
@@ -1010,25 +1025,24 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
-```
+คำตอบ: Material 3 จะใช้ ColorScheme เป็นหลัก และรองรับการสร้างชุดสีจากสีหลัก ทำให้ธีมของแอปมีความสอดคล้องกันมากกว่า Material 2 ที่มักกำหนดสีแบบคงที่
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:การจัดวางตำแหน่งของ Widget ให้เหมือนใน Figma ทำได้ค่อนข้างยาก โดยเฉพาะเรื่องระยะห่างและขนาดของแต่ละส่วน จึงแก้ไขด้วยการใช้ Padding, SizedBox, Row, Column และ Expanded เพื่อจัด Layout
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:โค้ดที่ AI สร้างค่อนข้างสมบูรณ์ สามารถนำไปใช้งานได้จริง แต่ยังควรปรับปรุงในเรื่องการจัดการกรณีโหลดรูปภาพไม่สำเร็จ การเพิ่มการทำงานของปุ่มต่าง ๆ
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:เชื่อมต่อข้อมูลจากฐานข้อมูลหรือ API แทนข้อมูลตัวอย่าง เพิ่มการทำงานของปุ่มต่าง ๆ ให้ใช้งานได้จริง ปรับ UI ให้รองรับทุกขนาดหน้าจอ และทดสอบการใช้งานเพื่อให้แอปทำงานได้ถูกต้อง
 ```
 
 ---
