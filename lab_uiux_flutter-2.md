@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #3A8500 |
+| Secondary Color (Hex) | #839773 |
+| Primary Container (Hex) | #c6eea9 |
+| Surface (Hex) | #f8faf0 |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | 	สีหลักของแบรนด์/App ใช้กับ Element ที่สำคัญที่สุด เช่น ปุ่มหลัก (Filled Button), FAB, Active state ของ Navigation — เน้นให้สายตาโฟกัสก่อน|
+| On Primary | 	สีที่ใช้วางทับบนพื้นสี Primary ต้องมี contrast สูงกับ Primary เพื่อให้อ่านชัด |
+| Primary Container |เวอร์ชัน "อ่อนกว่า/นุ่มกว่า" ของ Primary ใช้กับพื้นที่ที่ต้องการเน้นแต่ไม่อยากให้แย่งความสนใจเท่า Primary เช่น พื้นหลัง Card, Chip, หรือปุ่มรอง|
+| On Primary Container | Container	สีตัวอักษร/ไอคอนที่ใช้วางบน Primary Container ต้อง contrast พอดีกับพื้นสีอ่อนนั้น |
 
 ---
 
@@ -382,6 +382,7 @@ Screenshot หน้าจอ Design ทั้ง 3 หน้า และบั
 ```image
 วางรูปหน้าจอ ที่นี่
 ```
+<img width="1133" height="806" alt="image" src="https://github.com/user-attachments/assets/3e75be78-b1c6-411a-99eb-2b30db0e4349" />
 
 ---
 
@@ -873,17 +874,16 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✔] App Bar แสดงชื่อ "Green Market"
+- [✔] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✔] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✔] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✔] Bottom Navigation สลับ Tab ได้
+- [✔] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<img width="1919" height="1026" alt="image" src="https://github.com/user-attachments/assets/b9998220-02d9-4d53-a896-27586e30829a" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +926,12 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? |CircleAvatar ใช้ foregroundImage: NetworkImage(avatarUrl!) แสดงรูปจริงถ้ามี URL และใช้ child: Text(_initials) เป็นตัวอักษรย่อ (fallback) ซ้อนอยู่เบื้องหลัง |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | เช็คด้วย avatarUrl != null ? NetworkImage(avatarUrl!) : null — ถ้าเป็น null จะไม่โหลดรูป (foregroundImage เป็น null) ทำให้เห็นแค่ตัวอักษรย่อ (initials) ที่อยู่ใน child แทน วิธีนี้ใช้ได้ผลดี เพราะ foregroundImage จะไม่บังตัวหนังสือถ้าไม่มีรูป |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้ Theme ทั้งหมด ไม่มี hardcode สีเลย ดึงจาก colorScheme.primaryContainer, colorScheme.onPrimaryContainer, colorScheme.onSurface, colorScheme.onSurfaceVariant ตรงตามที่ prompt สั่งไว้ |
+| มีส่วนไหนที่ควรปรับปรุง? | 1) _initials ดึงแค่ตัวอักษรแรกตัวเดียว ถ้าอยากได้ 2 ตัวอักษร (เช่น "John Doe" → "JD") ต้อง split คำแล้วเอาตัวแรกของแต่ละคำ  
+                       2) ปุ่ม Follow/Message ยัง onPressed: () {} ว่างเปล่า ต้องเพิ่ม callback parameter ให้เรียกใช้งานจริงได้
+                       3) ไม่มี error handling ถ้า NetworkImage โหลดรูปไม่สำเร็จ (เช่น URL เสีย) ควรเพิ่ม onForegroundImageError|                 
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -954,7 +956,7 @@ Add brief comments explaining each section.
    
 ```text
 เขียนผลการเปรียบเทียบที่นี่
-
+Interaction: โค้ดที่เขียนเองมี State ทำให้ Bottom Nav สลับ Tab ได้จริง และ Card/FAB มี onTap/Navigation ไปหน้า Detail จริง ส่วนโค้ด AI เป็น StatelessWidget ล้วน ปุ่มและ Card ไม่มี callback เลย เพราะ AI เห็นแค่ภาพนิ่งจาก Figma ไม่รู้ Prototype ที่ตั้งไว้
 ```
 ---
 
@@ -1010,25 +1012,25 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 2 ใช้สีที่กำหนดเองแบบตายตัวทีละสี ส่วน Material 3 ใช้ Dynamic Color สร้าง Tonal Palette ทั้งหมด (Primary, Secondary, Tertiary ฯลฯ) อัตโนมัติจาก seed color เดียว พร้อมคู่ Container/On-Container ที่ contrast ชัดเจนในตัว
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาหลักคือค่าตำแหน่ง X/Y แบบ absolute ใน Figma ต้องแปลงเป็น Layout แบบ relative (Column/Row/Padding) ใน Flutter และ Component บาง Component ไม่ map ตรงกัน 1:1 แก้โดยวาด Widget Tree ก่อนเขียนโค้ดเสมอ
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Code ที่ AI สร้างได้หน้าตาใกล้เคียง Design และใช้ ColorScheme ถูกหลัก M3 แต่ยังเป็น Stateless ไม่มี state, ไม่มี onTap/Navigation จริง และข้อมูล hardcode ทั้งหมด ต้องเติม Logic เองเพิ่ม
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ต้องเปลี่ยนข้อมูลจาก hardcode เป็นดึงจาก API จริง เพิ่ม State Management (เช่น Provider/Riverpod), เพิ่ม Loading/Error State และทำ Accessibility ให้ครบตามมาตรฐาน
 ```
 
 ---
