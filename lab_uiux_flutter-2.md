@@ -237,19 +237,19 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | #FFE2AD |
+| Secondary Color (Hex) | #5D6052 |
+| Primary Container (Hex) | #FFE2AD |
+| Surface (Hex) | #FEF7FF |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | สีหลักของ UI ใช้กับองค์ประกอบที่สำคัญหรือเด่นที่สุด |
+| On Primary | สีของข้อความ ไอคอน หรือองค์ประกอบที่อยู่บนพื้นหลังสี Primary เพื่อให้ตัดกันและอ่านง่าย |
+| Primary Container | สีพื้นหลังรองที่มีความเด่นน้อยกว่า Primary ใช้สำหรับพื้นที่ขนาดใหญ่ |
+| On Primary Container | สีของข้อความ ไอคอน หรือองค์ประกอบที่อยู่บนพื้นหลังสี Primary Container เพื่อให้ตัดกับสี Container |
 
 ---
 
@@ -382,6 +382,7 @@ Screenshot หน้าจอ Design ทั้ง 3 หน้า และบั
 ```image
 วางรูปหน้าจอ ที่นี่
 ```
+<img width="2940" height="1664" alt="image" src="https://github.com/user-attachments/assets/7ea17069-55a8-4fec-8b35-83b96e7cd93a" />
 
 ---
 
@@ -873,17 +874,19 @@ flutter run
 ```
 
 ตรวจสอบความถูกต้อง:
-- [ ] App Bar แสดงชื่อ "Green Market"
-- [ ] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
-- [ ] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
-- [ ] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
-- [ ] Bottom Navigation สลับ Tab ได้
-- [ ] FAB แสดง SnackBar เมื่อถูกคลิก
+- [✅] App Bar แสดงชื่อ "Green Market"
+- [✅] แสดงรายการสินค้า Card ทั้ง 4 รายการถูกต้อง
+- [✅] กด Card สินค้าแล้ว Navigate ไปยัง Detail Screen ได้
+- [✅] กด Back / ปุ่มย้อนกลับได้ถูกต้อง
+- [✅] Bottom Navigation สลับ Tab ได้
+- [✅] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
 ```image
 บันทึกรูปที่นี่
-``` 
+```
+<img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/a40727a9-454c-4c21-b31f-39596c19d6f1" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +929,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | เปลี่ยนไปใช้อักษรย่อและคุมโทนสีด้วย Material 3 |
+| AI ใช้ color จาก Theme หรือ hardcode? | AI ใช้สีจาก Theme.of(context).colorScheme |
+| มีส่วนไหนที่ควรปรับปรุง? | ปรับปรุงโค้ด Flutter UserProfileCard |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -954,6 +957,14 @@ Add brief comments explaining each section.
    
 ```text
 เขียนผลการเปรียบเทียบที่นี่
+
+เป้าหมาย: ทั้ง UserProfileCard และ GreenMarketScreen ใช้การออกแบบตามมาตรฐาน Material 3 (M3) และปฏิบัติตามหลัก Zero Hardcoded Colors (ใช้อ้างอิงสีจาก ColorScheme ของระบบทั้งหมด)
+
+ข้อแตกต่างหลัก:
+
+โครงสร้าง (Hierarchy): UserProfileCard เป็น Reusable Component ย่อย ส่วน GreenMarketScreen เป็น Full Screen Scaffold (มี AppBar, FAB, NavigationBar)
+
+ความสมบูรณ์ (Robustness): UserProfileCard มีระบบ Null Safety (แสดงอักษรย่อเมื่อรูปเป็น null) และแปลงตัวเลขสถิติ ส่วน GreenMarketScreen เน้นการจัดวาง Layout และ Navigation สลับหน้า
 
 ```
 ---
@@ -1010,25 +1021,26 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: M3 ใช้ Dynamic Color ที่ดึงสีมาจากภาพวอลเปเปอร์เครื่องได้ และมีระบบจานสี (Color Scheme) ที่ละเอียดกว่า เช่น มีสีคู่ตรงข้ามอย่าง primaryContainer / onPrimaryContainer ทำให้จัดธีม Light/Dark Mode ได้กลมกลืนและเข้ากันง่ายกว่า M2 ที่เน้นแค่สี Primary/Secondary แบบตายตัว
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: - ปัญหา: ข้อความหลุดบรรทัด/Overflow, ขนาด Font/Spacing ไม่ตรงตามสเกลจริง, และไอคอนหรือเงาจาก Figma ไม่มีใน Flutter Standard Widgets
+- วิธีแก้: เปลี่ยนมาใช้ Flex, Expanded หรือ Wrap จัด Layout ปรับค่า Padding/Margin ให้เป็น dynamic ตามหน้าจอ และดึง Asset รูปภาพ/SVG จาก Figma มาใส่แทน
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: สมบูรณ์ประมาณ 70-80% ได้โครงสร้าง UI และ Layout หลักๆ ทันที แต่ต้องปรับปรุงเรื่อง Import ไฟล์ที่ชอบซ้ำ/เกิน, ประกาศชื่อคลาสหรือเมธอดไม่ครบ (เช่น ลืมสร้าง dark mode), การลบ Hardcode ค่าสี/ข้อความ และการจัดการ State ที่ยังไม่เป็นระเบียบ
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: แยก Widget ออกเป็นไฟล์ย่อยๆ (Clean Architecture), ย้าย Data ไปดึงผ่าน API หรือ State Management (เช่น Provider, Bloc), ใส่ Validation หน้าฟอร์ม, เพิ่ม Loading State / Error Handling เวลาโหลดข้อมูล และทำ Responsive Layout รองรับทั้งมือถือและแท็บเล็ต
 ```
 
 ---
