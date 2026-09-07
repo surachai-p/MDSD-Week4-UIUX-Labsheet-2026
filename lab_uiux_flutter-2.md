@@ -237,20 +237,21 @@ Prompt ที่ไม่ดี:
 
 | รายการ | ค่าที่ได้ |
 |--------|---------|
-| Primary Color (Hex) | _________________ |
-| Secondary Color (Hex) | _________________ |
-| Primary Container (Hex) | _________________ |
-| Surface (Hex) | _________________ |
+| Primary Color (Hex) | _______#3c1e52__________ |
+| Secondary Color (Hex) | _______#33283a__________ |
+| Primary Container (Hex) | ________#5b3c71_________ |
+| Surface (Hex) | ________#fff7fd_________ |
 
 > **คำถาม:** Primary, On Primary, Primary Container, On Primary Container คืออะไร มีลักษณะความสัมพันธ์ของสีอย่างไร?  วิเคราะห์และเติมตารางด้านล่าง
 
 | สี | หน้าที่ |
 |-----|--------|
-| Primary | _________________ |
-| On Primary | _________________ |
-| Primary Container | _________________ |
-| On Primary Container | _________________ |
+| Primary | _______สีหลักของแอป ใช้กับส่วนที่สำคัญที่สุด เช่น ปุ่มหลัก (Filled Button)__________ |
+| On Primary | _______สีข้อความหรือไอคอนที่วางอยู่บนสี Primary__________ |
+| Primary Container | ______สีพื้นหลังโทนอ่อนลงมา ใช้กับส่วนรอง เช่น การ์ด หรือกรอบไอคอน___________ |
+| On Primary Container | _______สีข้อความหรือไอคอนที่วางอยู่บนสี Primary Container__________ |
 
+คู่สีใช้งาน: Primary คู่กับ On Primary และ Primary Container คู่กับ On Primary Container
 ---
 
 ### การทดลองที่ 2: ออกแบบ UI Mockup ด้วย Figma
@@ -379,9 +380,8 @@ Prompt ที่ไม่ดี:
 
 Screenshot หน้าจอ Design ทั้ง 3 หน้า และบันทึกข้อมูลสรุป:
 
-```image
-วางรูปหน้าจอ ที่นี่
-```
+<img width="834" height="602" alt="image" src="https://github.com/user-attachments/assets/0479e894-24ea-4e67-ad5b-7a1ec165e37e" />
+
 
 ---
 
@@ -881,9 +881,9 @@ flutter run
 - [ ] FAB แสดง SnackBar เมื่อถูกคลิก
 
 **แก้ไขเปลี่ยนแปลง App Bar ให้แสดง คำว่า "Dev by" ตามด้วยชื่อนักศึกษา** แล้วบันทึกรูปผลการทดลอง
-```image
-บันทึกรูปที่นี่
-``` 
+<img width="1215" height="735" alt="image" src="https://github.com/user-attachments/assets/9e288e15-3e96-478f-b258-cb55c739057d" />
+<img width="1215" height="735" alt="image" src="https://github.com/user-attachments/assets/c7d7e78c-d3e3-45d9-8c77-4ec213b80d71" />
+
 ---
 
 ### การทดลองที่ 4: ใช้ AI ช่วย Generate UI Component (30 นาที)
@@ -926,10 +926,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | ใช้ `CircleAvatar` โดยกำหนด `radius: 32` |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | ตรวจสอบว่า `avatarUrl` มีค่าหรือไม่ ถ้ามีให้แสดงรูปผ่าน `backgroundImage: NetworkImage(avatarUrl)` แต่ถ้าเป็น null ให้แสดงตัวอักษรย่อของชื่อเป็น fallback ใน `child` |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้สีจาก `Theme.of(context).colorScheme` จึงไม่ hardcode สี และรองรับทั้ง Light Mode กับ Dark Mode |
+| มีส่วนไหนที่ควรปรับปรุง? | ควรตรวจสอบ URL และจัดการกรณีโหลดรูปไม่สำเร็จ เพิ่ม `Semantics` หรือ label ให้ปุ่มและรูปภาพ ตรวจสอบการตัดข้อความชื่อ/อีเมล และเชื่อมต่อปุ่ม Follow/Message กับการทำงานจริง |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -953,7 +953,7 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+ผลการเปรียบเทียบ: Widget Tree ที่ AI สร้างมีโครงสร้างใกล้เคียงกับโค้ดที่เขียนเอง โดยใช้ `Scaffold`, `AppBar`, `ListView`, `Card` และ `NavigationBar` เป็นองค์ประกอบหลัก ความแตกต่างคือ AI อาจจัดลำดับ `Padding`, `Column` และ `Row` หรือเลือกชื่อ widget ย่อยต่างกัน โค้ดจาก AI ช่วยประหยัดเวลาในการเริ่มต้น แต่ต้องตรวจสอบ responsive layout, การนำทาง, accessibility, null safety และการใช้สีจาก Theme ก่อนนำไปใช้จริง
 
 ```
 ---
@@ -1010,25 +1010,25 @@ IconButton(
 **ข้อ 1:** Material 3 ต่างจาก Material 2 อย่างไรในด้าน Color System? 
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Material 2 ใช้ชุดสีและบทบาทสีที่กำหนดไว้ค่อนข้างตายตัว ส่วน Material 3 ใช้ Color Scheme ที่สร้างจาก seed color หรือ dynamic color และแบ่งบทบาทชัดเจน เช่น Primary, Secondary, Tertiary, Surface และ Error รวมถึงคู่สี `on-` สำหรับข้อความหรือไอคอนบนสีนั้น ทำให้ปรับ Light/Dark Mode และรักษา contrast ได้เป็นระบบมากขึ้น
 ```
 
 **ข้อ 2:** เมื่อแปลง Figma Design เป็น Flutter Widget พบปัญหาอะไรบ้าง และแก้ไขอย่างไร?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ปัญหาที่พบได้แก่ ขนาดและระยะห่างใน Figma ไม่ตรงกับ Flutter, เนื้อหาล้นบนหน้าจอขนาดต่างกัน, การจัดวาง Bottom Navigation กับ FAB และการเชื่อมโยงหน้ารายละเอียด วิธีแก้คือใช้ `Padding`, `SizedBox`, `Expanded`, `Flexible` และ `ListView` อย่างเหมาะสม กำหนดขนาดตามหลัก responsive design ตรวจสอบ safe area และทดสอบการ Navigate บนอุปกรณ์หลายขนาด
 ```
 
 **ข้อ 3:** Code ที่ AI สร้างให้นั้นสมบูรณ์แค่ไหน? ต้องปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Code ที่ AI สร้างเป็นโครงร่างที่ใช้งานได้และช่วยลดเวลาเริ่มต้น แต่ยังไม่สมบูรณ์สำหรับ Project จริง ต้องตรวจสอบ null safety และกรณีโหลด avatar ไม่สำเร็จ เพิ่ม error/loading state, semantic labels, responsive layout และเชื่อมปุ่มกับ business logic รวมทั้งทดสอบ Light/Dark Mode และ touch target
 ```
 
 **ข้อ 4:** ถ้าจะนำ UI ที่ออกแบบไปใช้กับ Project จริง จะปรับปรุงอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ควรเชื่อมต่อข้อมูลสินค้าจาก API หรือฐานข้อมูลแทนข้อมูลตัวอย่าง เพิ่มการค้นหา ตัวกรอง ตะกร้าสินค้า การเพิ่ม/แก้ไขสินค้า และสถานะ loading/empty/error ควรปรับ UI ให้รองรับหน้าจอหลายขนาด เพิ่มรูปภาพจริงและการแคช ตรวจสอบ accessibility, contrast, localization, validation, authentication และทดสอบ usability กับผู้ใช้จริง
 ```
 
 ---
